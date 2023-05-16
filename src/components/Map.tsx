@@ -124,7 +124,7 @@ export const MapLayout = ({ markers }: any) => {
             <Marker
                 icon={customMarkerF("126")}
                 position={position}>
-                <Popup>You are here</Popup>
+                <Popup>     <Typography level='h4'>กรุณากดบริเวณใดก็ได้ตรงแผนที่เพื่อค้นหาตำแหน่งของท่าน</Typography></Popup>
             </Marker>
         )
     }
