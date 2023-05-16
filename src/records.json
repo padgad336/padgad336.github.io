@@ -1,0 +1,3152 @@
+﻿[
+  {
+    "name": "1550 Café",
+    "coordinates": [
+      7.000511306,
+      100.4740098
+    ],
+    "ID": 87,
+    "type": "Coffee shop",
+    "communityId": 128
+  },
+  {
+    "name": "2 PEE NONG HAT YAI",
+    "coordinates": [
+      7.008681015,
+      100.4860779
+    ],
+    "ID": 211,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "29 Café Hatyai ",
+    "coordinates": [
+      7.000697504,
+      100.4924182
+    ],
+    "ID": 91,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "9798 the coffee",
+    "coordinates": [
+      6.9973916,
+      100.4741951
+    ],
+    "ID": 52,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "A CUP CAFE คนละครึ่ง",
+    "coordinates": [
+      7.010721975,
+      100.4746173
+    ],
+    "ID": 231,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "A&J Coffee",
+    "coordinates": [
+      6.994297832,
+      100.473061
+    ],
+    "ID": 36,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "ALL IN Hatyai",
+    "coordinates": [
+      7.012277118,
+      100.4781419
+    ],
+    "ID": 251,
+    "type": "Pub/Bar",
+    "communityId": 310
+  },
+  {
+    "name": "AM : PM Brunch&Bar",
+    "coordinates": [
+      7.006273845,
+      100.4842164
+    ],
+    "ID": 174,
+    "type": "Pub/Bar",
+    "communityId": 311
+  },
+  {
+    "name": "ASEAN Night Bazaar",
+    "coordinates": [
+      6.995242628,
+      100.4846949
+    ],
+    "ID": 41,
+    "type": "Market",
+    "communityId": 126
+  },
+  {
+    "name": "AT REST MASSAGE",
+    "coordinates": [
+      7.007391763,
+      100.4716556
+    ],
+    "ID": 191,
+    "type": "Spa",
+    "communityId": 282
+  },
+  {
+    "name": "Affa Café",
+    "coordinates": [
+      6.995674181,
+      100.4749271
+    ],
+    "ID": 43,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "Ah Kaw Pork Leg Hatyai",
+    "coordinates": [
+      7.009089118,
+      100.4744618
+    ],
+    "ID": 220,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Ah Restaurant",
+    "coordinates": [
+      7.007261353,
+      100.4696797
+    ],
+    "ID": 186,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "Al Rahman Restoran (HALAL)",
+    "coordinates": [
+      7.003760502,
+      100.4723533
+    ],
+    "ID": 125,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Aladin Burger",
+    "coordinates": [
+      7.013423706,
+      100.4792139
+    ],
+    "ID": 265,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Alina pizza and halal food",
+    "coordinates": [
+      7.000563379,
+      100.4712302
+    ],
+    "ID": 88,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Alive ชีวิต ชีวา",
+    "coordinates": [
+      6.998377231,
+      100.5112567
+    ],
+    "ID": 79,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "Aloha Hatyai Hotel",
+    "coordinates": [
+      7.004106316,
+      100.469723
+    ],
+    "ID": 134,
+    "type": "Hotel",
+    "communityId": 127
+  },
+  {
+    "name": "Amulet cafe",
+    "coordinates": [
+      7.008998027,
+      100.475947
+    ],
+    "ID": 218,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "Asia Grand Hotel",
+    "coordinates": [
+      7.002189922,
+      100.4742377
+    ],
+    "ID": 106,
+    "type": "Hotel",
+    "communityId": 284
+  },
+  {
+    "name": "Attention Cafe",
+    "coordinates": [
+      7.005175652,
+      100.4786214
+    ],
+    "ID": 154,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "Ayutthaya Noodle Halal",
+    "coordinates": [
+      7.007886042,
+      100.4735932
+    ],
+    "ID": 200,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "B.P. Grand Tower Hotel",
+    "coordinates": [
+      7.002433178,
+      100.4721817
+    ],
+    "ID": 110,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "B2 Hat Yai Boutique & Budget Hotel",
+    "coordinates": [
+      6.998970257,
+      100.4777903
+    ],
+    "ID": 72,
+    "type": "Hotel",
+    "communityId": 310
+  },
+  {
+    "name": "Baan Khun Bhu",
+    "coordinates": [
+      7.008707249,
+      100.4749117
+    ],
+    "ID": 212,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "Baanputthachart Cafe",
+    "coordinates": [
+      6.990641946,
+      100.4744838
+    ],
+    "ID": 15,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "Bake Up Sweetness café",
+    "coordinates": [
+      7.0079613,
+      100.4794023
+    ],
+    "ID": 202,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "Ban Phru Food Market",
+    "coordinates": [
+      6.949199897,
+      100.4719929
+    ],
+    "ID": 4,
+    "type": "Market",
+    "communityId": 280
+  },
+  {
+    "name": "Banca De Cafe",
+    "coordinates": [
+      7.004489379,
+      100.4708883
+    ],
+    "ID": 142,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "Bang Klam District Office",
+    "coordinates": [
+      7.090670737,
+      100.4117989
+    ],
+    "ID": 305,
+    "type": "Shopping Mall/Department store",
+    "communityId": 118
+  },
+  {
+    "name": "Bang Lee Kung Tom",
+    "coordinates": [
+      7.010801356,
+      100.4719092
+    ],
+    "ID": 233,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Bangkok Massage",
+    "coordinates": [
+      7.0038648,
+      100.4731615
+    ],
+    "ID": 129,
+    "type": "Spa",
+    "communityId": 127
+  },
+  {
+    "name": "Bankampu Hatyai",
+    "coordinates": [
+      7.004136423,
+      100.4754357
+    ],
+    "ID": 135,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Baroffee Cafe Hatyai",
+    "coordinates": [
+      7.002967228,
+      100.484269
+    ],
+    "ID": 114,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Basic Café",
+    "coordinates": [
+      6.99491845,
+      100.4760414
+    ],
+    "ID": 39,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "Bee croissant",
+    "coordinates": [
+      6.994635469,
+      100.4743287
+    ],
+    "ID": 38,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Better Together Café & Bistro",
+    "coordinates": [
+      7.007545176,
+      100.4805773
+    ],
+    "ID": 194,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Bhava Residence",
+    "coordinates": [
+      6.991110524,
+      100.4877922
+    ],
+    "ID": 17,
+    "type": "Hotel",
+    "communityId": 126
+  },
+  {
+    "name": "Billin Cafe&Bistro",
+    "coordinates": [
+      7.012039449,
+      100.4787495
+    ],
+    "ID": 247,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "Binmarn Sweet Box Cafe",
+    "coordinates": [
+      7.013253386,
+      100.4784598
+    ],
+    "ID": 262,
+    "type": "Coffee shop",
+    "communityId": 128
+  },
+  {
+    "name": "Blackbridge Halal Steakhouse & Restaurant",
+    "coordinates": [
+      7.012231005,
+      100.4836714
+    ],
+    "ID": 250,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Bon Khao Restaurant",
+    "coordinates": [
+      7.044268199,
+      100.5077147
+    ],
+    "ID": 297,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "Bookshelf books & cafe",
+    "coordinates": [
+      7.012987172,
+      100.4770811
+    ],
+    "ID": 257,
+    "type": "Coffee shop",
+    "communityId": 262
+  },
+  {
+    "name": "Bua Loy Mae Luean",
+    "coordinates": [
+      7.011017951,
+      100.473972
+    ],
+    "ID": 235,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Bualoy Paeauan",
+    "coordinates": [
+      7.008515014,
+      100.4772418
+    ],
+    "ID": 206,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Buddy Coffee",
+    "coordinates": [
+      7.008683808,
+      100.4413485
+    ],
+    "ID": 158,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Buffet Rimnam 259 and Seafood 489",
+    "coordinates": [
+      7.009928396,
+      100.4584952
+    ],
+    "ID": 291,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Bunglight Restaurant",
+    "coordinates": [
+      7.00893959,
+      100.4601253
+    ],
+    "ID": 217,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Buri Sriphu Boutique Hotel",
+    "coordinates": [
+      6.998004569,
+      100.4823782
+    ],
+    "ID": 54,
+    "type": "Hotel",
+    "communityId": 127
+  },
+  {
+    "name": "CAT Sushi",
+    "coordinates": [
+      7.015666547,
+      100.4763418
+    ],
+    "ID": 273,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Cafe Restique",
+    "coordinates": [
+      7.001243606,
+      100.4941417
+    ],
+    "ID": 95,
+    "type": "Coffee shop",
+    "communityId": 284
+  },
+  {
+    "name": "Cafe Sirene",
+    "coordinates": [
+      7.013198226,
+      100.4750899
+    ],
+    "ID": 261,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Cafe' Amazon สาขาชีกิมหยง",
+    "coordinates": [
+      7.00224735,
+      100.4747053
+    ],
+    "ID": 108,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Café Amazon สาขาสถานีขนส่งหาดใหญ่",
+    "coordinates": [
+      6.994120726,
+      100.482354
+    ],
+    "ID": 35,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Café amazon สาขาตลาดกิมหยง",
+    "coordinates": [
+      7.007607995,
+      100.4699504
+    ],
+    "ID": 197,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "Cassy Health Massage",
+    "coordinates": [
+      7.003823298,
+      100.4722869
+    ],
+    "ID": 128,
+    "type": "Spa",
+    "communityId": 282
+  },
+  {
+    "name": "Central Festival Hatyai",
+    "coordinates": [
+      6.991799901,
+      100.4828324
+    ],
+    "ID": 21,
+    "type": "Shopping Mall/Department store",
+    "communityId": 125
+  },
+  {
+    "name": "Central Mosque",
+    "coordinates": [
+      7.0761265,
+      100.4903409
+    ],
+    "ID": 302,
+    "type": "Mosque",
+    "communityId": 125
+  },
+  {
+    "name": "Chailai Burger",
+    "coordinates": [
+      7.00393514,
+      100.4681532
+    ],
+    "ID": 130,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "Chalathat Beach",
+    "coordinates": [
+      7.2026162,
+      100.5995843
+    ],
+    "ID": 313,
+    "type": "Tourist Attractions",
+    "communityId": 127
+  },
+  {
+    "name": "Chanel Hadyai",
+    "coordinates": [
+      6.991864555,
+      100.4827636
+    ],
+    "ID": 23,
+    "type": "Shopping Mall/Department store",
+    "communityId": 127
+  },
+  {
+    "name": "Chao Doi Cafe",
+    "coordinates": [
+      7.005962103,
+      100.4715652
+    ],
+    "ID": 169,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Chaodoi Coffee Premium at sai1",
+    "coordinates": [
+      7.003223575,
+      100.4700264
+    ],
+    "ID": 117,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Chen Loong Boat Noodle",
+    "coordinates": [
+      7.006684266,
+      100.4724051
+    ],
+    "ID": 183,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Chestnut Hill Eco Resort",
+    "coordinates": [
+      6.862165851,
+      100.540204
+    ],
+    "ID": 1,
+    "type": "Hotel",
+    "communityId": 310
+  },
+  {
+    "name": "Chicken Rice",
+    "coordinates": [
+      7.011783227,
+      100.4771389
+    ],
+    "ID": 243,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Chiew Chow Congee Restaurant",
+    "coordinates": [
+      7.008287102,
+      100.4734261
+    ],
+    "ID": 204,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Chinda Hot Pot",
+    "coordinates": [
+      6.99807218,
+      100.4740612
+    ],
+    "ID": 55,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Chokdee Dimsum",
+    "coordinates": [
+      7.002222143,
+      100.4758448
+    ],
+    "ID": 107,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Christina Salon 2",
+    "coordinates": [
+      7.007281647,
+      100.4722704
+    ],
+    "ID": 188,
+    "type": "Spa",
+    "communityId": 311
+  },
+  {
+    "name": "Coffee By Deaw",
+    "coordinates": [
+      7.013166281,
+      100.47568
+    ],
+    "ID": 260,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "Coffee Manual ร้านกาแฟสด Slowbar หาดใหญ่",
+    "coordinates": [
+      6.991294825,
+      100.4717634
+    ],
+    "ID": 18,
+    "type": "Coffee shop",
+    "communityId": 262
+  },
+  {
+    "name": "Coffee-2&ca'fe",
+    "coordinates": [
+      7.005980176,
+      100.4726148
+    ],
+    "ID": 170,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Comeback Espresso Cafe",
+    "coordinates": [
+      7.011328024,
+      100.476998
+    ],
+    "ID": 237,
+    "type": "Coffee shop",
+    "communityId": 118
+  },
+  {
+    "name": "Cook Chai Dim Sum",
+    "coordinates": [
+      6.99407916,
+      100.4772435
+    ],
+    "ID": 33,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Crystal Hotel Hat Yai",
+    "coordinates": [
+      6.992283069,
+      100.4855757
+    ],
+    "ID": 25,
+    "type": "Hotel",
+    "communityId": 284
+  },
+  {
+    "name": "D-One Hotel",
+    "coordinates": [
+      7.003698754,
+      100.4711073
+    ],
+    "ID": 123,
+    "type": "Hotel",
+    "communityId": 310
+  },
+  {
+    "name": "Day Cafe HDY",
+    "coordinates": [
+      7.005504701,
+      100.4901059
+    ],
+    "ID": 161,
+    "type": "Coffee shop",
+    "communityId": 262
+  },
+  {
+    "name": "De Van Cuisine",
+    "coordinates": [
+      7.007551861,
+      100.4759278
+    ],
+    "ID": 195,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Diamond Plaza Hotel",
+    "coordinates": [
+      7.006759682,
+      100.4716052
+    ],
+    "ID": 184,
+    "type": "Hotel",
+    "communityId": 310
+  },
+  {
+    "name": "Diana ShoppingDiana Shopping Complex",
+    "coordinates": [
+      6.99811754,
+      100.4781916
+    ],
+    "ID": 57,
+    "type": "Shopping Mall/Department store",
+    "communityId": 284
+  },
+  {
+    "name": "Dianashoponline",
+    "coordinates": [
+      6.998156389,
+      100.4783102
+    ],
+    "ID": 61,
+    "type": "Shopping Mall/Department store",
+    "communityId": 127
+  },
+  {
+    "name": "Dino shabu",
+    "coordinates": [
+      7.01921042,
+      100.4879763
+    ],
+    "ID": 280,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Dusk Rooftop & Restaurant",
+    "coordinates": [
+      7.00573464,
+      100.489964
+    ],
+    "ID": 167,
+    "type": "Pub/Bar",
+    "communityId": 126
+  },
+  {
+    "name": "Eighteen Nineteen (1819)",
+    "coordinates": [
+      6.998962519,
+      100.4843517
+    ],
+    "ID": 71,
+    "type": "Pub/Bar",
+    "communityId": 310
+  },
+  {
+    "name": "Feeling Hatyai",
+    "coordinates": [
+      7.029091146,
+      100.4880864
+    ],
+    "ID": 290,
+    "type": "Pub/Bar",
+    "communityId": 310
+  },
+  {
+    "name": "Feungfah Restaurant",
+    "coordinates": [
+      6.992316265,
+      100.4500171
+    ],
+    "ID": 27,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Fish Kitchen",
+    "coordinates": [
+      7.03616953,
+      100.4876838
+    ],
+    "ID": 105,
+    "type": "Restaurant",
+    "communityId": 118
+  },
+  {
+    "name": "Fresh milk coffee",
+    "coordinates": [
+      7.000628402,
+      100.4753948
+    ],
+    "ID": 89,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Full moon Massage & Spa",
+    "coordinates": [
+      7.005323277,
+      100.4728919
+    ],
+    "ID": 155,
+    "type": "Spa",
+    "communityId": 311
+  },
+  {
+    "name": "Futai Steakhouse",
+    "coordinates": [
+      6.999495176,
+      100.4736163
+    ],
+    "ID": 78,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "G2 Hotel Group",
+    "coordinates": [
+      7.010201168,
+      100.4803049
+    ],
+    "ID": 224,
+    "type": "Hotel",
+    "communityId": 310
+  },
+  {
+    "name": "Garabuning Spa",
+    "coordinates": [
+      6.9990642,
+      100.4769515
+    ],
+    "ID": 73,
+    "type": "Spa",
+    "communityId": 125
+  },
+  {
+    "name": "Gasoline",
+    "coordinates": [
+      7.005596804,
+      100.4870845
+    ],
+    "ID": 163,
+    "type": "Pub/Bar",
+    "communityId": 311
+  },
+  {
+    "name": "Get Up Cafe Bistro",
+    "coordinates": [
+      7.006645203,
+      100.4701021
+    ],
+    "ID": 181,
+    "type": "Coffee shop",
+    "communityId": 128
+  },
+  {
+    "name": "Ghis Cafe",
+    "coordinates": [
+      7.013685251,
+      100.4716379
+    ],
+    "ID": 267,
+    "type": "Coffee shop",
+    "communityId": 262
+  },
+  {
+    "name": "Gim Yong",
+    "coordinates": [
+      7.007924157,
+      100.4700147
+    ],
+    "ID": 201,
+    "type": "Market",
+    "communityId": 128
+  },
+  {
+    "name": "Golden Crown Grand Hotel",
+    "coordinates": [
+      7.007511366,
+      100.4704837
+    ],
+    "ID": 192,
+    "type": "Hotel",
+    "communityId": 128
+  },
+  {
+    "name": "Grand Pink Hotel",
+    "coordinates": [
+      7.005388172,
+      100.4724486
+    ],
+    "ID": 157,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "Greenway Night Market",
+    "coordinates": [
+      6.997163221,
+      100.4875278
+    ],
+    "ID": 48,
+    "type": "Market",
+    "communityId": 126
+  },
+  {
+    "name": "HOP INN Hat Yai",
+    "coordinates": [
+      7.009024801,
+      100.4807454
+    ],
+    "ID": 219,
+    "type": "Hotel",
+    "communityId": 125
+  },
+  {
+    "name": "HYPE Coffee Bar",
+    "coordinates": [
+      7.006536169,
+      100.4704736
+    ],
+    "ID": 180,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "HaThaithara Spa",
+    "coordinates": [
+      6.999847209,
+      100.4929069
+    ],
+    "ID": 83,
+    "type": "Spa",
+    "communityId": 125
+  },
+  {
+    "name": "Halal Muslim Food Stalls",
+    "coordinates": [
+      7.00628215,
+      100.4718238
+    ],
+    "ID": 175,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Hamid Restaurant Hatyai",
+    "coordinates": [
+      7.006415417,
+      100.472017
+    ],
+    "ID": 178,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Hansa Cafe",
+    "coordinates": [
+      7.003949755,
+      100.4708626
+    ],
+    "ID": 131,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "Hatyai Airport",
+    "coordinates": [
+      6.94557612,
+      100.3938466
+    ],
+    "ID": 3,
+    "type": "Airport",
+    "communityId": 310
+  },
+  {
+    "name": "Hatyai Banana Hotel",
+    "coordinates": [
+      6.989216135,
+      100.4781513
+    ],
+    "ID": 11,
+    "type": "Hotel",
+    "communityId": 126
+  },
+  {
+    "name": "Hatyai Municipal Park",
+    "coordinates": [
+      7.0411994,
+      100.4820407
+    ],
+    "ID": 295,
+    "type": "Park",
+    "communityId": 126
+  },
+  {
+    "name": "Hatyai Paradise Hotel & Resort",
+    "coordinates": [
+      7.013396593,
+      100.4589348
+    ],
+    "ID": 264,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "Hatyai Sashimi Grand",
+    "coordinates": [
+      6.996940812,
+      100.4780071
+    ],
+    "ID": 47,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Hatyai Seafood",
+    "coordinates": [
+      7.011462719,
+      100.4568962
+    ],
+    "ID": 239,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Hatyai Streetart",
+    "coordinates": [
+      7.010286343,
+      100.4725373
+    ],
+    "ID": 226,
+    "type": "Tourist Attractions",
+    "communityId": 125
+  },
+  {
+    "name": "Healthylicious Café",
+    "coordinates": [
+      6.99983821,
+      100.5067011
+    ],
+    "ID": 82,
+    "type": "Coffee shop",
+    "communityId": 128
+  },
+  {
+    "name": "Heent’café",
+    "coordinates": [
+      7.0086681,
+      100.4741902
+    ],
+    "ID": 210,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "Hi Season Hotel",
+    "coordinates": [
+      7.011500518,
+      100.4820878
+    ],
+    "ID": 240,
+    "type": "Hotel",
+    "communityId": 282
+  },
+  {
+    "name": "Homeless bar and grill",
+    "coordinates": [
+      7.004833818,
+      100.4735523
+    ],
+    "ID": 148,
+    "type": "Pub/Bar",
+    "communityId": 282
+  },
+  {
+    "name": "Honjiro sushi",
+    "coordinates": [
+      6.991421173,
+      100.4830609
+    ],
+    "ID": 20,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Hood",
+    "coordinates": [
+      7.005348186,
+      100.4733505
+    ],
+    "ID": 156,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Hybrit hostel&cafe",
+    "coordinates": [
+      6.992294206,
+      100.4848747
+    ],
+    "ID": 26,
+    "type": "Hotel",
+    "communityId": 118
+  },
+  {
+    "name": "I Spa Wellness Club",
+    "coordinates": [
+      7.013751404,
+      100.4816212
+    ],
+    "ID": 268,
+    "type": "Spa",
+    "communityId": 310
+  },
+  {
+    "name": "I Ya Shabu ",
+    "coordinates": [
+      6.99813769,
+      100.5035707
+    ],
+    "ID": 58,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "International 3 Gold Shop",
+    "coordinates": [
+      7.012728192,
+      100.4672375
+    ],
+    "ID": 256,
+    "type": "Shopping Mall/Department store",
+    "communityId": 125
+  },
+  {
+    "name": "JAOKHUN STEAK",
+    "coordinates": [
+      7.019865185,
+      100.4613315
+    ],
+    "ID": 283,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "JB Hotel",
+    "coordinates": [
+      7.013620512,
+      100.4756444
+    ],
+    "ID": 266,
+    "type": "Hotel",
+    "communityId": 125
+  },
+  {
+    "name": "JIAYUAN CAFÉS",
+    "coordinates": [
+      6.998142349,
+      100.4758313
+    ],
+    "ID": 59,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "JT square plaza",
+    "coordinates": [
+      6.998893667,
+      100.4792309
+    ],
+    "ID": 70,
+    "type": "Shopping Mall/Department store",
+    "communityId": 125
+  },
+  {
+    "name": "Jae Lek Thai Restaurant ",
+    "coordinates": [
+      7.000949007,
+      100.4707789
+    ],
+    "ID": 93,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Jer Seafood​ hatyai",
+    "coordinates": [
+      7.011547908,
+      100.4738907
+    ],
+    "ID": 242,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Joyz Bakery",
+    "coordinates": [
+      6.993857556,
+      100.4824613
+    ],
+    "ID": 31,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "KAIKATSU HALAL JAPANESE RESTAURANT",
+    "coordinates": [
+      7.013053145,
+      100.4851721
+    ],
+    "ID": 259,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "KEEP Coffee Hatyai",
+    "coordinates": [
+      7.014059923,
+      100.4769784
+    ],
+    "ID": 269,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "KHRUA RUEAN THAI RESTAURANT",
+    "coordinates": [
+      6.991845956,
+      100.4861115
+    ],
+    "ID": 22,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Kai-Tod Decha",
+    "coordinates": [
+      7.004205371,
+      100.473123
+    ],
+    "ID": 136,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Kak Sah Muslim Kitchen",
+    "coordinates": [
+      6.998709985,
+      100.4773498
+    ],
+    "ID": 67,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "Kan Eng Restaurant",
+    "coordinates": [
+      7.003240015,
+      100.4736055
+    ],
+    "ID": 118,
+    "type": "Restaurant",
+    "communityId": 311
+  },
+  {
+    "name": "Kaosaen Temple",
+    "coordinates": [
+      7.1817601,
+      100.6195106
+    ],
+    "ID": 310,
+    "type": "Buddhist Temple",
+    "communityId": 262
+  },
+  {
+    "name": "Kaoseng Temple",
+    "coordinates": [
+      7.1825028,
+      100.6153789
+    ],
+    "ID": 311,
+    "type": "Tourist Attractions",
+    "communityId": 126
+  },
+  {
+    "name": "Kelantan Restaurant",
+    "coordinates": [
+      7.004595363,
+      100.4729597
+    ],
+    "ID": 143,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "Kenta Hat Yai Japanese restaurant",
+    "coordinates": [
+      7.00890183,
+      100.4775138
+    ],
+    "ID": 216,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Khlong Hae Buffet Seafood Halal",
+    "coordinates": [
+      7.045144227,
+      100.4709527
+    ],
+    "ID": 298,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Khlong Hae Floating Market",
+    "coordinates": [
+      7.048095729,
+      100.4738786
+    ],
+    "ID": 300,
+    "type": "Market",
+    "communityId": 125
+  },
+  {
+    "name": "Kiss Gardenhome Chic Hotel",
+    "coordinates": [
+      7.001411575,
+      100.4740516
+    ],
+    "ID": 97,
+    "type": "Hotel",
+    "communityId": 282
+  },
+  {
+    "name": "Klonghae Floating Market",
+    "coordinates": [
+      7.0466154,
+      100.4740901
+    ],
+    "ID": 299,
+    "type": "Market",
+    "communityId": 126
+  },
+  {
+    "name": "Ko Aoun Deep Fried Bao",
+    "coordinates": [
+      6.999396877,
+      100.4743262
+    ],
+    "ID": 77,
+    "type": "Restaurant",
+    "communityId": 311
+  },
+  {
+    "name": "Kooha Mountaint",
+    "coordinates": [
+      7.1606252,
+      100.2644159
+    ],
+    "ID": 309,
+    "type": "Tourist Attractions",
+    "communityId": 280
+  },
+  {
+    "name": "Kurage ni",
+    "coordinates": [
+      7.013027227,
+      100.4830125
+    ],
+    "ID": 258,
+    "type": "Pub/Bar",
+    "communityId": 310
+  },
+  {
+    "name": "Kyoto Shi cafe",
+    "coordinates": [
+      7.010342773,
+      100.4796007
+    ],
+    "ID": 227,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "LOCAL EDITION",
+    "coordinates": [
+      7.009423105,
+      100.4826169
+    ],
+    "ID": 221,
+    "type": "Pub/Bar",
+    "communityId": 310
+  },
+  {
+    "name": "Lalita Boutique Hotel",
+    "coordinates": [
+      7.018568212,
+      100.4574136
+    ],
+    "ID": 278,
+    "type": "Hotel",
+    "communityId": 262
+  },
+  {
+    "name": "Lantern Cafe",
+    "coordinates": [
+      7.001730726,
+      100.4709101
+    ],
+    "ID": 101,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "Larn Ta Chu Steakhouse",
+    "coordinates": [
+      6.998537188,
+      100.482659
+    ],
+    "ID": 66,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Latangke Hotpot",
+    "coordinates": [
+      6.998295807,
+      100.4751716
+    ],
+    "ID": 64,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Lazio Café",
+    "coordinates": [
+      7.002317971,
+      100.4809519
+    ],
+    "ID": 109,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "Lee Gardens Plaza Hotel Hat Yai",
+    "coordinates": [
+      7.005600626,
+      100.471729
+    ],
+    "ID": 165,
+    "type": "Hotel",
+    "communityId": 127
+  },
+  {
+    "name": "Lee Gardens Plaza Shopping Mall",
+    "coordinates": [
+      7.00567696,
+      100.4718495
+    ],
+    "ID": 166,
+    "type": "Shopping Mall/Department store",
+    "communityId": 284
+  },
+  {
+    "name": "Leevana Hotel",
+    "coordinates": [
+      7.019646615,
+      100.455532
+    ],
+    "ID": 281,
+    "type": "Hotel",
+    "communityId": 126
+  },
+  {
+    "name": "Library House Board Game Cafe",
+    "coordinates": [
+      6.9981171,
+      100.4839573
+    ],
+    "ID": 56,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "Lion Bar Hatyai",
+    "coordinates": [
+      7.004748379,
+      100.4723312
+    ],
+    "ID": 146,
+    "type": "Pub/Bar",
+    "communityId": 311
+  },
+  {
+    "name": "Luxury massage",
+    "coordinates": [
+      7.021799846,
+      100.4568218
+    ],
+    "ID": 285,
+    "type": "Spa",
+    "communityId": 284
+  },
+  {
+    "name": "M-One Residence",
+    "coordinates": [
+      7.01484139,
+      100.4847039
+    ],
+    "ID": 271,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "MAKANAN ISLAM HALAL",
+    "coordinates": [
+      7.003798651,
+      100.4721425
+    ],
+    "ID": 126,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "MATA COFFEE",
+    "coordinates": [
+      7.003122499,
+      100.468819
+    ],
+    "ID": 116,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "MK Restaurant",
+    "coordinates": [
+      7.003062514,
+      100.4687868
+    ],
+    "ID": 115,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Mae Bencha Pla Phao 1",
+    "coordinates": [
+      6.985810482,
+      100.4691682
+    ],
+    "ID": 8,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Mafit Cafe",
+    "coordinates": [
+      6.991347328,
+      100.4719123
+    ],
+    "ID": 19,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Majmoh Mosque",
+    "coordinates": [
+      7.016534668,
+      100.4715491
+    ],
+    "ID": 276,
+    "type": "Mosque",
+    "communityId": 262
+  },
+  {
+    "name": "Mamon Desserts",
+    "coordinates": [
+      6.990561666,
+      100.4797377
+    ],
+    "ID": 14,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Marada",
+    "coordinates": [
+      7.024879274,
+      100.4699717
+    ],
+    "ID": 288,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Mariem M Cafe",
+    "coordinates": [
+      6.993502692,
+      100.4855153
+    ],
+    "ID": 30,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Marina Seafood",
+    "coordinates": [
+      7.012144229,
+      100.4667668
+    ],
+    "ID": 249,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Mayan Bar",
+    "coordinates": [
+      7.012397,
+      100.476907
+    ],
+    "ID": 253,
+    "type": "Pub/Bar",
+    "communityId": 125
+  },
+  {
+    "name": "McDonald's",
+    "coordinates": [
+      6.998292182,
+      100.4776207
+    ],
+    "ID": 63,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Mirinda",
+    "coordinates": [
+      7.004246156,
+      100.4868535
+    ],
+    "ID": 139,
+    "type": "Pub/Bar",
+    "communityId": 310
+  },
+  {
+    "name": "Muslim Noodle",
+    "coordinates": [
+      7.027799544,
+      100.4453451
+    ],
+    "ID": 289,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Nai Roo",
+    "coordinates": [
+      7.009461201,
+      100.4705559
+    ],
+    "ID": 222,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Nai Yao Congee",
+    "coordinates": [
+      7.002010927,
+      100.4723378
+    ],
+    "ID": 104,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Namom Hospital",
+    "coordinates": [
+      6.987137917,
+      100.5855569
+    ],
+    "ID": 10,
+    "type": "Hospital",
+    "communityId": 282
+  },
+  {
+    "name": "Nanyuan Noodle restaurant",
+    "coordinates": [
+      6.999725804,
+      100.4743557
+    ],
+    "ID": 81,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Nescafe Street Cafe ตลาดกิมหยง",
+    "coordinates": [
+      7.007588884,
+      100.4704099
+    ],
+    "ID": 196,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "New Season Square Hotel",
+    "coordinates": [
+      7.007264774,
+      100.4733935
+    ],
+    "ID": 187,
+    "type": "Hotel",
+    "communityId": 128
+  },
+  {
+    "name": "No Plaza",
+    "coordinates": [
+      7.005599653,
+      100.4827262
+    ],
+    "ID": 164,
+    "type": "Shopping Mall/Department store",
+    "communityId": 310
+  },
+  {
+    "name": "Odean Shopping Mall",
+    "coordinates": [
+      7.004878305,
+      100.4714311
+    ],
+    "ID": 149,
+    "type": "Shopping Mall/Department store",
+    "communityId": 284
+  },
+  {
+    "name": "Our Lady Of Lourdes Church, Hat Yai",
+    "coordinates": [
+      7.005133975,
+      100.4761641
+    ],
+    "ID": 153,
+    "type": "Catholic church",
+    "communityId": 311
+  },
+  {
+    "name": "PANG MAI RESORT",
+    "coordinates": [
+      6.987021354,
+      100.3897902
+    ],
+    "ID": 9,
+    "type": "Hotel",
+    "communityId": 311
+  },
+  {
+    "name": "PS SRIPHU HOTEL",
+    "coordinates": [
+      6.992409382,
+      100.4351916
+    ],
+    "ID": 28,
+    "type": "Hotel",
+    "communityId": 282
+  },
+  {
+    "name": "Pailin Massage Hat Yai",
+    "coordinates": [
+      7.006380135,
+      100.4719238
+    ],
+    "ID": 177,
+    "type": "Spa",
+    "communityId": 126
+  },
+  {
+    "name": "Panan ThaI Food Restaurant",
+    "coordinates": [
+      7.021936561,
+      100.4922498
+    ],
+    "ID": 286,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Parttana Phochana Tian Tian Lai",
+    "coordinates": [
+      6.994320818,
+      100.4735342
+    ],
+    "ID": 37,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Pause Coffee House",
+    "coordinates": [
+      7.001566451,
+      100.4863702
+    ],
+    "ID": 100,
+    "type": "Coffee shop",
+    "communityId": 282
+  },
+  {
+    "name": "Peary Wax & Spa",
+    "coordinates": [
+      6.999210904,
+      100.5013573
+    ],
+    "ID": 74,
+    "type": "Spa",
+    "communityId": 125
+  },
+  {
+    "name": "Phra Phutthamongkol Maharat",
+    "coordinates": [
+      7.043460686,
+      100.5165355
+    ],
+    "ID": 296,
+    "type": "Tourist Attractions",
+    "communityId": 280
+  },
+  {
+    "name": "Phumjai Massage",
+    "coordinates": [
+      7.002522649,
+      100.4714328
+    ],
+    "ID": 113,
+    "type": "Spa",
+    "communityId": 310
+  },
+  {
+    "name": "Plaza Shoping Hatyai",
+    "coordinates": [
+      7.011963926,
+      100.4696618
+    ],
+    "ID": 245,
+    "type": "Shopping Mall/Department store",
+    "communityId": 118
+  },
+  {
+    "name": "Post Laser Disc Pub & Restaurant",
+    "coordinates": [
+      7.004319524,
+      100.4717324
+    ],
+    "ID": 140,
+    "type": "Pub/Bar",
+    "communityId": 127
+  },
+  {
+    "name": "Pranee Thai Cuisine",
+    "coordinates": [
+      7.008128591,
+      100.4753728
+    ],
+    "ID": 203,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Preuksa Spa",
+    "coordinates": [
+      6.999302753,
+      100.4712742
+    ],
+    "ID": 76,
+    "type": "Spa",
+    "communityId": 311
+  },
+  {
+    "name": "Prikkeenoo",
+    "coordinates": [
+      6.996347687,
+      100.4745859
+    ],
+    "ID": 45,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Princess Maha Chakri Sirindhorn Natural History Museum",
+    "coordinates": [
+      7.00785781,
+      100.4966707
+    ],
+    "ID": 199,
+    "type": "Museum",
+    "communityId": 284
+  },
+  {
+    "name": "Punsuk",
+    "coordinates": [
+      6.993990657,
+      100.4775597
+    ],
+    "ID": 32,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "REC HATYAI",
+    "coordinates": [
+      6.997283342,
+      100.5027197
+    ],
+    "ID": 49,
+    "type": "Pub/Bar",
+    "communityId": 282
+  },
+  {
+    "name": "Red Planet Hat Yai",
+    "coordinates": [
+      7.002475322,
+      100.4705017
+    ],
+    "ID": 112,
+    "type": "Hotel",
+    "communityId": 282
+  },
+  {
+    "name": "Replay Cafe",
+    "coordinates": [
+      7.004944274,
+      100.4871377
+    ],
+    "ID": 150,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Restaurant Khaled @ Hat Yai",
+    "coordinates": [
+      7.00838653,
+      100.4731211
+    ],
+    "ID": 205,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Retro Cafe & Bar",
+    "coordinates": [
+      6.999267619,
+      100.4711793
+    ],
+    "ID": 75,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "Rextro Cafe",
+    "coordinates": [
+      7.003743506,
+      100.4734448
+    ],
+    "ID": 124,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "Rim Rua Kratha Ron Restaurant",
+    "coordinates": [
+      7.031786721,
+      100.4908406
+    ],
+    "ID": 292,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Rimnarm",
+    "coordinates": [
+      7.00997429,
+      100.4584983
+    ],
+    "ID": 223,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "Robinson Department Store Hatyai",
+    "coordinates": [
+      7.003518907,
+      100.4692692
+    ],
+    "ID": 121,
+    "type": "Shopping Mall/Department store",
+    "communityId": 282
+  },
+  {
+    "name": "Ruyi Vegetarian restaurant",
+    "coordinates": [
+      7.004215858,
+      100.4746262
+    ],
+    "ID": 138,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "S&P Big C Hatyai",
+    "coordinates": [
+      7.019659049,
+      100.4866078
+    ],
+    "ID": 282,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "SANEHA PLAZA ",
+    "coordinates": [
+      7.006205932,
+      100.4719213
+    ],
+    "ID": 173,
+    "type": "Shopping Mall/Department store",
+    "communityId": 128
+  },
+  {
+    "name": "SENSE2 HAIR SALON MASSAGE & SPA",
+    "coordinates": [
+      7.00465504,
+      100.4724388
+    ],
+    "ID": 145,
+    "type": "Spa",
+    "communityId": 282
+  },
+  {
+    "name": "SUAN CHUEN SUK RESTAURANT ",
+    "coordinates": [
+      6.995463876,
+      100.4565968
+    ],
+    "ID": 42,
+    "type": "Restaurant",
+    "communityId": 118
+  },
+  {
+    "name": "Sabannga",
+    "coordinates": [
+      6.977834171,
+      100.4282723
+    ],
+    "ID": 7,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Sahe Pakistan Mosque",
+    "coordinates": [
+      7.010443694,
+      100.4693605
+    ],
+    "ID": 228,
+    "type": "Mosque",
+    "communityId": 310
+  },
+  {
+    "name": "Sakol Hotel",
+    "coordinates": [
+      7.004211363,
+      100.4714353
+    ],
+    "ID": 137,
+    "type": "Hotel",
+    "communityId": 284
+  },
+  {
+    "name": "Sakura Budget Hotel",
+    "coordinates": [
+      7.00463375,
+      100.4812985
+    ],
+    "ID": 144,
+    "type": "Hotel",
+    "communityId": 127
+  },
+  {
+    "name": "Samila Beach",
+    "coordinates": [
+      7.2226796,
+      100.5846443
+    ],
+    "ID": 315,
+    "type": "Tourist Attractions",
+    "communityId": 128
+  },
+  {
+    "name": "Samorthong Express",
+    "coordinates": [
+      7.001418978,
+      100.4594783
+    ],
+    "ID": 98,
+    "type": "Shopping Mall/Department store",
+    "communityId": 310
+  },
+  {
+    "name": "Sangtawan Fishing Park",
+    "coordinates": [
+      7.090215447,
+      100.430992
+    ],
+    "ID": 304,
+    "type": "Tourist Attractions",
+    "communityId": 282
+  },
+  {
+    "name": "Santisuk Market",
+    "coordinates": [
+      7.005455685,
+      100.4702563
+    ],
+    "ID": 160,
+    "type": "Market",
+    "communityId": 284
+  },
+  {
+    "name": "Satharanasuk Hatyai",
+    "coordinates": [
+      7.007664601,
+      100.4840347
+    ],
+    "ID": 198,
+    "type": "Pub/Bar",
+    "communityId": 282
+  },
+  {
+    "name": "Sawassdee Massage Spa",
+    "coordinates": [
+      7.006361095,
+      100.4714551
+    ],
+    "ID": 176,
+    "type": "Spa",
+    "communityId": 125
+  },
+  {
+    "name": "See Kim Yong Restaurant",
+    "coordinates": [
+      7.002003584,
+      100.4751745
+    ],
+    "ID": 102,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Shabu De Bear Hatyai",
+    "coordinates": [
+      7.004817568,
+      100.4884648
+    ],
+    "ID": 147,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "Shabu Haven Hatyai",
+    "coordinates": [
+      7.006652505,
+      100.4741595
+    ],
+    "ID": 182,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Shabu Mix",
+    "coordinates": [
+      6.998211482,
+      100.4736879
+    ],
+    "ID": 62,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "Shabu Shabu Nangnai - Hatyai",
+    "coordinates": [
+      7.000693507,
+      100.4929814
+    ],
+    "ID": 90,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Shabushi by Oishi",
+    "coordinates": [
+      6.992183977,
+      100.4858328
+    ],
+    "ID": 24,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Shleep",
+    "coordinates": [
+      7.011245059,
+      100.4772858
+    ],
+    "ID": 236,
+    "type": "Spa",
+    "communityId": 262
+  },
+  {
+    "name": "Siam Art Gallery",
+    "coordinates": [
+      7.001465788,
+      100.4936281
+    ],
+    "ID": 99,
+    "type": "Museum",
+    "communityId": 284
+  },
+  {
+    "name": "Siam Oriental Hotel, Hatyai",
+    "coordinates": [
+      6.998715218,
+      100.4809227
+    ],
+    "ID": 68,
+    "type": "Hotel",
+    "communityId": 128
+  },
+  {
+    "name": "Sid Seafood",
+    "coordinates": [
+      7.006504177,
+      100.4709379
+    ],
+    "ID": 179,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Sipolle by Chef Dan (Hatyai)",
+    "coordinates": [
+      7.018656702,
+      100.4860237
+    ],
+    "ID": 279,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Sleepless Corner ",
+    "coordinates": [
+      7.012694232,
+      100.4783709
+    ],
+    "ID": 255,
+    "type": "Pub/Bar",
+    "communityId": 284
+  },
+  {
+    "name": "Soft House Hatyai",
+    "coordinates": [
+      6.995042273,
+      100.503042
+    ],
+    "ID": 40,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "Somtamchaba",
+    "coordinates": [
+      7.010506933,
+      100.4786476
+    ],
+    "ID": 229,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "Songkhla Zoo",
+    "coordinates": [
+      7.1480331,
+      100.608372
+    ],
+    "ID": 307,
+    "type": "Tourist Attractions",
+    "communityId": 125
+  },
+  {
+    "name": "Starbucks PSU",
+    "coordinates": [
+      7.008653304,
+      100.4993217
+    ],
+    "ID": 208,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Sulbing (ซอลบิง) Korean Dessert Cafe Lee Garden Plaza",
+    "coordinates": [
+      7.006165096,
+      100.4722785
+    ],
+    "ID": 172,
+    "type": "Coffee shop",
+    "communityId": 128
+  },
+  {
+    "name": "Sultan Roast Duck (Halal)",
+    "coordinates": [
+      7.008849605,
+      100.4763761
+    ],
+    "ID": 215,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "S’CAFÉ",
+    "coordinates": [
+      7.008656625,
+      100.4740517
+    ],
+    "ID": 209,
+    "type": "Coffee shop",
+    "communityId": 126
+  },
+  {
+    "name": "THE MAKAN HATYAI HALAL FOOD AND RESTAURANT",
+    "coordinates": [
+      7.003817961,
+      100.4799261
+    ],
+    "ID": 127,
+    "type": "Restaurant",
+    "communityId": 311
+  },
+  {
+    "name": "Tamrab Muslim Restaurant (Nasi Kerabu)",
+    "coordinates": [
+      7.000981297,
+      100.4698852
+    ],
+    "ID": 94,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "Tangkuan Mountant",
+    "coordinates": [
+      7.2103554,
+      100.5871116
+    ],
+    "ID": 314,
+    "type": "Tourist Attractions",
+    "communityId": 310
+  },
+  {
+    "name": "Tar Yern Betong Hat Yai Branch",
+    "coordinates": [
+      6.99992843,
+      100.4718503
+    ],
+    "ID": 84,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "Tesco Lotus",
+    "coordinates": [
+      7.007389317,
+      100.4920055
+    ],
+    "ID": 190,
+    "type": "Shopping Mall/Department store",
+    "communityId": 127
+  },
+  {
+    "name": "Tha Kham Station",
+    "coordinates": [
+      7.037547344,
+      100.5759331
+    ],
+    "ID": 293,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "Thai-Malaysia Restaurant",
+    "coordinates": [
+      7.015862385,
+      100.4721265
+    ],
+    "ID": 274,
+    "type": "Restaurant",
+    "communityId": 280
+  },
+  {
+    "name": "The Basil Restaurant&Wine",
+    "coordinates": [
+      7.000941774,
+      100.4927183
+    ],
+    "ID": 92,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "The Bedroom",
+    "coordinates": [
+      7.011526767,
+      100.4769822
+    ],
+    "ID": 241,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "The COLONY est.2011",
+    "coordinates": [
+      6.9973916,
+      100.4740342
+    ],
+    "ID": 51,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "The Color Hotel",
+    "coordinates": [
+      7.002007357,
+      100.4731243
+    ],
+    "ID": 103,
+    "type": "Hotel",
+    "communityId": 310
+  },
+  {
+    "name": "The Company",
+    "coordinates": [
+      7.007320769,
+      100.4822005
+    ],
+    "ID": 189,
+    "type": "Restaurant",
+    "communityId": 284
+  },
+  {
+    "name": "The Containers Cafe",
+    "coordinates": [
+      6.997591163,
+      100.4985867
+    ],
+    "ID": 53,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "The Containers Café",
+    "coordinates": [
+      6.996745405,
+      100.492267
+    ],
+    "ID": 46,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "The Habita Cafe",
+    "coordinates": [
+      7.01078203,
+      100.4756863
+    ],
+    "ID": 232,
+    "type": "Coffee shop",
+    "communityId": 262
+  },
+  {
+    "name": "The Library Hatyai",
+    "coordinates": [
+      7.0123972,
+      100.4769068
+    ],
+    "ID": 254,
+    "type": "Pub/Bar",
+    "communityId": 126
+  },
+  {
+    "name": "The Nine Bistro",
+    "coordinates": [
+      6.998506536,
+      100.4763517
+    ],
+    "ID": 65,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "The Pirates Park Hatyai",
+    "coordinates": [
+      7.015395763,
+      100.4253624
+    ],
+    "ID": 272,
+    "type": "Tourist Attractions",
+    "communityId": 262
+  },
+  {
+    "name": "The Pizza Company",
+    "coordinates": [
+      7.017452603,
+      100.4554999
+    ],
+    "ID": 277,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "The Princess spa",
+    "coordinates": [
+      7.019925377,
+      100.473629
+    ],
+    "ID": 284,
+    "type": "Spa",
+    "communityId": 282
+  },
+  {
+    "name": "The Regency Hotel",
+    "coordinates": [
+      7.006827726,
+      100.4714038
+    ],
+    "ID": 185,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "The Second Hatyai",
+    "coordinates": [
+      6.999955395,
+      100.4708515
+    ],
+    "ID": 85,
+    "type": "Restaurant",
+    "communityId": 118
+  },
+  {
+    "name": "The Shady cafe",
+    "coordinates": [
+      7.001287451,
+      100.4707936
+    ],
+    "ID": 96,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "The Smart Hotel Hatyai",
+    "coordinates": [
+      6.990096375,
+      100.4888441
+    ],
+    "ID": 12,
+    "type": "Hotel",
+    "communityId": 126
+  },
+  {
+    "name": "The Swan BAR & Restaurant",
+    "coordinates": [
+      7.004407536,
+      100.472577
+    ],
+    "ID": 141,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "The Three Hatyai",
+    "coordinates": [
+      7.004083412,
+      100.4707747
+    ],
+    "ID": 132,
+    "type": "Hotel",
+    "communityId": 280
+  },
+  {
+    "name": "The Train Hotel Hat Yai",
+    "coordinates": [
+      7.004083619,
+      100.4682504
+    ],
+    "ID": 133,
+    "type": "Hotel",
+    "communityId": 118
+  },
+  {
+    "name": "Thung Saeng Thong Mosque",
+    "coordinates": [
+      7.003473737,
+      100.4353836
+    ],
+    "ID": 119,
+    "type": "Mosque",
+    "communityId": 125
+  },
+  {
+    "name": "Tiao Bang Halal",
+    "coordinates": [
+      7.010684259,
+      100.4714648
+    ],
+    "ID": 230,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "Tinnasulanon Bridge",
+    "coordinates": [
+      7.187939,
+      100.5460712
+    ],
+    "ID": 312,
+    "type": "Tourist Attractions",
+    "communityId": 282
+  },
+  {
+    "name": "Tiums by good cafe Hadyai",
+    "coordinates": [
+      7.000263522,
+      100.4746248
+    ],
+    "ID": 86,
+    "type": "Coffee shop",
+    "communityId": 280
+  },
+  {
+    "name": "Ton Nga Chang Wildlife Sanctuary",
+    "coordinates": [
+      6.950037795,
+      100.2342531
+    ],
+    "ID": 5,
+    "type": "Tourist Attractions",
+    "communityId": 284
+  },
+  {
+    "name": "Tripop stainless pagoda",
+    "coordinates": [
+      7.0049603,
+      100.5137011
+    ],
+    "ID": 151,
+    "type": "Buddhist Temple",
+    "communityId": 125
+  },
+  {
+    "name": "Udom Phochana",
+    "coordinates": [
+      7.003533273,
+      100.4807035
+    ],
+    "ID": 122,
+    "type": "Restaurant",
+    "communityId": 126
+  },
+  {
+    "name": "VARIN : BAKE Studio",
+    "coordinates": [
+      6.991030225,
+      100.4787935
+    ],
+    "ID": 16,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "VIP Somtum CLUB ",
+    "coordinates": [
+      6.944282965,
+      100.4899866
+    ],
+    "ID": 2,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "W3 Hotel",
+    "coordinates": [
+      7.011890287,
+      100.4832488
+    ],
+    "ID": 244,
+    "type": "Hotel",
+    "communityId": 262
+  },
+  {
+    "name": "WHAT COFFEE BAR",
+    "coordinates": [
+      6.995807595,
+      100.4713776
+    ],
+    "ID": 44,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "Wat Chue Chang",
+    "coordinates": [
+      7.008579655,
+      100.4723275
+    ],
+    "ID": 207,
+    "type": "Buddhist Temple",
+    "communityId": 125
+  },
+  {
+    "name": "Wat Hat Yai Nai",
+    "coordinates": [
+      7.003482815,
+      100.4543825
+    ],
+    "ID": 120,
+    "type": "Buddhist Temple",
+    "communityId": 127
+  },
+  {
+    "name": "Wat Khok Saman Khun",
+    "coordinates": [
+      7.010248039,
+      100.4641682
+    ],
+    "ID": 225,
+    "type": "Buddhist Temple",
+    "communityId": 127
+  },
+  {
+    "name": "Wat Khu Tao",
+    "coordinates": [
+      7.109337244,
+      100.4663959
+    ],
+    "ID": 306,
+    "type": "Buddhist Temple",
+    "communityId": 310
+  },
+  {
+    "name": "Wat Laem Po",
+    "coordinates": [
+      7.158332126,
+      100.5560234
+    ],
+    "ID": 308,
+    "type": "Buddhist Temple",
+    "communityId": 125
+  },
+  {
+    "name": "Wat Mongkol Theparam (Wat Paknam)",
+    "coordinates": [
+      7.011994412,
+      100.4767853
+    ],
+    "ID": 246,
+    "type": "Buddhist Temple",
+    "communityId": 310
+  },
+  {
+    "name": "Wat Na Rang Nok",
+    "coordinates": [
+      7.077618909,
+      100.4759542
+    ],
+    "ID": 303,
+    "type": "Buddhist Temple",
+    "communityId": 125
+  },
+  {
+    "name": "Wat Nam Noi Nai",
+    "coordinates": [
+      7.072838205,
+      100.5238223
+    ],
+    "ID": 301,
+    "type": "Buddhist Temple",
+    "communityId": 310
+  },
+  {
+    "name": "Wat Pradittharam",
+    "coordinates": [
+      7.022208366,
+      100.4973946
+    ],
+    "ID": 287,
+    "type": "Mosque",
+    "communityId": 125
+  },
+  {
+    "name": "Wat Ru Si Thavorn Wararam",
+    "coordinates": [
+      7.006104632,
+      100.4923871
+    ],
+    "ID": 171,
+    "type": "Buddhist Temple",
+    "communityId": 282
+  },
+  {
+    "name": "Wat Tha Kian",
+    "coordinates": [
+      6.997296334,
+      100.4586456
+    ],
+    "ID": 50,
+    "type": "Buddhist Temple",
+    "communityId": 125
+  },
+  {
+    "name": "Wat Thawon Wararam",
+    "coordinates": [
+      7.010942691,
+      100.4742822
+    ],
+    "ID": 234,
+    "type": "Buddhist Temple",
+    "communityId": 125
+  },
+  {
+    "name": "Wawa Roast ​Duck Halal",
+    "coordinates": [
+      7.008787654,
+      100.4738045
+    ],
+    "ID": 214,
+    "type": "Restaurant",
+    "communityId": 127
+  },
+  {
+    "name": "We Hostel Hatyai",
+    "coordinates": [
+      7.005454249,
+      100.4708622
+    ],
+    "ID": 159,
+    "type": "Hotel",
+    "communityId": 282
+  },
+  {
+    "name": "Wifi coffee",
+    "coordinates": [
+      7.014154175,
+      100.4746496
+    ],
+    "ID": 270,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "Wish.",
+    "coordinates": [
+      7.012370156,
+      100.4784921
+    ],
+    "ID": 252,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "YHOK Noodle House",
+    "coordinates": [
+      7.005888294,
+      100.4694147
+    ],
+    "ID": 168,
+    "type": "Restaurant",
+    "communityId": 311
+  },
+  {
+    "name": "YONG Taiwan Cafe",
+    "coordinates": [
+      7.007528349,
+      100.469826
+    ],
+    "ID": 193,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "Yian Hot Pot Sripuwanart",
+    "coordinates": [
+      6.998833576,
+      100.4777734
+    ],
+    "ID": 69,
+    "type": "Restaurant",
+    "communityId": 128
+  },
+  {
+    "name": "Z Sleep Hotel",
+    "coordinates": [
+      6.990432938,
+      100.4839007
+    ],
+    "ID": 13,
+    "type": "Hotel",
+    "communityId": 282
+  },
+  {
+    "name": "Zenshi Japanese",
+    "coordinates": [
+      6.99408236,
+      100.4651583
+    ],
+    "ID": 34,
+    "type": "Restaurant",
+    "communityId": 262
+  },
+  {
+    "name": "Zound Hatyai",
+    "coordinates": [
+      7.005580857,
+      100.4870723
+    ],
+    "ID": 162,
+    "type": "Pub/Bar",
+    "communityId": 127
+  },
+  {
+    "name": "deli Cafe",
+    "coordinates": [
+      7.013380778,
+      100.4708546
+    ],
+    "ID": 263,
+    "type": "Coffee shop",
+    "communityId": 310
+  },
+  {
+    "name": "dimsum runner",
+    "coordinates": [
+      7.016513745,
+      100.4727884
+    ],
+    "ID": 275,
+    "type": "Restaurant",
+    "communityId": 310
+  },
+  {
+    "name": "golden egg market",
+    "coordinates": [
+      6.958920988,
+      100.4731007
+    ],
+    "ID": 6,
+    "type": "Market",
+    "communityId": 282
+  },
+  {
+    "name": "into.itcafe",
+    "coordinates": [
+      6.998154371,
+      100.4828576
+    ],
+    "ID": 60,
+    "type": "Coffee shop",
+    "communityId": 127
+  },
+  {
+    "name": "lanyum.hdy",
+    "coordinates": [
+      7.038274454,
+      100.4802719
+    ],
+    "ID": 294,
+    "type": "Restaurant",
+    "communityId": 125
+  },
+  {
+    "name": "namkee café",
+    "coordinates": [
+      6.993288218,
+      100.4830191
+    ],
+    "ID": 29,
+    "type": "Coffee shop",
+    "communityId": 125
+  },
+  {
+    "name": "sanemai restaurant",
+    "coordinates": [
+      7.011442877,
+      100.4772044
+    ],
+    "ID": 238,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "seven-eleven",
+    "coordinates": [
+      7.008769578,
+      100.4955931
+    ],
+    "ID": 213,
+    "type": "Grocery Store",
+    "communityId": 262
+  },
+  {
+    "name": "tanji ramen",
+    "coordinates": [
+      7.01212091,
+      100.4767149
+    ],
+    "ID": 248,
+    "type": "Restaurant",
+    "communityId": 282
+  },
+  {
+    "name": "ศูนย์การค้าพาหุรัด",
+    "coordinates": [
+      7.005027387,
+      100.4707873
+    ],
+    "ID": 152,
+    "type": "Shopping Mall/Department store",
+    "communityId": 126
+  },
+  {
+    "name": "เจ๊หอยซีฟู้ด J hoi",
+    "coordinates": [
+      7.002442163,
+      100.4757085
+    ],
+    "ID": 111,
+    "type": "Restaurant",
+    "communityId": 118
+  },
+  {
+    "name": "แพร่ง​ cafe​",
+    "coordinates": [
+      6.999626078,
+      100.4701538
+    ],
+    "ID": 80,
+    "type": "Coffee shop",
+    "communityId": 118
+  }
+]

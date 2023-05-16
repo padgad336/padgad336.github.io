@@ -1,0 +1,5 @@
+<svg id="circle">
+  <a xlink:href="https://www.google.com" style="cursor: pointer" target="_blank">
+    <circle  cx="125" cy="70" r="60" stroke="darkblue" stroke-width="3" fill="green" />
+  </a>
+</svg>

@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - 8080:80
+    container_name: web
+    hostname: web
+    networks:
+      - ropanet
+    labels:
+      - traefik.web.frontend.rule=Host:nimitr.art
+      - traefik.web.port=80
+      - traefik.docker.network=ropanet
+
+networks:
+  ropanet:
+    external: true
