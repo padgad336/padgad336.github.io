@@ -6,7 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import RoomIcon from '@mui/icons-material/Room';
 import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet'
 import L, { LatLngTuple } from "leaflet";
-import { IconButton } from '@mui/joy';
+import { IconButton, Typography } from '@mui/joy';
 const numWords = require('num-words');
 // import L from 'leaflet-iconmaterial'
 
@@ -154,7 +154,14 @@ export const MapLayout = ({ markers }: any) => {
                     key={row?.id}
                     icon={customMarkerF(`${row?.communityId}`)}
                     position={row?.coordinates}>
-                    <Popup>{row?.name}</Popup>
+                    <Popup>
+                        <Typography level='h4'>{row?.name}</Typography>
+                        {`
+                   Id: ${row?.ID},
+                    name: ${row?.name} ,
+                    type: ${row?.type} ,
+                    communityId: ${row?.communityId} `
+                    }</Popup>
                 </Marker> 
                 </>
             )) : <></>}   
