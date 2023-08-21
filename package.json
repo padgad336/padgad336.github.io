@@ -25,12 +25,13 @@
   },
   "homepage": "https://padgad336.github.io",
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "react-scripts": "latest"
   },
   "main": "index.tsx",
   "scripts": {
     "predeploy": "npm run build",
-     "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

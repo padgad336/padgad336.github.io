@@ -1,10 +1,10 @@
 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { renderToStaticMarkup } from "react-dom/server";
 import RoomIcon from '@mui/icons-material/Room';
-import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet'
+import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet'
 import L, { LatLngTuple } from "leaflet";
 import { IconButton, Typography } from '@mui/joy';
 const numWords = require('num-words');
@@ -12,6 +12,15 @@ const numWords = require('num-words');
 
 export const MapLayout = ({ markers }: any) => {
     const [position, setPosition] = useState<LatLngTuple>([51.505, -0.09])
+    const [groupPosition, setGroupPosition] = useState<any[]>([])
+    useEffect(()=>{
+        
+        
+        if(groupPosition?.length ===0){
+            const group =groupSameValues(markers)
+            setGroupPosition(group)
+        }
+    },[])
     const iconMarkup = renderToStaticMarkup(
         <IconButton variant="plain">
             <RoomIcon />
@@ -128,7 +137,26 @@ export const MapLayout = ({ markers }: any) => {
             </Marker>
         )
     }
-   
+    function groupSameValues(array:any) {
+        const grouped:any[] = [];
+      
+        array.forEach((value:any)=> {
+          let foundGroup = false;
+          grouped.forEach(group => {
+            if (group[0]?.communityId === value?.communityId) {
+              group.push({communityId:value?.communityId,coordinates:value?.coordinates});
+              foundGroup = true;
+            }
+          });
+      
+          if (!foundGroup) {
+            grouped.push([{communityId:value?.communityId,coordinates:value?.coordinates}]);
+          }
+        });
+      
+        return grouped;
+      }
+      console.log(groupSameValues(markers))
     return (
         <MapContainer
             style={{
@@ -165,6 +193,17 @@ export const MapLayout = ({ markers }: any) => {
                 </Marker> 
                 </>
             )) : <></>}   
+            {groupPosition?.length !==0 ?  groupPosition?.map((row)=>{
+                let combinedCoordinates:any[]=[]
+                for (const item of row) {
+                    combinedCoordinates.push(item.coordinates);
+                }
+               return(
+<Polygon pathOptions={{ color: `${stringToColor(row[0]?.communityId)}` }} positions={combinedCoordinates} />
+               )
+            })
+          
+            :null}
             <LocationMarker />
         </MapContainer>
     )
