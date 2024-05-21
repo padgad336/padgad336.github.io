@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 // import AspectRatio from '@mui/joy/AspectRatio';
 // import Avatar from '@mui/joy/Avatar';
@@ -12,31 +12,32 @@ import * as React from 'react';
 // import Divider from '@mui/joy/Divider';
 // import Sheet from '@mui/joy/Sheet';
 
-
 // Icons import
 
 // import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
-
 // custom
 
-import { HeaderContentLayout } from './layouts/Header';
-import { SideNavContentLayout } from './layouts/SideNav';
-import { MainContentLayout } from './pages/Main';
-import { RootContentLayout } from './layouts/Root';
-
-
+import { HeaderContentLayout } from "./layouts/Header";
+import { SideNavContentLayout } from "./layouts/SideNav";
+import { MainContentLayout } from "./pages/main-layout";
+import { RootContentLayout } from "./layouts/Root";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { MapContentLayout } from "./pages/map-layout";
 
 export default function App() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   return (
     <>
-
-
-      <RootContentLayout drawerOpen={drawerOpen}>
-        {/* <HeaderContentLayout /> */}
-        <MainContentLayout />
-      </RootContentLayout>
+      <BrowserRouter>
+        <RootContentLayout drawerOpen={drawerOpen}>
+          <Routes>
+            <Route path="/" element={<MainContentLayout />} />
+            <Route path="map" element={<MapContentLayout />} />
+          </Routes>
+          {/* <HeaderContentLayout /> */}
+        </RootContentLayout>
+      </BrowserRouter>
     </>
   );
 }
