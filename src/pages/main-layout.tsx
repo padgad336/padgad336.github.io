@@ -1,29 +1,17 @@
-import { Grid, Card } from "@mui/joy";
-
-import MyProfile from "../components/Profile";
+import { Box } from '@mui/joy';
+import Resume from '../components/Resume';
+import SpaceBackground from '../components/SpaceBackground';
 
 export const MainContentLayout = () => {
   return (
     // <Main
     //   sx={{ flexGrow: 1, }}
     // >
-    <>
-      <Grid
-        container
-        spacing={3}
-        sx={{
-          flexGrow: 1,
-          width: "100vw",
-          height: "100vh",
-          p: { xs: 5, md: 5 },
-        }}
-      >
-        <Grid xs={12} md={12} sm={12} sx={{ backgroundColor: "tomato" }}>
-          <Card sx={{ width: "100%", height: "100%" }}>
-            <MyProfile />
-          </Card>
-        </Grid>
-      </Grid>
-    </>
+    <Box sx={{ width: '100%', position: 'relative', py: { xs: 4, md: 6 } }}>
+      <SpaceBackground />
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
+        <Resume />
+      </Box>
+    </Box>
   );
 };

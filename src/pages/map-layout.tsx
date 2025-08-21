@@ -1,29 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Main } from "../components/Layout";
-import {
-  AspectRatio,
-  Box,
-  Button,
-  Card,
-  CardOverflow,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Grid,
-  IconButton,
-  Input,
-  Sheet,
-  Typography,
-} from "@mui/joy";
-import { MapLayout } from "../components/Map";
-import {
-  SearchRounded as SearchRoundedIcon,
-  FindInPageRounded as FindInPageRoundedIcon,
-} from "@mui/icons-material";
-import axios from "axios";
-import { Snackbar } from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-const records = require("../records.json");
+import React, { useEffect, useState } from 'react';
+import { Card, Grid } from '@mui/joy';
+import { MapLayout } from '../components/Map';
+import axios from 'axios';
+const records = require('../records.json');
 export const MapContentLayout = () => {
   const [markers, setMarkers] = useState<any>([]);
   const [place, setPlace] = useState<{
@@ -50,7 +29,7 @@ export const MapContentLayout = () => {
 
   const handleSubmit = async (e: any) => {
     try {
-      const response = await axios.post("http://localhost:7000/api/places/", {
+      const response = await axios.post('http://localhost:7000/api/places/', {
         ...place,
         lat: parseFloat(place?.lat),
         long: parseFloat(place?.long),
@@ -59,13 +38,13 @@ export const MapContentLayout = () => {
         console.log(response?.data);
         setPlace({
           id: null,
-          name: "",
-          type: "",
-          lat: "",
-          long: "",
+          name: '',
+          type: '',
+          lat: '',
+          long: '',
         });
         setFetch(true);
-        alert("success");
+        alert('success');
       }
     } catch (e) {
       console.error(e);
@@ -83,8 +62,8 @@ export const MapContentLayout = () => {
         spacing={3}
         sx={{
           flexGrow: 1,
-          width: "100vw",
-          height: "100vh",
+          width: '100vw',
+          height: '100vh',
           p: { xs: 5, md: 5 },
         }}
       >
@@ -262,8 +241,8 @@ export const MapContentLayout = () => {
             </Grid>
           </Card>
         </Grid> */}
-        <Grid xs={12} md={12} sm={12} sx={{ backgroundColor: "purple" }}>
-          <Card sx={{ width: "100%", height: "100%" }}>
+        <Grid xs={12} md={12} sm={12} sx={{ backgroundColor: 'purple' }}>
+          <Card sx={{ width: '100%', height: '100%' }}>
             <MapLayout markers={markers} />
           </Card>
         </Grid>
