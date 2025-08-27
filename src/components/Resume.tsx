@@ -33,21 +33,31 @@ const experience = [
 ];
 
 const coreSkills = [
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
   'Node.js',
-  'Django',
+  'TypeScript',
+  'React (Vite, AntD)',
   'Flutter',
-  'Docker',
-  'Redis',
-  'PostgreSQL',
-  'MongoDB',
+  'Firebase',
+  'Prisma',
+  'Sequelize',
   'GraphQL',
+  'Express.js',
 ];
 
-const tooling = ['Git', 'GitHub', 'GitLab', 'CI/CD', 'Three.js', 'Electron', 'Testing', 'Linux', 'API Design'];
+const databaseSkills = ['PostgreSQL', 'Firestore', 'MySQL', 'MinIO (S3)', 'Redis', 'Query Optimization'];
+
+const devopsSkills = [
+  'Docker',
+  'Docker Compose',
+  'GitHub Actions',
+  'Nginx',
+  'KafkaJS',
+  'Capacitor',
+  'Amazon Bedrock',
+  'Weaviate',
+];
+
+const securitySkills = ['SSL/TLS', 'HSTS', 'Nessus/OpenSCAP', 'systemd hardening', 'vulnerability remediation'];
 
 export const Resume: React.FC = () => {
   const print = React.useCallback(() => window.print(), []);
@@ -142,19 +152,23 @@ export const Resume: React.FC = () => {
         {/* Summary */}
         <Box className='section' data-block='summary'>
           <Typography level='title-md' sx={sectionTitleSx}>
-            Summary
+            Professional Summary
           </Typography>
           <Typography level='body-sm' sx={bodyTextSx}>
-            Full-Stack developer focusing on scalable architecture, clean modular code and production reliability.
-            Bridging frontend experience & backend robustness; strong in API design, database modeling, performance
-            diagnostics and delivery pipelines.
+            Innovative and versatile Software Engineer with extensive experience in full-stack development, system
+            integration, and cloud-native infrastructure. Proven expertise in Node.js, TypeScript, Prisma, PostgreSQL,
+            Docker, Kubernetes, React, Flutter, and Firebase. Adept at building and scaling real-time distributed
+            systems, mobile applications, and AI-driven solutions. Strong background in university-wide digital
+            transformation projects (Prince of Songkla University) including CCTV analytics, Esports management
+            platforms, Softphone VOIP integration, and knowledge-base AI assistants. Skilled in system hardening,
+            security compliance, and enterprise-grade deployments.
           </Typography>
         </Box>
 
         {/* Skills */}
         <Box className='section' data-block='core-skills' sx={{ mt: 3 }}>
           <Typography level='title-md' sx={sectionTitleSx}>
-            Core Skills
+            Programming & Frameworks
           </Typography>
           <Box sx={chipCloudSx}>
             {coreSkills.map((s) => (
@@ -165,12 +179,38 @@ export const Resume: React.FC = () => {
           </Box>
         </Box>
 
-        <Box className='section' data-block='tooling' sx={{ mt: 3 }}>
+        <Box className='section' data-block='database' sx={{ mt: 3 }}>
           <Typography level='title-md' sx={sectionTitleSx}>
-            Tooling
+            Database & Storage
           </Typography>
           <Box sx={chipCloudSx}>
-            {tooling.map((s) => (
+            {databaseSkills.map((s) => (
+              <Chip key={s} size='sm' variant='outlined' sx={chipSx}>
+                {s}
+              </Chip>
+            ))}
+          </Box>
+        </Box>
+
+        <Box className='section' data-block='devops' sx={{ mt: 3 }}>
+          <Typography level='title-md' sx={sectionTitleSx}>
+            DevOps & Infrastructure
+          </Typography>
+          <Box sx={chipCloudSx}>
+            {devopsSkills.map((s) => (
+              <Chip key={s} size='sm' variant='outlined' sx={chipSx}>
+                {s}
+              </Chip>
+            ))}
+          </Box>
+        </Box>
+
+        <Box className='section' data-block='security' sx={{ mt: 3 }}>
+          <Typography level='title-md' sx={sectionTitleSx}>
+            Security & Compliance
+          </Typography>
+          <Box sx={chipCloudSx}>
+            {securitySkills.map((s) => (
               <Chip key={s} size='sm' variant='outlined' sx={chipSx}>
                 {s}
               </Chip>
@@ -200,6 +240,19 @@ export const Resume: React.FC = () => {
               </ListItem>
             ))}
           </List>
+        </Box>
+
+        {/* Education */}
+        <Box className='section' data-block='education' sx={{ mt: 4 }}>
+          <Typography level='title-md' sx={sectionTitleSx}>
+            Education
+          </Typography>
+          <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff', mt: 1 }}>
+            Bachelor's Degree in Computer Science / Information Technology
+          </Typography>
+          <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+            Prince of Songkla University (PSU) or equivalent
+          </Typography>
         </Box>
 
         {/* Visual Tech Stack icons */}
@@ -240,34 +293,76 @@ export const Resume: React.FC = () => {
           />
         </Box>
 
-        {/* Selected Projects / GitHub Stats */}
+        {/* Selected Projects */}
         <Box className='section project-images' data-block='projects' sx={{ mt: 4 }}>
           <Typography level='title-md' sx={sectionTitleSx}>
             Selected Projects
           </Typography>
-          <Box
-            sx={{
-              mt: 1.5,
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: 2,
-              flexWrap: 'wrap',
-              alignItems: 'stretch',
-            }}
-          >
-            <Box
-              component='img'
-              src='https://camo.githubusercontent.com/7853f36aae20877c2af97a29f1bedc468ff3a1ccb211f41eee5097136e4a38bf/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d706164676164333336266e756d6265725f666f726d61743d6c6f6e672673686f775f69636f6e733d74727565266c696e655f6865696768743d32352672616e6b5f69636f6e3d676974687562267469746c655f636f6c6f723d30304238314326746578745f636f6c6f723d6632663266322669636f6e5f636f6c6f723d3030423831432662675f636f6c6f723d323732373237'
-              alt='GitHub contribution & stats'
-              sx={projectImageSx}
-            />
-            <Box
-              component='img'
-              src='https://camo.githubusercontent.com/2ab574fd7db88e781278140f1a140aee9b51d2b7eed6c58dda3de31fc6c74b0a/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170692f746f702d6c616e67733f757365726e616d653d7061646761643333362673686f775f69636f6e733d74727565266c6f63616c653d656e267469746c655f636f6c6f723d30304238314326746578745f636f6c6f723d663266326632267468656d653d6461726b266c61796f75743d636f6d70616374'
-              alt='Top languages'
-              sx={projectImageSx}
-            />
-          </Box>
+          <List sx={{ mt: 1, '--ListItemDecorator-size': '0px', p: 0 }}>
+            <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
+              <ListItemContent>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                  CCTV Staff Detection System
+                </Typography>
+                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                  Node.js + Kafka + Redis + Prisma + PostgreSQL + Docker
+                </Typography>
+              </ListItemContent>
+            </ListItem>
+            <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
+              <ListItemContent>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                  Esports Platform
+                </Typography>
+                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                  React + Node.js + PostgreSQL + Docker Compose + Nginx
+                </Typography>
+              </ListItemContent>
+            </ListItem>
+            <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
+              <ListItemContent>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                  Softphone App
+                </Typography>
+                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                  Flutter + SIP.js + Asterisk + Firebase Messaging
+                </Typography>
+              </ListItemContent>
+            </ListItem>
+            <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
+              <ListItemContent>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                  Health Tracker App
+                </Typography>
+                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                  Flutter + Huawei Health + Firestore
+                </Typography>
+              </ListItemContent>
+            </ListItem>
+            <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
+              <ListItemContent>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                  On-premise Knowledge Base
+                </Typography>
+                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                  Weaviate + Amazon Bedrock + GPT integration
+                </Typography>
+              </ListItemContent>
+            </ListItem>
+          </List>
+        </Box>
+
+        {/* Languages */}
+        <Box className='section' data-block='languages' sx={{ mt: 4 }}>
+          <Typography level='title-md' sx={sectionTitleSx}>
+            Languages
+          </Typography>
+          <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff', mt: 1 }}>
+            Thai (Native)
+          </Typography>
+          <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+            English ( Fair)
+          </Typography>
         </Box>
 
         <Divider sx={{ my: 4, borderColor: 'rgba(140,150,255,0.2)' }} />

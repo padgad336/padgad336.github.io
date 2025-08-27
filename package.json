@@ -2,7 +2,7 @@
   "name": "neo4j-font",
   "version": "1.0.0",
   "license": "ISC",
-  "author": "StreamSouth",
+  "author": "padgad",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
