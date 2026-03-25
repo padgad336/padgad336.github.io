@@ -394,15 +394,15 @@ const HomePage: React.FC = () => {
               sx={{
                 cursor: 'pointer',
                 p: 0,
-                borderRadius: 0,
-                background: colors.surfaceCard,
-                border: `1px solid ${colors.borderSubtle}`,
+                borderRadius: '8px',
+                background: `linear-gradient(145deg, rgba(30, 28, 45, 0.65), ${colors.surfaceSolid})`,
+                border: `1px solid ${accentAlpha(0.15)}`,
                 overflow: 'hidden',
                 ...fadeUp(0.65 + i * 0.12),
                 transition: 'border-color .3s ease, box-shadow .3s ease, transform .3s ease',
                 '&:hover': {
-                  borderColor: `${tool.accent}44`,
-                  boxShadow: `0 4px 30px -8px ${tool.accent}22`,
+                  borderColor: `${tool.accent}66`,
+                  boxShadow: `0 4px 30px -8px ${tool.accent}33`,
                   transform: 'translateY(-3px)',
                 },
                 '&:hover .tool-accent-line': {
@@ -432,7 +432,7 @@ const HomePage: React.FC = () => {
                 <Box
                   className='tool-icon'
                   sx={{
-                    color: colors.textDim,
+                    color: `${tool.accent}99`,
                     mb: 2,
                     transition: 'color .3s ease, transform .3s ease',
                   }}
@@ -453,7 +453,7 @@ const HomePage: React.FC = () => {
                 <Typography
                   sx={{
                     fontFamily: fonts.mono,
-                    color: colors.textDim,
+                    color: colors.textBody,
                     fontSize: 13,
                     lineHeight: 1.6,
                     mb: 2,
@@ -467,7 +467,7 @@ const HomePage: React.FC = () => {
                     fontFamily: fonts.mono,
                     fontSize: 12,
                     color: tool.accent,
-                    opacity: 0.5,
+                    opacity: 0.7,
                     transition: 'opacity .3s ease, transform .3s ease',
                   }}
                 >
