@@ -7,6 +7,7 @@ import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded';
 import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import SettingsInputAntennaRoundedIcon from '@mui/icons-material/SettingsInputAntennaRounded';
+import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
 import { colors, fonts, accentAlpha, gradients } from '../themeConfig';
 
 const tools = [
@@ -30,6 +31,13 @@ const tools = [
     path: '/sip',
     icon: <SettingsInputAntennaRoundedIcon sx={{ fontSize: 36 }} />,
     accent: '#f0883e',
+  },
+  {
+    title: 'HAR → SIP',
+    description: 'แปลง WebSocket SIP messages จากไฟล์ HAR เป็นไฟล์ .sip',
+    path: '/har-to-sip',
+    icon: <SwapHorizRoundedIcon sx={{ fontSize: 36 }} />,
+    accent: '#d29922',
   },
 ];
 

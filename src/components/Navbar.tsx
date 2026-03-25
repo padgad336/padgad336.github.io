@@ -10,6 +10,7 @@ const navItems = [
   { label: '#resume', path: '/resume' },
   { label: '#map', path: '/map' },
   { label: '#sip', path: '/sip' },
+  { label: '#har→sip', path: '/har-to-sip' },
 ];
 
 const Navbar: React.FC = () => {
