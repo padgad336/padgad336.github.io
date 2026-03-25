@@ -62,9 +62,9 @@ export const MapContentLayout = () => {
         spacing={3}
         sx={{
           flexGrow: 1,
-          width: '100vw',
-          height: '100vh',
-          p: { xs: 5, md: 5 },
+          width: '100%',
+          height: 'calc(100vh - 56px)',
+          p: { xs: 2, md: 3 },
         }}
       >
         {/* <Grid xs={12} md={4} sm={12} sx={{ mt: { xs: -5, md: 2 }, height: { xs: '10vh', md: 'none' } }} >

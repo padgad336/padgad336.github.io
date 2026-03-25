@@ -13,6 +13,7 @@ import {
   Link,
   Card,
 } from '@mui/joy';
+import { colors, fonts, accentAlpha, gradients } from '../themeConfig';
 
 // Basic shared data (could be externalized later)
 const profileData = {
@@ -84,8 +85,8 @@ export const Resume: React.FC = () => {
           minHeight: 'calc(100vh - 2rem)',
           p: { xs: 3, sm: 5 },
           borderRadius: 14,
-          background: 'linear-gradient(145deg, rgba(20,28,48,0.92), rgba(8,12,24,0.94))',
-          border: '1px solid rgba(130,150,255,0.25)',
+          background: `linear-gradient(145deg, rgba(30, 28, 45, 0.92), ${colors.surfaceSolid})`,
+          border: `1px solid ${accentAlpha(0.25)}`,
           boxShadow: '0 4px 28px -6px rgba(0,0,0,0.7)',
           position: 'relative',
           overflow: 'hidden',
@@ -95,7 +96,7 @@ export const Resume: React.FC = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(circle at 85% 15%, rgba(110,140,255,0.18), transparent 70%)',
+            background: `radial-gradient(circle at 85% 15%, ${accentAlpha(0.15)}, transparent 70%)`,
             pointerEvents: 'none',
           },
         }}
@@ -104,7 +105,7 @@ export const Resume: React.FC = () => {
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 3, alignItems: { sm: 'center' } }}>
           <Avatar
             src={profileData.image}
-            sx={{ '--Avatar-size': '96px', borderRadius: '16px', boxShadow: '0 0 0 2px rgba(150,170,255,0.3)' }}
+            sx={{ '--Avatar-size': '96px', borderRadius: '16px', boxShadow: `0 0 0 2px ${accentAlpha(0.3)}` }}
           />
           <Box sx={{ flex: 1 }}>
             <Typography
@@ -113,18 +114,19 @@ export const Resume: React.FC = () => {
                 fontSize: 34,
                 fontWeight: 700,
                 letterSpacing: '0.5px',
-                color: '#f5f8ff',
-                textShadow: '0 0 6px rgba(120,170,255,0.4)',
+                fontFamily: fonts.mono,
+                color: colors.text,
+                textShadow: `0 0 6px ${accentAlpha(0.4)}`,
                 animation: 'titlePulse 6s ease-in-out infinite',
               }}
             >
               {profileData.firstName} {profileData.lastName}
             </Typography>
-            <Typography level='title-lg' sx={{ color: '#a9c7ff', fontWeight: 500 }}>
+            <Typography level='title-lg' sx={{ color: colors.accent, fontWeight: 500 }}>
               {profileData.role} • {profileData.aka}
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mt: 1.5, flexWrap: 'wrap' }}>
-              <Typography level='body-sm' sx={{ color: '#d3e6ff' }}>
+              <Typography level='body-sm' sx={{ color: colors.textBody }}>
                 {profileData.email}
               </Typography>
               <Divider
@@ -132,7 +134,7 @@ export const Resume: React.FC = () => {
                 sx={{
                   display: { xs: 'none', sm: 'inline-flex' },
                   '--Divider-thickness': '1px',
-                  '--Divider-lineColor': 'rgba(160,180,255,0.3)',
+                  '--Divider-lineColor': accentAlpha(0.3),
                 }}
               />
               <Link href={profileData.github} target='_blank' sx={{ fontSize: 13 }}>
@@ -141,13 +143,18 @@ export const Resume: React.FC = () => {
             </Stack>
           </Box>
           <Box sx={{ display: 'flex', gap: 1 }}>
-            <Button size='sm' variant='outlined' onClick={print} sx={{ borderColor: 'rgba(140,160,255,0.4)' }}>
+            <Button
+              size='sm'
+              variant='outlined'
+              onClick={print}
+              sx={{ borderColor: accentAlpha(0.4), color: colors.accent }}
+            >
               Print / PDF
             </Button>
           </Box>
         </Box>
 
-        <Divider sx={{ my: 3, borderColor: 'rgba(140,150,255,0.25)' }} />
+        <Divider sx={{ my: 3, borderColor: accentAlpha(0.25) }} />
 
         {/* Summary */}
         <Box className='section' data-block='summary'>
@@ -227,14 +234,14 @@ export const Resume: React.FC = () => {
             {experience.map((exp) => (
               <ListItem key={exp.company} sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
                 <ListItemContent>
-                  <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                  <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
                     {exp.role}
                   </Typography>
-                  <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                  <Typography level='body-xs' sx={{ color: colors.textBody }}>
                     {exp.company}
                   </Typography>
                 </ListItemContent>
-                <Typography level='body-xs' sx={{ color: '#6e86a7', minWidth: 90, textAlign: 'right' }}>
+                <Typography level='body-xs' sx={{ color: colors.textMuted, minWidth: 90, textAlign: 'right' }}>
                   {exp.years}
                 </Typography>
               </ListItem>
@@ -247,10 +254,10 @@ export const Resume: React.FC = () => {
           <Typography level='title-md' sx={sectionTitleSx}>
             Education
           </Typography>
-          <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff', mt: 1 }}>
+          <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text, mt: 1 }}>
             Bachelor's Degree in Computer Science / Information Technology
           </Typography>
-          <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+          <Typography level='body-xs' sx={{ color: colors.textBody }}>
             Prince of Songkla University (PSU) or equivalent
           </Typography>
         </Box>
@@ -301,50 +308,50 @@ export const Resume: React.FC = () => {
           <List sx={{ mt: 1, '--ListItemDecorator-size': '0px', p: 0 }}>
             <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
               <ListItemContent>
-                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
                   CCTV Staff Detection System
                 </Typography>
-                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                <Typography level='body-xs' sx={{ color: colors.textBody }}>
                   Node.js + Kafka + Redis + Prisma + PostgreSQL + Docker
                 </Typography>
               </ListItemContent>
             </ListItem>
             <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
               <ListItemContent>
-                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
                   Esports Platform
                 </Typography>
-                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                <Typography level='body-xs' sx={{ color: colors.textBody }}>
                   React + Node.js + PostgreSQL + Docker Compose + Nginx
                 </Typography>
               </ListItemContent>
             </ListItem>
             <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
               <ListItemContent>
-                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
                   Softphone App
                 </Typography>
-                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                <Typography level='body-xs' sx={{ color: colors.textBody }}>
                   Flutter + SIP.js + Asterisk + Firebase Messaging
                 </Typography>
               </ListItemContent>
             </ListItem>
             <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
               <ListItemContent>
-                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
                   Health Tracker App
                 </Typography>
-                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                <Typography level='body-xs' sx={{ color: colors.textBody }}>
                   Flutter + Huawei Health + Firestore
                 </Typography>
               </ListItemContent>
             </ListItem>
             <ListItem sx={{ alignItems: 'flex-start', px: 0, py: 0.8 }}>
               <ListItemContent>
-                <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+                <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
                   On-premise Knowledge Base
                 </Typography>
-                <Typography level='body-xs' sx={{ color: '#9fb6d8' }}>
+                <Typography level='body-xs' sx={{ color: colors.textBody }}>
                   Weaviate + Amazon Bedrock + GPT integration
                 </Typography>
               </ListItemContent>
@@ -357,16 +364,16 @@ export const Resume: React.FC = () => {
           <Typography level='title-md' sx={sectionTitleSx}>
             Languages
           </Typography>
-          <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff', mt: 1 }}>
+          <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text, mt: 1 }}>
             Thai (Native)
           </Typography>
-          <Typography level='body-sm' sx={{ fontWeight: 600, color: '#dce9ff' }}>
+          <Typography level='body-sm' sx={{ fontWeight: 600, color: colors.text }}>
             English ( Fair)
           </Typography>
         </Box>
 
-        <Divider sx={{ my: 4, borderColor: 'rgba(140,150,255,0.2)' }} />
-        <Typography level='body-xs' sx={{ color: '#607089', textAlign: 'center', mt: 'auto' }}>
+        <Divider sx={{ my: 4, borderColor: accentAlpha(0.2) }} />
+        <Typography level='body-xs' sx={{ color: colors.textDim, textAlign: 'center', mt: 'auto' }}>
           • Last update: {new Date().toLocaleDateString()}
         </Typography>
       </Card>
@@ -377,24 +384,27 @@ export const Resume: React.FC = () => {
 
 // Styles extracted for reuse
 const sectionTitleSx = {
-  color: '#a5c9ff',
+  color: colors.accent,
   fontSize: 14,
+  fontFamily: fonts.mono,
   textTransform: 'uppercase',
   letterSpacing: '1.5px',
   mb: 2,
 };
 
 const bodyTextSx = {
-  color: '#afc7e4',
+  color: colors.textBody,
   lineHeight: 1.55,
   fontSize: 14,
 };
 
 const chipCloudSx = { display: 'flex', gap: 0.8, flexWrap: 'wrap', mt: 1 };
 const chipSx = {
-  borderColor: 'rgba(130,160,255,0.35)',
-  color: '#cfe3ff',
-  background: 'linear-gradient(135deg, rgba(70,90,170,0.15), rgba(40,50,120,0.15))',
+  borderColor: accentAlpha(0.3),
+  color: colors.text,
+  fontFamily: fonts.mono,
+  fontSize: 12,
+  background: `linear-gradient(135deg, ${accentAlpha(0.1)}, ${accentAlpha(0.05)})`,
   backdropFilter: 'blur(4px)',
   position: 'relative',
   overflow: 'hidden',
@@ -403,13 +413,13 @@ const chipSx = {
     content: '""',
     position: 'absolute',
     inset: 0,
-    background: 'linear-gradient(120deg, rgba(160,180,255,0.15), rgba(80,120,255,0.0) 55%)',
+    background: `linear-gradient(120deg, ${accentAlpha(0.15)}, transparent 55%)`,
     opacity: 0,
     transition: 'opacity .4s ease',
   },
   '&:hover': {
-    borderColor: 'rgba(170,190,255,0.65)',
-    background: 'linear-gradient(135deg, rgba(90,110,200,0.25), rgba(50,70,140,0.25))',
+    borderColor: accentAlpha(0.6),
+    background: `linear-gradient(135deg, ${accentAlpha(0.2)}, ${accentAlpha(0.1)})`,
     transform: 'translateY(-2px)',
   },
   '&:hover:before': {
@@ -436,8 +446,8 @@ const projectImageSx = {
   minWidth: { xs: '100%', sm: 320 },
   maxWidth: { sm: 'calc(30% - 8px)' },
   borderRadius: 10,
-  border: '1px solid rgba(130,160,255,0.25)',
-  background: 'rgba(20,30,55,0.55)',
+  border: `1px solid ${accentAlpha(0.25)}`,
+  background: colors.surfaceCard,
   padding: 1,
   display: 'block',
   width: '100%',
@@ -447,15 +457,15 @@ const projectImageSx = {
   '&:hover': {
     transform: 'translateY(-4px) scale(1.015)',
     boxShadow: '0 8px 26px -4px rgba(0,0,0,0.65)',
-    borderColor: 'rgba(160,190,255,0.55)',
+    borderColor: accentAlpha(0.5),
   },
 };
 
 const printStyles = `
 @media print {
-  body, #root, #resume-root { background: #0c1220 !important; -webkit-print-color-adjust: exact; }
+  body, #root, #resume-root { background: ${colors.surfaceDarkest} !important; -webkit-print-color-adjust: exact; }
   #resume-root { padding: 0 !important; }
-  #resume-card { box-shadow: none !important; border: 1px solid #223 !important; background: #0c1220 !important; padding: 18px !important; min-height: auto !important; }
+  #resume-card { box-shadow: none !important; border: 1px solid ${accentAlpha(0.15)} !important; background: ${colors.surfaceDarkest} !important; padding: 18px !important; min-height: auto !important; }
   #resume-card:before { display: none !important; }
   #resume-card .section { break-inside: avoid; page-break-inside: avoid; }
   #resume-card .section + .section { margin-top: 14px !important; }
@@ -490,7 +500,7 @@ const printStyles = `
   #resume-root { zoom: .82; }
 }
 @page { size: A4; margin: 10mm; }
-@keyframes titlePulse { 0%,100% { text-shadow: 0 0 6px rgba(120,170,255,0.25), 0 0 14px rgba(80,120,255,0.15);} 50% { text-shadow: 0 0 10px rgba(160,200,255,0.55), 0 0 22px rgba(120,160,255,0.35);} }
+@keyframes titlePulse { 0%,100% { text-shadow: 0 0 6px ${accentAlpha(0.25)}, 0 0 14px ${accentAlpha(0.15)};} 50% { text-shadow: 0 0 10px ${accentAlpha(0.55)}, 0 0 22px ${accentAlpha(0.35)};} }
 @keyframes headerGlow { 0%,100% { opacity: .40; transform: scale(1);} 50% { opacity: .65; transform: scale(1.05);} }
 `;
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Box } from '@mui/joy';
+import { colors } from '../themeConfig';
 
 /**
  * Animated space background using layered CSS starfields + twinkling + slow parallax drift.
@@ -25,24 +26,24 @@ const SpaceBackground: React.FC = () => {
           opacity: 0.55,
         },
         '& .layer.tiny': {
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.7) 0 1px, transparent 1px)',
-          backgroundSize: '3px 3px',
+          backgroundImage: `radial-gradient(${colors.starWhite} 0 1px, transparent 1px)`,
+          backgroundSize: '4px 4px',
           animationName: 'starDrift1',
-          animationDuration: '160s',
+          animationDuration: '200s',
         },
         '& .layer.small': {
-          backgroundImage: 'radial-gradient(rgba(180,200,255,0.8) 0 1.2px, transparent 1.2px)',
-          backgroundSize: '6px 6px',
+          backgroundImage: `radial-gradient(${colors.starPurple} 0 1px, transparent 1px)`,
+          backgroundSize: '7px 7px',
           animationName: 'starDrift2',
-          animationDuration: '220s',
-          opacity: 0.4,
+          animationDuration: '280s',
+          opacity: 0.3,
         },
         '& .layer.medium': {
-          backgroundImage: 'radial-gradient(rgba(120,150,255,0.9) 0 1.6px, transparent 1.6px)',
-          backgroundSize: '9px 9px',
+          backgroundImage: `radial-gradient(${colors.starDeepPurple} 0 1.2px, transparent 1.2px)`,
+          backgroundSize: '11px 11px',
           animationName: 'starDrift3',
-          animationDuration: '300s',
-          opacity: 0.35,
+          animationDuration: '360s',
+          opacity: 0.2,
         },
         '& .twinkle': {
           position: 'absolute',

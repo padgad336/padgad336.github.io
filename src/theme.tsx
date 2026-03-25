@@ -1,7 +1,5 @@
 import { extendTheme } from '@mui/joy/styles';
-
-const spaceGradient = 'radial-gradient(circle at 20% 18%, #24345c 0%, #101a30 50%, #050910 90%)';
-const spaceSurface = 'linear-gradient(145deg, rgba(36,52,92,0.25), rgba(10,16,30,0.4))';
+import { colors, gradients, fonts, accentAlpha } from './themeConfig';
 
 export default extendTheme({
   cssVarPrefix: 'space',
@@ -9,15 +7,15 @@ export default extendTheme({
     light: {
       palette: {
         primary: {
-          solidBg: '#657bff',
-          solidHoverBg: '#5469f5',
-          solidActiveBg: '#4355e6',
+          solidBg: colors.accentDeep,
+          solidHoverBg: '#8a6bf5',
+          solidActiveBg: '#7a5be6',
         },
         neutral: {
-          outlinedBorder: 'rgba(60,80,130,0.4)',
+          outlinedBorder: accentAlpha(0.2),
         },
         background: {
-          body: spaceGradient,
+          body: gradients.body,
           surface: 'rgba(255,255,255,0.65)',
           popup: 'rgba(255,255,255,0.75)',
         },
@@ -26,26 +24,26 @@ export default extendTheme({
     dark: {
       palette: {
         primary: {
-          solidBg: '#6d7dff',
-          solidHoverBg: '#5a6af5',
-          solidActiveBg: '#4754e6',
-          outlinedBorder: 'rgba(120,140,255,0.4)',
+          solidBg: colors.accentDeep,
+          solidHoverBg: '#8a6bf5',
+          solidActiveBg: '#7a5be6',
+          outlinedBorder: accentAlpha(0.25),
         },
         neutral: {
-          outlinedBorder: 'rgba(120,140,255,0.25)',
+          outlinedBorder: accentAlpha(0.12),
         },
         background: {
-          body: spaceGradient,
-          surface: spaceSurface,
-          popup: 'rgba(25,35,60,0.9)',
+          body: gradients.body,
+          surface: gradients.surface,
+          popup: 'rgba(17,17,27,0.95)',
         },
-        focusVisible: '#9bb4ff',
+        focusVisible: colors.accent,
       },
     },
   },
   fontFamily: {
-    display: '"Inter", var(--joy-fontFamily-fallback)',
-    body: '"Inter", var(--joy-fontFamily-fallback)',
+    display: fonts.display,
+    body: fonts.body,
     code: '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
   },
   components: {
@@ -54,8 +52,8 @@ export default extendTheme({
         root: ({ theme }) => ({
           background: theme.vars.palette.background.surface,
           backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(120,140,255,0.18)',
-          boxShadow: '0 4px 18px -4px rgba(0,0,0,0.6)',
+          border: `1px solid ${colors.borderLight}`,
+          boxShadow: '0 4px 18px -4px rgba(0,0,0,0.4)',
         }),
       },
     },

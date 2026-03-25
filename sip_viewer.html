@@ -1,0 +1,1361 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SIP Debug Analyzer</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #0d1117;
+        color: #c9d1d9;
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 13px;
+        padding: 20px;
+      }
+      h1 {
+        color: #58a6ff;
+        margin-bottom: 6px;
+        font-size: 22px;
+      }
+      .subtitle {
+        color: #8b949e;
+        margin-bottom: 16px;
+        font-size: 12px;
+      }
+      .file-input {
+        margin-bottom: 20px;
+      }
+      .file-input input {
+        background: #161b22;
+        border: 1px dashed #30363d;
+        color: #c9d1d9;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      .file-input input:hover {
+        border-color: #58a6ff;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 0;
+        flex-wrap: wrap;
+      }
+      .tab {
+        padding: 8px 16px;
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-bottom: none;
+        border-radius: 6px 6px 0 0;
+        cursor: pointer;
+        color: #8b949e;
+        font-size: 12px;
+        transition: all 0.15s;
+      }
+      .tab:hover {
+        color: #c9d1d9;
+        background: #1c2128;
+      }
+      .tab.active {
+        background: #1c2128;
+        color: #58a6ff;
+        border-color: #58a6ff;
+        border-bottom: 2px solid #1c2128;
+        font-weight: bold;
+      }
+      .tab .badge {
+        background: #30363d;
+        color: #8b949e;
+        padding: 1px 6px;
+        border-radius: 10px;
+        font-size: 10px;
+        margin-left: 4px;
+      }
+      .tab.active .badge {
+        background: #1f6feb;
+        color: #fff;
+      }
+
+      .tab-content {
+        display: none;
+        background: #1c2128;
+        border: 1px solid #30363d;
+        border-radius: 0 6px 6px 6px;
+        padding: 16px;
+        margin-bottom: 20px;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
+      .section {
+        margin-bottom: 20px;
+      }
+      .section-title {
+        color: #58a6ff;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #21262d;
+      }
+
+      .card {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 12px;
+        margin-bottom: 8px;
+      }
+      .card:hover {
+        border-color: #484f58;
+      }
+      .card-title {
+        font-weight: bold;
+        margin-bottom: 6px;
+        font-size: 13px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 10px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .label {
+        color: #8b949e;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .value {
+        color: #c9d1d9;
+        margin-top: 2px;
+        word-break: break-all;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: bold;
+        margin: 2px;
+      }
+      .tag-green {
+        background: #0d3220;
+        color: #3fb950;
+        border: 1px solid #238636;
+      }
+      .tag-red {
+        background: #3d1418;
+        color: #f85149;
+        border: 1px solid #da3633;
+      }
+      .tag-yellow {
+        background: #3d2e00;
+        color: #d29922;
+        border: 1px solid #9e6a03;
+      }
+      .tag-blue {
+        background: #0c2d6b;
+        color: #58a6ff;
+        border: 1px solid #1f6feb;
+      }
+      .tag-purple {
+        background: #2d1b4e;
+        color: #bc8cff;
+        border: 1px solid #8b5cf6;
+      }
+      .tag-cyan {
+        background: #0a3033;
+        color: #39d4d4;
+        border: 1px solid #1a9a9a;
+      }
+      .tag-orange {
+        background: #3d2200;
+        color: #f0883e;
+        border: 1px solid #c55a11;
+      }
+
+      .status-ok {
+        color: #3fb950;
+      }
+      .status-err {
+        color: #f85149;
+      }
+      .status-warn {
+        color: #d29922;
+      }
+      .status-info {
+        color: #58a6ff;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      th {
+        text-align: left;
+        padding: 8px 10px;
+        background: #161b22;
+        color: #8b949e;
+        border-bottom: 1px solid #30363d;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        position: sticky;
+        top: 0;
+      }
+      td {
+        padding: 6px 10px;
+        border-bottom: 1px solid #21262d;
+        vertical-align: top;
+      }
+      tr:hover td {
+        background: #161b22;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 24px;
+      }
+      .timeline-item {
+        position: relative;
+        padding: 8px 0 8px 20px;
+        border-left: 2px solid #30363d;
+      }
+      .timeline-item:last-child {
+        border-left-color: transparent;
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 12px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #30363d;
+        border: 2px solid #1c2128;
+      }
+      .timeline-item.req::before {
+        background: #1f6feb;
+      }
+      .timeline-item.res-ok::before {
+        background: #238636;
+      }
+      .timeline-item.res-err::before {
+        background: #da3633;
+      }
+      .timeline-item.res-info::before {
+        background: #9e6a03;
+      }
+      .timeline-msg {
+        font-size: 13px;
+        font-weight: bold;
+      }
+      .timeline-detail {
+        font-size: 11px;
+        color: #8b949e;
+        margin-top: 2px;
+      }
+      .timeline-sdp {
+        font-size: 11px;
+        color: #8b949e;
+        margin-top: 4px;
+        background: #0d1117;
+        padding: 6px 8px;
+        border-radius: 4px;
+        border: 1px solid #21262d;
+      }
+
+      .ip-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: #0d1117;
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid #21262d;
+        margin: 2px;
+        font-size: 12px;
+      }
+      .ip-type {
+        font-size: 10px;
+        color: #8b949e;
+      }
+
+      .raw-toggle {
+        background: #21262d;
+        color: #8b949e;
+        border: 1px solid #30363d;
+        padding: 4px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 11px;
+        font-family: inherit;
+        margin-top: 6px;
+      }
+      .raw-toggle:hover {
+        color: #c9d1d9;
+        border-color: #484f58;
+      }
+      .raw-block {
+        display: none;
+        margin-top: 8px;
+        background: #0d1117;
+        border: 1px solid #21262d;
+        border-radius: 4px;
+        padding: 10px;
+        white-space: pre-wrap;
+        font-size: 11px;
+        color: #8b949e;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .raw-block.show {
+        display: block;
+      }
+
+      .filter-bar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .filter-bar input {
+        background: #0d1117;
+        border: 1px solid #30363d;
+        color: #c9d1d9;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 12px;
+        width: 200px;
+      }
+      .filter-btn {
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid #30363d;
+        background: #161b22;
+        color: #8b949e;
+        cursor: pointer;
+        font-size: 11px;
+        font-family: inherit;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #1f6feb;
+        color: #fff;
+        border-color: #1f6feb;
+      }
+
+      .empty {
+        color: #484f58;
+        font-style: italic;
+        padding: 20px;
+        text-align: center;
+      }
+      .highlight {
+        background: #3d2e00;
+        padding: 0 2px;
+        border-radius: 2px;
+      }
+      .copy-btn {
+        background: none;
+        border: 1px solid #30363d;
+        color: #8b949e;
+        padding: 2px 6px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 10px;
+        font-family: inherit;
+        margin-left: 6px;
+      }
+      .copy-btn:hover {
+        color: #c9d1d9;
+        border-color: #484f58;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📡 SIP Debug Analyzer</h1>
+    <p class="subtitle">โหลดไฟล์ .sip เพื่อวิเคราะห์ REGISTER, INVITE, Codec, NAT, Server, ICE Candidates และอื่นๆ</p>
+
+    <div class="file-input">
+      <input type="file" id="file" accept=".sip,.txt,.log" />
+    </div>
+
+    <div id="out"></div>
+
+    <script>
+      document.getElementById('file').onchange = async (e) => {
+        const text = await e.target.files[0].text();
+        const fileName = e.target.files[0].name;
+        analyze(text, fileName);
+      };
+
+      function analyze(text, fileName) {
+        const out = document.getElementById('out');
+        out.innerHTML = '';
+
+        // Parse SIP messages
+        const messages = parseSipMessages(text);
+
+        // Extract info
+        const registers = extractRegisters(messages);
+        const calls = extractCalls(messages);
+        const natInfo = extractNatInfo(messages);
+        const serverInfo = extractServerInfo(messages);
+        const codecInfo = extractCodecInfo(messages);
+        const options = extractOptions(messages);
+        const dtmfs = extractDTMF(messages);
+
+        // Build tabs
+        const tabDefs = [
+          { id: 'overview', label: '📋 Overview', badge: '' },
+          { id: 'register', label: '🔑 Register', badge: registers.length },
+          { id: 'calls', label: '📞 Calls', badge: calls.length },
+          { id: 'nat', label: '🌐 NAT/Network', badge: natInfo.candidates.length },
+          { id: 'codec', label: '🎵 Codec/Media', badge: codecInfo.length },
+          { id: 'timeline', label: '⏱ Timeline', badge: messages.length },
+          { id: 'raw', label: '📄 Raw Messages', badge: messages.length },
+        ];
+
+        const tabsDiv = document.createElement('div');
+        tabsDiv.className = 'tabs';
+        tabDefs.forEach((t, i) => {
+          const btn = document.createElement('div');
+          btn.className = 'tab' + (i === 0 ? ' active' : '');
+          btn.dataset.tab = t.id;
+          btn.innerHTML = t.label + (t.badge ? `<span class="badge">${t.badge}</span>` : '');
+          btn.onclick = () => {
+            tabsDiv.querySelectorAll('.tab').forEach((x) => x.classList.remove('active'));
+            btn.classList.add('active');
+            out.querySelectorAll('.tab-content').forEach((x) => x.classList.remove('active'));
+            document.getElementById('tab-' + t.id).classList.add('active');
+          };
+          tabsDiv.appendChild(btn);
+        });
+        out.appendChild(tabsDiv);
+
+        // Overview Tab
+        const overviewTab = createTab('overview', true);
+        overviewTab.innerHTML = buildOverview(
+          fileName,
+          registers,
+          calls,
+          natInfo,
+          serverInfo,
+          codecInfo,
+          options,
+          messages,
+        );
+        out.appendChild(overviewTab);
+
+        // Register Tab
+        const regTab = createTab('register');
+        regTab.innerHTML = buildRegisterTab(registers);
+        out.appendChild(regTab);
+
+        // Calls Tab
+        const callTab = createTab('calls');
+        callTab.innerHTML = buildCallsTab(calls);
+        out.appendChild(callTab);
+
+        // NAT Tab
+        const natTab = createTab('nat');
+        natTab.innerHTML = buildNatTab(natInfo);
+        out.appendChild(natTab);
+
+        // Codec Tab
+        const codecTab = createTab('codec');
+        codecTab.innerHTML = buildCodecTab(codecInfo);
+        out.appendChild(codecTab);
+
+        // Timeline Tab
+        const tlTab = createTab('timeline');
+        tlTab.innerHTML = buildTimelineTab(messages);
+        out.appendChild(tlTab);
+
+        // Raw Tab
+        const rawTab = createTab('raw');
+        rawTab.innerHTML = buildRawTab(messages);
+        out.appendChild(rawTab);
+
+        // wire up raw toggles
+        out.querySelectorAll('.raw-toggle').forEach((btn) => {
+          btn.onclick = () => {
+            const block = btn.nextElementSibling;
+            block.classList.toggle('show');
+            btn.textContent = block.classList.contains('show') ? '▾ Hide Raw' : '▸ Show Raw';
+          };
+        });
+
+        // wire up copy buttons
+        out.querySelectorAll('.copy-btn').forEach((btn) => {
+          btn.onclick = () => {
+            navigator.clipboard.writeText(btn.dataset.copy);
+            btn.textContent = '✓';
+            setTimeout(() => (btn.textContent = 'copy'), 1000);
+          };
+        });
+      }
+
+      function createTab(id, active) {
+        const div = document.createElement('div');
+        div.id = 'tab-' + id;
+        div.className = 'tab-content' + (active ? ' active' : '');
+        return div;
+      }
+
+      // ─── PARSER ──────────────────────────────────────────────
+      function parseSipMessages(text) {
+        const lines = text.split('\n');
+        const messages = [];
+        let current = null;
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          // Request line
+          const reqMatch = line.match(
+            /^(REGISTER|INVITE|ACK|BYE|CANCEL|OPTIONS|NOTIFY|INFO|REFER|SUBSCRIBE|PUBLISH|UPDATE|PRACK|MESSAGE)\s+(sip:\S+)\s+SIP\/2\.0\s*$/,
+          );
+          // Response line
+          const resMatch = line.match(/^SIP\/2\.0\s+(\d+)\s+(.+)$/);
+
+          if (reqMatch || resMatch) {
+            if (current) messages.push(current);
+            current = {
+              raw: line + '\n',
+              type: reqMatch ? 'request' : 'response',
+              method: reqMatch ? reqMatch[1] : null,
+              uri: reqMatch ? reqMatch[2] : null,
+              statusCode: resMatch ? parseInt(resMatch[1]) : null,
+              statusText: resMatch ? resMatch[2].trim() : null,
+              headers: {},
+              body: '',
+              sdp: null,
+              index: messages.length,
+            };
+          } else if (current) {
+            current.raw += line + '\n';
+            // header
+            const hdr = line.match(/^([A-Za-z][A-Za-z0-9\-]*)\s*:\s*(.*)$/);
+            if (hdr) {
+              const key = hdr[1].toLowerCase();
+              if (current.headers[key]) {
+                current.headers[key] += '\n' + hdr[2];
+              } else {
+                current.headers[key] = hdr[2];
+              }
+            }
+            // SDP body detection
+            if (line.startsWith('v=0')) {
+              current.body += line + '\n';
+              current._inSdp = true;
+            } else if (current._inSdp) {
+              if (line.trim() === '' && !lines[i + 1]?.match(/^[a-z]=/)) {
+                current._inSdp = false;
+                current.sdp = parseSdp(current.body);
+              } else {
+                current.body += line + '\n';
+              }
+            }
+          }
+        }
+        if (current) {
+          if (current._inSdp && current.body) current.sdp = parseSdp(current.body);
+          messages.push(current);
+        }
+
+        // Resolve CSeq method for responses
+        messages.forEach((m) => {
+          if (m.type === 'response' && m.headers['cseq']) {
+            const cs = m.headers['cseq'].match(/\d+\s+(\w+)/);
+            if (cs) m.method = cs[1];
+          }
+        });
+
+        return messages;
+      }
+
+      function parseSdp(body) {
+        const sdp = {
+          codecs: [],
+          candidates: [],
+          iceUfrag: null,
+          icePwd: null,
+          fingerprint: null,
+          connection: null,
+          mediaPort: null,
+          rtpProfile: null,
+          ssrc: [],
+          direction: null,
+          ptime: null,
+        };
+        body.split('\n').forEach((line) => {
+          const l = line.trim();
+          if (l.startsWith('c=')) {
+            const m = l.match(/IN\s+IP[46]\s+(\S+)/);
+            if (m) sdp.connection = m[1];
+          }
+          if (l.startsWith('m=audio')) {
+            const m = l.match(/m=audio\s+(\d+)\s+(\S+)\s+(.*)/);
+            if (m) {
+              sdp.mediaPort = m[1];
+              sdp.rtpProfile = m[2];
+              sdp.payloadTypes = m[3].split(/\s+/);
+            }
+          }
+          if (l.startsWith('a=rtpmap:')) {
+            const m = l.match(/a=rtpmap:(\d+)\s+(.+)/);
+            if (m) sdp.codecs.push({ pt: m[1], name: m[2] });
+          }
+          if (l.startsWith('a=candidate:')) sdp.candidates.push(parseCandidate(l));
+          if (l.startsWith('a=ice-ufrag:')) sdp.iceUfrag = l.split(':')[1];
+          if (l.startsWith('a=ice-pwd:')) sdp.icePwd = l.split(':').slice(1).join(':');
+          if (l.startsWith('a=fingerprint:')) sdp.fingerprint = l.substring('a=fingerprint:'.length);
+          if (l.startsWith('a=ssrc:')) sdp.ssrc.push(l.substring('a=ssrc:'.length));
+          if (l.match(/^a=(sendrecv|sendonly|recvonly|inactive)$/)) sdp.direction = l.substring(2);
+          if (l.startsWith('a=ptime:')) sdp.ptime = l.split(':')[1];
+        });
+        return sdp;
+      }
+
+      function parseCandidate(line) {
+        const m = line.match(/a=candidate:(\S+)\s+(\d+)\s+(\w+)\s+(\d+)\s+(\S+)\s+(\d+)\s+typ\s+(\w+)(.*)/);
+        if (!m) return { raw: line };
+        const c = {
+          foundation: m[1],
+          component: m[2],
+          protocol: m[3],
+          priority: m[4],
+          ip: m[5],
+          port: m[6],
+          type: m[7],
+          raw: line,
+        };
+        const raddr = m[8]?.match(/raddr\s+(\S+)/);
+        const rport = m[8]?.match(/rport\s+(\d+)/);
+        if (raddr) c.raddr = raddr[1];
+        if (rport) c.rport = rport[1];
+        return c;
+      }
+
+      function getFromUser(m) {
+        const f = (m.headers['from'] || '').match(/<sip:([^@>]+)@/);
+        return f?.[1] || '';
+      }
+      function getToUser(m) {
+        const t = (m.headers['to'] || '').match(/<sip:([^@>]+)@/);
+        return t?.[1] || '';
+      }
+      function getCallId(m) {
+        return m.headers['call-id'] || '';
+      }
+      function getServer(m) {
+        return m.headers['server'] || m.headers['user-agent'] || '';
+      }
+
+      // ─── EXTRACTORS ──────────────────────────────────────────
+      function extractRegisters(messages) {
+        const regs = [];
+        const callIds = new Set();
+        messages.forEach((m) => {
+          if (m.method === 'REGISTER') {
+            const cid = getCallId(m);
+            if (callIds.has(cid)) return;
+
+            const ext = getFromUser(m);
+            const domain = (m.headers['from'] || '').match(/@([^>;]+)/)?.[1] || '';
+            const ua = m.headers['user-agent'] || '';
+
+            // find response for this call-id
+            const responses = messages.filter(
+              (r) => r.type === 'response' && r.method === 'REGISTER' && getCallId(r) === cid,
+            );
+            const ok = responses.find((r) => r.statusCode === 200);
+            const auth = responses.find((r) => r.statusCode === 401);
+            const serverVersion = responses.map((r) => r.headers['server']).find(Boolean) || '';
+
+            // NAT from Via received
+            let natIp = null,
+              natPort = null;
+            responses.forEach((r) => {
+              const via = r.headers['via'] || '';
+              const recv = via.match(/received=([^;,\s]+)/);
+              const rp = via.match(/rport=(\d+)/);
+              if (recv) natIp = recv[1];
+              if (rp) natPort = rp[1];
+            });
+
+            let expires = null;
+            if (ok) {
+              const exp = (ok.headers['contact'] || '').match(/expires=(\d+)/);
+              if (exp) expires = exp[1];
+            }
+
+            callIds.add(cid);
+            regs.push({ ext, domain, ua, ok: !!ok, auth: !!auth, serverVersion, natIp, natPort, expires, callId: cid });
+          }
+        });
+        return regs;
+      }
+
+      function extractCalls(messages) {
+        const calls = [];
+        const seen = new Set();
+
+        messages.forEach((m) => {
+          if (m.method === 'INVITE' && m.type === 'request') {
+            const cid = getCallId(m);
+            if (seen.has(cid)) return;
+            seen.add(cid);
+
+            const from = getFromUser(m);
+            const to = getToUser(m);
+            const uri = m.uri || '';
+            const calledNumber = uri.match(/sip:([^@]+)@/)?.[1] || to;
+            const ua = m.headers['user-agent'] || '';
+
+            // Determine direction: if from server (FPBX), it's incoming
+            const isIncoming = ua.includes('FPBX') || ua.includes('Asterisk');
+
+            // Find caller identity
+            const pai = m.headers['p-asserted-identity'] || '';
+            const callerName = (m.headers['from'] || '').match(/"([^"]+)"/)?.[1] || from;
+            const paiName = pai.match(/"([^"]+)"/)?.[1] || '';
+            const paiNumber = pai.match(/sip:([^@>]+)@/)?.[1] || '';
+
+            // Call flow messages
+            const flow = messages.filter((r) => getCallId(r) === cid);
+            const trying = flow.find((r) => r.statusCode === 100);
+            const ringing = flow.find((r) => r.statusCode === 180);
+            const progress = flow.find((r) => r.statusCode === 183);
+            const ok200 = flow.find((r) => r.statusCode === 200 && r.method === 'INVITE');
+            const bye = flow.find((r) => r.method === 'BYE');
+            const cancel = flow.find((r) => r.method === 'CANCEL');
+            const err = flow.find((r) => r.type === 'response' && r.statusCode >= 400 && r.method === 'INVITE');
+
+            // Codec from SDP
+            let codecs = [];
+            let sdpInfo = null;
+            flow.forEach((r) => {
+              if (r.sdp && r.sdp.codecs.length > 0) {
+                codecs = [...codecs, ...r.sdp.codecs];
+                if (!sdpInfo) sdpInfo = r.sdp;
+              }
+            });
+            // dedupe
+            const codecMap = {};
+            codecs.forEach((c) => {
+              codecMap[c.pt] = c.name;
+            });
+            codecs = Object.entries(codecMap).map(([pt, name]) => ({ pt, name }));
+
+            // PAI from responses
+            let displayPai = paiName || paiNumber;
+            if (!displayPai) {
+              flow.forEach((r) => {
+                const rp = r.headers['p-asserted-identity'] || '';
+                if (rp) {
+                  const n = rp.match(/"([^"]+)"/)?.[1] || '';
+                  const num = rp.match(/sip:([^@>]+)@/)?.[1] || '';
+                  if (n || num) displayPai = n ? `${n} <${num}>` : num;
+                }
+              });
+            }
+
+            // BYE reason
+            let byeReason = '';
+            if (bye) {
+              const r = bye.headers['reason'] || '';
+              byeReason = r;
+            }
+
+            let status = 'unknown';
+            if (ok200) status = 'answered';
+            else if (cancel) status = 'cancelled';
+            else if (err) status = `error (${err.statusCode})`;
+            else if (ringing || trying || progress) status = 'ringing';
+
+            calls.push({
+              from,
+              to,
+              calledNumber,
+              callerName,
+              isIncoming,
+              ua,
+              codecs,
+              status,
+              displayPai,
+              byeReason,
+              callId: cid,
+              sdpInfo,
+              flow,
+            });
+          }
+        });
+        return calls;
+      }
+
+      function extractNatInfo(messages) {
+        const natIps = {};
+        const candidates = [];
+        const iceInfo = [];
+
+        messages.forEach((m) => {
+          const via = m.headers['via'] || '';
+          const recv = via.match(/received=([^;,\s]+)/);
+          const rp = via.match(/rport=(\d+)/);
+          if (recv) {
+            const key = recv[1] + ':' + (rp?.[1] || '?');
+            natIps[key] = (natIps[key] || 0) + 1;
+          }
+
+          if (m.sdp) {
+            m.sdp.candidates.forEach((c) => {
+              if (c.ip) candidates.push(c);
+            });
+            if (m.sdp.iceUfrag) {
+              iceInfo.push({
+                ufrag: m.sdp.iceUfrag,
+                pwd: m.sdp.icePwd,
+                fingerprint: m.sdp.fingerprint,
+                from: getFromUser(m) || 'server',
+                direction: m.sdp.direction,
+              });
+            }
+          }
+        });
+
+        return { natIps, candidates, iceInfo };
+      }
+
+      function extractServerInfo(messages) {
+        const servers = new Set();
+        const domains = new Set();
+        const ips = new Set();
+
+        messages.forEach((m) => {
+          if (m.headers['server']) servers.add(m.headers['server']);
+          if (m.headers['user-agent']) servers.add(m.headers['user-agent']);
+
+          const via = m.headers['via'] || '';
+          const viaIp = via.match(/SIP\/2\.0\/\w+\s+([^;,\s:]+)/);
+          if (viaIp) ips.add(viaIp[1]);
+
+          if (m.uri) {
+            const d = m.uri.match(/@([^:;>]+)/);
+            if (d) domains.add(d[1]);
+          }
+
+          const contact = m.headers['contact'] || '';
+          const cIp = contact.match(/sip:[^@]*@([^:;>]+)/);
+          if (cIp) domains.add(cIp[1]);
+        });
+
+        return { servers: [...servers], domains: [...domains], ips: [...ips] };
+      }
+
+      function extractCodecInfo(messages) {
+        const codecSessions = [];
+        messages.forEach((m) => {
+          if (m.sdp && m.sdp.codecs.length > 0) {
+            const from = getFromUser(m) || 'unknown';
+            codecSessions.push({
+              from,
+              codecs: m.sdp.codecs,
+              connection: m.sdp.connection,
+              port: m.sdp.mediaPort,
+              profile: m.sdp.rtpProfile,
+              direction: m.sdp.direction,
+              ptime: m.sdp.ptime,
+              fingerprint: m.sdp.fingerprint,
+              ssrc: m.sdp.ssrc,
+              method: m.method || '?',
+              type: m.type,
+            });
+          }
+        });
+        return codecSessions;
+      }
+
+      function extractOptions(messages) {
+        return messages.filter((m) => m.method === 'OPTIONS' && m.type === 'request');
+      }
+
+      function extractDTMF(messages) {
+        const dtmfs = [];
+        messages.forEach((m) => {
+          if (m.method === 'INFO' && m.type === 'request') {
+            const ct = m.headers['content-type'] || '';
+            if (ct.includes('dtmf')) {
+              const signal = m.raw.match(/Signal=(\S+)/);
+              const dur = m.raw.match(/Duration=(\d+)/);
+              dtmfs.push({ signal: signal?.[1] || '?', duration: dur?.[1] || '?', callId: getCallId(m) });
+            }
+          }
+        });
+        return dtmfs;
+      }
+
+      // ─── BUILDERS ────────────────────────────────────────────
+      function buildOverview(fileName, registers, calls, natInfo, serverInfo, codecInfo, options, messages) {
+        const allCodecs = {};
+        codecInfo.forEach((s) =>
+          s.codecs.forEach((c) => {
+            allCodecs[c.name] = true;
+          }),
+        );
+
+        const regSummary =
+          registers
+            .map(
+              (r) =>
+                `<span class="tag ${r.ok ? 'tag-green' : 'tag-red'}">${r.ext} ${r.ok ? '✓ Registered' : '✗ Failed'}</span>`,
+            )
+            .join('') || '<span class="empty">No REGISTER found</span>';
+
+        const callSummary =
+          calls
+            .map((c) => {
+              const dir = c.isIncoming ? '📥 Incoming' : '📤 Outgoing';
+              const stClass =
+                c.status === 'answered'
+                  ? 'tag-green'
+                  : c.status === 'cancelled'
+                    ? 'tag-yellow'
+                    : c.status.startsWith('error')
+                      ? 'tag-red'
+                      : 'tag-blue';
+              return `<div class="card">
+      <div class="card-title">${dir}: ${c.callerName || c.from} ➜ ${c.calledNumber}</div>
+      <span class="tag ${stClass}">${c.status}</span>
+      ${c.displayPai ? `<span class="tag tag-purple">PAI: ${esc(c.displayPai)}</span>` : ''}
+      ${c.codecs.map((cd) => `<span class="tag tag-cyan">${cd.name}</span>`).join('')}
+      ${c.byeReason ? `<br><span style="color:#8b949e;font-size:11px">BYE Reason: ${esc(c.byeReason)}</span>` : ''}
+    </div>`;
+            })
+            .join('') || '<div class="empty">No INVITE found</div>';
+
+        const natPublicIps =
+          Object.keys(natInfo.natIps)
+            .map((k) => {
+              const [ip, port] = k.split(':');
+              return `<div class="ip-box">${ip}<span class="ip-type">:${port}</span></div>`;
+            })
+            .join('') || '<span class="empty">N/A</span>';
+
+        // Unique candidate IPs grouped by type
+        const candByType = {};
+        natInfo.candidates.forEach((c) => {
+          const t = c.type || 'unknown';
+          if (!candByType[t]) candByType[t] = new Set();
+          candByType[t].add(c.ip + ':' + c.port);
+        });
+        const candSummary =
+          Object.entries(candByType)
+            .map(([type, ips]) => {
+              const typeTag = type === 'host' ? 'tag-blue' : type === 'srflx' ? 'tag-orange' : 'tag-purple';
+              return [...ips].map((ip) => `<span class="tag ${typeTag}">${type}: ${ip}</span>`).join('');
+            })
+            .join('') || '<span class="empty">N/A</span>';
+
+        return `
+    <div class="section">
+      <div class="section-title">📁 File: ${esc(fileName)}</div>
+      <div class="grid">
+        <div class="card">
+          <div class="label">Total SIP Messages</div>
+          <div class="value" style="font-size:24px;color:#58a6ff">${messages.length}</div>
+        </div>
+        <div class="card">
+          <div class="label">Servers</div>
+          <div class="value">${serverInfo.servers.map((s) => `<span class="tag tag-purple">${esc(s)}</span>`).join('')}</div>
+        </div>
+        <div class="card">
+          <div class="label">Domains / PBX</div>
+          <div class="value">${serverInfo.domains.map((d) => `<span class="tag tag-blue">${esc(d)}</span>`).join('')}</div>
+        </div>
+        <div class="card">
+          <div class="label">Codecs Used</div>
+          <div class="value">${
+            Object.keys(allCodecs)
+              .map((c) => `<span class="tag tag-cyan">${c}</span>`)
+              .join('') || 'N/A'
+          }</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔑 Registration Status</div>
+      ${regSummary}
+      ${registers
+        .map(
+          (r) => `
+        <div class="card" style="margin-top:8px">
+          <div class="grid">
+            <div><div class="label">Extension</div><div class="value" style="font-size:18px;color:#58a6ff">${esc(r.ext)}</div></div>
+            <div><div class="label">Domain</div><div class="value">${esc(r.domain)}</div></div>
+            <div><div class="label">Status</div><div class="value"><span class="${r.ok ? 'status-ok' : 'status-err'}">${r.ok ? '✓ 200 OK (Registered)' : '✗ Failed'}</span></div></div>
+            <div><div class="label">Auth Challenge</div><div class="value">${r.auth ? '<span class="status-warn">401 → Re-auth ✓</span>' : 'No'}</div></div>
+            <div><div class="label">PBX Server</div><div class="value">${esc(r.serverVersion)}</div></div>
+            <div><div class="label">User-Agent</div><div class="value">${esc(r.ua)}</div></div>
+            <div><div class="label">NAT IP (received)</div><div class="value">${r.natIp ? `<span class="tag tag-orange">${r.natIp}:${r.natPort}</span>` : 'N/A'}</div></div>
+            <div><div class="label">Expires</div><div class="value">${r.expires ? r.expires + 's' : 'N/A'}</div></div>
+          </div>
+        </div>
+      `,
+        )
+        .join('')}
+    </div>
+
+    <div class="section">
+      <div class="section-title">📞 Calls</div>
+      ${callSummary}
+    </div>
+
+    <div class="section">
+      <div class="section-title">🌐 NAT / Public IP</div>
+      <div class="card">
+        <div class="label">Public IP (from Via received=)</div>
+        <div class="value">${natPublicIps}</div>
+      </div>
+      <div class="card">
+        <div class="label">ICE Candidates</div>
+        <div class="value">${candSummary}</div>
+      </div>
+    </div>
+  `;
+      }
+
+      function buildRegisterTab(registers) {
+        if (registers.length === 0) return '<div class="empty">No REGISTER messages found</div>';
+        return registers
+          .map(
+            (r) => `
+    <div class="card">
+      <div class="card-title" style="font-size:16px">
+        <span class="tag ${r.ok ? 'tag-green' : 'tag-red'}">${r.ok ? '✓' : '✗'}</span>
+        Extension: ${esc(r.ext)}
+      </div>
+      <div class="grid" style="margin-top:8px">
+        <div><div class="label">Extension / เบอร์</div><div class="value" style="font-size:20px;color:#58a6ff;font-weight:bold">${esc(r.ext)}</div></div>
+        <div><div class="label">SIP Domain</div><div class="value">${esc(r.domain)}</div></div>
+        <div><div class="label">Register Result</div><div class="value"><span class="tag ${r.ok ? 'tag-green' : 'tag-red'}">${r.ok ? '200 OK - Registered' : 'FAILED'}</span></div></div>
+        <div><div class="label">Auth (401 Challenge)</div><div class="value">${r.auth ? '<span class="tag tag-yellow">401 Unauthorized → Re-sent with Digest ✓</span>' : '<span class="tag tag-green">No challenge needed</span>'}</div></div>
+        <div><div class="label">PBX / Server</div><div class="value"><span class="tag tag-purple">${esc(r.serverVersion)}</span></div></div>
+        <div><div class="label">Client User-Agent</div><div class="value">${esc(r.ua)}</div></div>
+        <div><div class="label">NAT Public IP</div><div class="value">${r.natIp ? `<span class="tag tag-orange">${r.natIp}</span> <span style="color:#8b949e">port ${r.natPort}</span>` : 'N/A (no received=)'}</div></div>
+        <div><div class="label">Contact Expires</div><div class="value">${r.expires || 'N/A'} seconds</div></div>
+        <div><div class="label">Call-ID</div><div class="value" style="font-size:11px">${esc(r.callId)} <button class="copy-btn" data-copy="${esc(r.callId)}">copy</button></div></div>
+      </div>
+    </div>
+  `,
+          )
+          .join('');
+      }
+
+      function buildCallsTab(calls) {
+        if (calls.length === 0) return '<div class="empty">No INVITE / call messages found</div>';
+        const dtmfs = {};
+        return calls
+          .map((c) => {
+            const dir = c.isIncoming ? '📥 Incoming (รับสาย)' : '📤 Outgoing (โทรออก)';
+            const stClass =
+              c.status === 'answered'
+                ? 'tag-green'
+                : c.status === 'cancelled'
+                  ? 'tag-yellow'
+                  : c.status.startsWith('error')
+                    ? 'tag-red'
+                    : 'tag-blue';
+            const flowHtml = buildMiniTimeline(c.flow);
+            return `
+      <div class="card">
+        <div class="card-title" style="font-size:15px">${dir}</div>
+        <div class="grid" style="margin-top:8px">
+          <div><div class="label">From (โทรจาก)</div><div class="value" style="font-size:18px;color:#58a6ff;font-weight:bold">${esc(c.callerName || c.from)}</div></div>
+          <div><div class="label">To (โทรไป)</div><div class="value" style="font-size:18px;color:#f0883e;font-weight:bold">${esc(c.calledNumber)}</div></div>
+          <div><div class="label">Status</div><div class="value"><span class="tag ${stClass}">${c.status.toUpperCase()}</span></div></div>
+          <div><div class="label">P-Asserted-Identity (CID)</div><div class="value">${c.displayPai ? `<span class="tag tag-purple">${esc(c.displayPai)}</span>` : 'N/A'}</div></div>
+          <div><div class="label">Codecs</div><div class="value">${c.codecs.map((cd) => `<span class="tag tag-cyan">${cd.name} (PT:${cd.pt})</span>`).join('') || 'N/A'}</div></div>
+          <div><div class="label">User-Agent</div><div class="value">${esc(c.ua)}</div></div>
+          ${c.byeReason ? `<div><div class="label">BYE Reason</div><div class="value"><span class="tag tag-red">${esc(c.byeReason)}</span></div></div>` : ''}
+          ${
+            c.sdpInfo
+              ? `
+          <div><div class="label">Media Direction</div><div class="value">${c.sdpInfo.direction || 'N/A'}</div></div>
+          <div><div class="label">Media IP</div><div class="value">${c.sdpInfo.connection || 'N/A'}</div></div>
+          <div><div class="label">RTP Port</div><div class="value">${c.sdpInfo.mediaPort || 'N/A'}</div></div>
+          <div><div class="label">DTLS Fingerprint</div><div class="value" style="font-size:10px;word-break:break-all">${c.sdpInfo.fingerprint || 'N/A'}</div></div>
+          `
+              : ''
+          }
+          <div><div class="label">Call-ID</div><div class="value" style="font-size:11px">${esc(c.callId)} <button class="copy-btn" data-copy="${esc(c.callId)}">copy</button></div></div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="label">Call Flow / Timeline</div>
+          <div class="timeline" style="margin-top:8px">${flowHtml}</div>
+        </div>
+      </div>
+    `;
+          })
+          .join('');
+      }
+
+      function buildMiniTimeline(flow) {
+        return flow
+          .map((m) => {
+            let cls = 'req';
+            let label = '';
+            if (m.type === 'request') {
+              label = `${m.method} →`;
+              cls = 'req';
+            } else {
+              label = `← ${m.statusCode} ${m.statusText}`;
+              cls = m.statusCode >= 200 && m.statusCode < 300 ? 'res-ok' : m.statusCode >= 400 ? 'res-err' : 'res-info';
+            }
+            let detail = '';
+            if (m.method === 'INVITE' || m.method === 'BYE' || m.method === 'CANCEL') {
+              detail = `From: ${getFromUser(m)} → To: ${getToUser(m)}`;
+            }
+            if (m.headers['reason']) detail += ` | Reason: ${m.headers['reason']}`;
+            if (m.headers['p-asserted-identity']) detail += ` | PAI: ${m.headers['p-asserted-identity']}`;
+
+            let sdpHtml = '';
+            if (m.sdp) {
+              const cds = m.sdp.codecs.map((c) => c.name).join(', ');
+              sdpHtml = `<div class="timeline-sdp">
+        SDP: ${m.sdp.connection || '?'}:${m.sdp.mediaPort || '?'} | Codec: ${cds || 'N/A'} | ${m.sdp.direction || ''} | ${m.sdp.rtpProfile || ''}
+        ${m.sdp.candidates.length > 0 ? '<br>ICE: ' + m.sdp.candidates.map((c) => `${c.type}=${c.ip}:${c.port}`).join(', ') : ''}
+      </div>`;
+            }
+            if (m.method === 'INFO' && m.raw.includes('Signal=')) {
+              const sig = m.raw.match(/Signal=(\S+)/)?.[1];
+              sdpHtml = `<div class="timeline-sdp">DTMF: Signal=${sig}</div>`;
+            }
+
+            return `<div class="timeline-item ${cls}">
+      <div class="timeline-msg">${esc(label)}</div>
+      ${detail ? `<div class="timeline-detail">${esc(detail)}</div>` : ''}
+      ${sdpHtml}
+    </div>`;
+          })
+          .join('');
+      }
+
+      function buildNatTab(natInfo) {
+        let html = '<div class="section"><div class="section-title">🌐 Public IP (NAT Traversal)</div>';
+
+        // Public IPs from Via received
+        html +=
+          '<div class="card"><div class="card-title">Via received= (Public IP ที่ Server เห็น)</div><table><tr><th>Public IP:Port</th><th>Count</th></tr>';
+        Object.entries(natInfo.natIps).forEach(([k, v]) => {
+          html += `<tr><td><span class="tag tag-orange">${esc(k)}</span></td><td>${v}</td></tr>`;
+        });
+        html += '</table></div>';
+
+        // ICE Candidates
+        html += '<div class="card"><div class="card-title">ICE Candidates (จาก SDP)</div>';
+        if (natInfo.candidates.length === 0) {
+          html += '<div class="empty">No ICE candidates found</div>';
+        } else {
+          html +=
+            '<table><tr><th>Type</th><th>Protocol</th><th>IP</th><th>Port</th><th>Priority</th><th>Related (raddr)</th></tr>';
+          natInfo.candidates.forEach((c) => {
+            const typeTag =
+              c.type === 'host'
+                ? 'tag-blue'
+                : c.type === 'srflx'
+                  ? 'tag-orange'
+                  : c.type === 'relay'
+                    ? 'tag-green'
+                    : 'tag-purple';
+            const typeLabel =
+              c.type === 'host'
+                ? 'host (LAN)'
+                : c.type === 'srflx'
+                  ? 'srflx (NAT/STUN)'
+                  : c.type === 'relay'
+                    ? 'relay (TURN)'
+                    : c.type;
+            html += `<tr>
+        <td><span class="tag ${typeTag}">${typeLabel}</span></td>
+        <td>${c.protocol || '?'}</td>
+        <td><strong>${c.ip || '?'}</strong></td>
+        <td>${c.port || '?'}</td>
+        <td style="color:#8b949e">${c.priority || '?'}</td>
+        <td>${c.raddr ? c.raddr + ':' + (c.rport || '?') : '-'}</td>
+      </tr>`;
+          });
+          html += '</table>';
+        }
+        html += '</div>';
+
+        // ICE Credentials
+        html += '<div class="card"><div class="card-title">ICE Credentials</div>';
+        if (natInfo.iceInfo.length === 0) {
+          html += '<div class="empty">No ICE info</div>';
+        } else {
+          html +=
+            '<table><tr><th>From</th><th>Direction</th><th>ice-ufrag</th><th>ice-pwd</th><th>DTLS Fingerprint</th></tr>';
+          natInfo.iceInfo.forEach((ice) => {
+            html += `<tr>
+        <td>${esc(ice.from)}</td>
+        <td>${ice.direction || 'N/A'}</td>
+        <td style="font-size:11px">${esc(ice.ufrag || '')}</td>
+        <td style="font-size:11px">${esc(ice.pwd || '')}</td>
+        <td style="font-size:10px;word-break:break-all">${esc(ice.fingerprint || 'N/A')}</td>
+      </tr>`;
+          });
+          html += '</table>';
+        }
+        html += '</div></div>';
+
+        return html;
+      }
+
+      function buildCodecTab(codecInfo) {
+        if (codecInfo.length === 0) return '<div class="empty">No SDP / codec info found</div>';
+
+        let html = '<div class="section"><div class="section-title">🎵 Codec & Media Sessions</div>';
+        codecInfo.forEach((s, i) => {
+          html += `<div class="card">
+      <div class="card-title">#${i + 1} ${s.type === 'request' ? '→ Request' : '← Response'} (${s.method})</div>
+      <div class="grid" style="margin-top:8px">
+        <div><div class="label">Codecs</div><div class="value">${s.codecs.map((c) => `<span class="tag tag-cyan">${c.name} (PT:${c.pt})</span>`).join('')}</div></div>
+        <div><div class="label">Media IP</div><div class="value"><strong>${s.connection || 'N/A'}</strong></div></div>
+        <div><div class="label">RTP Port</div><div class="value">${s.port || 'N/A'}</div></div>
+        <div><div class="label">Profile</div><div class="value"><span class="tag tag-blue">${s.profile || 'N/A'}</span></div></div>
+        <div><div class="label">Direction</div><div class="value">${s.direction || 'N/A'}</div></div>
+        <div><div class="label">ptime</div><div class="value">${s.ptime || 'N/A'} ms</div></div>
+        <div><div class="label">DTLS Fingerprint</div><div class="value" style="font-size:10px;word-break:break-all">${s.fingerprint || 'N/A'}</div></div>
+        ${s.ssrc.length > 0 ? `<div><div class="label">SSRC</div><div class="value" style="font-size:11px">${s.ssrc.map((x) => esc(x)).join('<br>')}</div></div>` : ''}
+      </div>
+    </div>`;
+        });
+        html += '</div>';
+        return html;
+      }
+
+      function buildTimelineTab(messages) {
+        let html = '<div class="section"><div class="section-title">⏱ Full SIP Message Timeline</div>';
+        html += '<div class="filter-bar">';
+        html +=
+          '<input type="text" id="timeline-filter" placeholder="Filter messages..." oninput="filterTimeline(this.value)">';
+        ['REGISTER', 'INVITE', 'BYE', 'OPTIONS', 'ACK', 'INFO', 'NOTIFY', '100-199', '200', '4xx+'].forEach((f) => {
+          html += `<button class="filter-btn" onclick="toggleTimelineFilter(this,'${f}')">${f}</button>`;
+        });
+        html += '</div>';
+        html += '<div class="timeline" id="timeline-list">';
+
+        messages.forEach((m, i) => {
+          let cls = 'req';
+          let label = '';
+          let labelColor = '';
+          if (m.type === 'request') {
+            label = `→ ${m.method}`;
+            cls = 'req';
+            labelColor = '#58a6ff';
+          } else {
+            label = `← ${m.statusCode} ${m.statusText}`;
+            cls = m.statusCode >= 200 && m.statusCode < 300 ? 'res-ok' : m.statusCode >= 400 ? 'res-err' : 'res-info';
+            labelColor =
+              m.statusCode >= 200 && m.statusCode < 300 ? '#3fb950' : m.statusCode >= 400 ? '#f85149' : '#d29922';
+          }
+
+          const from = getFromUser(m);
+          const to = getToUser(m);
+          const cid = getCallId(m);
+          const detail = `${from ? 'From:' + from : ''} ${to ? '→ To:' + to : ''} ${cid ? '| Call-ID:' + cid.substring(0, 12) + '...' : ''}`;
+
+          html += `<div class="timeline-item ${cls}" data-method="${m.method || ''}" data-status="${m.statusCode || ''}" data-text="${esc(m.raw.substring(0, 200).toLowerCase())}">
+      <div class="timeline-msg" style="color:${labelColor}">#${i + 1} ${esc(label)} <span style="color:#8b949e;font-weight:normal;font-size:11px">[${m.method || '?'}]</span></div>
+      <div class="timeline-detail">${esc(detail)}</div>
+      <button class="raw-toggle">▸ Show Raw</button>
+      <div class="raw-block">${esc(m.raw)}</div>
+    </div>`;
+        });
+
+        html += '</div></div>';
+        return html;
+      }
+
+      function buildRawTab(messages) {
+        let html = '<div class="section"><div class="section-title">📄 All Raw SIP Messages</div>';
+        messages.forEach((m, i) => {
+          let label = m.type === 'request' ? `→ ${m.method}` : `← ${m.statusCode} ${m.statusText}`;
+          let bg = m.type === 'request' ? '#0c2d6b22' : m.statusCode >= 400 ? '#3d141822' : '#0d322022';
+          html += `<div class="card" style="border-left: 3px solid ${m.type === 'request' ? '#1f6feb' : m.statusCode >= 400 ? '#da3633' : '#238636'}">
+      <div class="card-title">#${i + 1} ${esc(label)}</div>
+      <pre style="white-space:pre-wrap;font-size:11px;color:#8b949e;margin:0;max-height:400px;overflow-y:auto">${esc(m.raw)}</pre>
+    </div>`;
+        });
+        html += '</div>';
+        return html;
+      }
+
+      // ─── UTILS ───────────────────────────────────────────────
+      function esc(s) {
+        if (!s) return '';
+        const div = document.createElement('div');
+        div.textContent = s;
+        return div.innerHTML;
+      }
+
+      function filterTimeline(val) {
+        const items = document.querySelectorAll('#timeline-list .timeline-item');
+        const v = val.toLowerCase();
+        items.forEach((item) => {
+          const text = item.dataset.text || '';
+          const method = (item.dataset.method || '').toLowerCase();
+          const status = item.dataset.status || '';
+          item.style.display = text.includes(v) || method.includes(v) || status.includes(v) ? '' : 'none';
+        });
+      }
+
+      function toggleTimelineFilter(btn, filter) {
+        btn.classList.toggle('active');
+        const active = document.querySelectorAll('.filter-btn.active');
+        const items = document.querySelectorAll('#timeline-list .timeline-item');
+        if (active.length === 0) {
+          items.forEach((item) => (item.style.display = ''));
+          return;
+        }
+        const filters = [...active].map((b) => b.textContent);
+        items.forEach((item) => {
+          const method = item.dataset.method || '';
+          const status = parseInt(item.dataset.status) || 0;
+          let show = false;
+          filters.forEach((f) => {
+            if (f === '100-199' && status >= 100 && status < 200) show = true;
+            else if (f === '200' && status === 200) show = true;
+            else if (f === '4xx+' && status >= 400) show = true;
+            else if (method === f) show = true;
+          });
+          item.style.display = show ? '' : 'none';
+        });
+      }
+    </script>
+  </body>
+</html>
