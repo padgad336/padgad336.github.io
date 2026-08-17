@@ -8,6 +8,8 @@ import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import SettingsInputAntennaRoundedIcon from '@mui/icons-material/SettingsInputAntennaRounded';
 import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
+import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
+import HandymanRoundedIcon from '@mui/icons-material/HandymanRounded';
 import { colors, fonts, accentAlpha, gradients } from '../themeConfig';
 
 const tools = [
@@ -38,6 +40,20 @@ const tools = [
     path: '/har-to-sip',
     icon: <SwapHorizRoundedIcon sx={{ fontSize: 36 }} />,
     accent: '#d29922',
+  },
+  {
+    title: 'Periodic Table 3D',
+    description: 'สามมิติด้วย three.js CSS3D พร้อมสลับ layout เป็น table, sphere, helix และ grid.',
+    path: '/tree',
+    icon: <ViewInArRoundedIcon sx={{ fontSize: 36 }} />,
+    accent: '#6fe7ff',
+  },
+  {
+    title: 'Developer Toolbox',
+    description: 'Base64, QR Code, JSON, URL encoder, SHA-256 และ UUID — ทำงานบนเบราว์เซอร์ของคุณ.',
+    path: '/tools',
+    icon: <HandymanRoundedIcon sx={{ fontSize: 36 }} />,
+    accent: '#ff7ab6',
   },
 ];
 

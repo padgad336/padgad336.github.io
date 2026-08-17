@@ -11,6 +11,8 @@ const navItems = [
   { label: '#map', path: '/map' },
   { label: '#sip', path: '/sip' },
   { label: '#har→sip', path: '/har-to-sip' },
+  { label: '#3d-table', path: '/tree' },
+  { label: '#tools', path: '/tools' },
 ];
 
 const Navbar: React.FC = () => {

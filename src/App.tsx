@@ -6,6 +6,8 @@ import { MainContentLayout } from './pages/main-layout';
 import { MapContentLayout } from './pages/map-layout';
 import { SipAnalyzerLayout } from './pages/sip-layout';
 import { HarToSipLayout } from './pages/har-to-sip-layout';
+import { TreeContentLayout } from './pages/tree-layout';
+import { ToolsLayout } from './pages/tools-layout';
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
           <Route path='map' element={<MapContentLayout />} />
           <Route path='sip' element={<SipAnalyzerLayout />} />
           <Route path='har-to-sip' element={<HarToSipLayout />} />
+          <Route path='tree' element={<TreeContentLayout />} />
+          <Route path='tools' element={<ToolsLayout />} />
         </Route>
       </Routes>
     </BrowserRouter>

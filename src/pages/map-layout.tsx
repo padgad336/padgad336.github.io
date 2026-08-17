@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Grid } from '@mui/joy';
 import { MapLayout } from '../components/Map';
 import axios from 'axios';
-const records = require('../records.json');
+import records from '../records.json';
 export const MapContentLayout = () => {
   const [markers, setMarkers] = useState<any>([]);
   const [place, setPlace] = useState<{
