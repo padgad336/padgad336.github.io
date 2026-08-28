@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Grid } from '@mui/joy';
+import { colors } from '../themeConfig';
 import { MapLayout } from '../components/Map';
 import axios from 'axios';
 import records from '../records.json';
@@ -241,8 +242,8 @@ export const MapContentLayout = () => {
             </Grid>
           </Card>
         </Grid> */}
-        <Grid xs={12} md={12} sm={12} sx={{ backgroundColor: 'purple' }}>
-          <Card sx={{ width: '100%', height: '100%' }}>
+        <Grid xs={12} md={12} sm={12}>
+          <Card sx={{ width: '100%', height: '100%', p: 1, borderColor: colors.borderMedium }}>
             <MapLayout markers={markers} />
           </Card>
         </Grid>

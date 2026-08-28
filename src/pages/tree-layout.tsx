@@ -4,9 +4,85 @@ import * as THREE from 'three';
 import { Easing, Tween, removeAll, update as updateTween } from '@tweenjs/tween.js';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
 import { CSS3DObject, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { accentAlpha, colors, fonts, gradients } from '../themeConfig';
 
-type LayoutMode = 'table' | 'sphere' | 'helix' | 'grid';
+type ElementInfo = {
+	atomicNumber: number;
+	symbol: string;
+	name: string;
+	mass: string;
+	tableColumn: number;
+	tableRow: number;
+	period: number;
+	category: ElementCategory;
+	phase: 'Solid' | 'Liquid' | 'Gas' | 'Unknown';
+	block: 's' | 'p' | 'd' | 'f';
+};
+
+type ElementCategory =
+	| 'Alkali metal'
+	| 'Alkaline earth metal'
+	| 'Transition metal'
+	| 'Post-transition metal'
+	| 'Metalloid'
+	| 'Reactive nonmetal'
+	| 'Halogen'
+	| 'Noble gas'
+	| 'Lanthanide'
+	| 'Actinide'
+	| 'Unknown';
+
+type ExplorerState =
+	| { status: 'loading' }
+	| { status: 'ready' }
+	| { status: 'selected'; element: ElementInfo };
+
+const categorySymbols: Record<Exclude<ElementCategory, 'Unknown'>, Set<string>> = {
+	'Alkali metal': new Set(['Li', 'Na', 'K', 'Rb', 'Cs', 'Fr']),
+	'Alkaline earth metal': new Set(['Be', 'Mg', 'Ca', 'Sr', 'Ba', 'Ra']),
+	'Transition metal': new Set(['Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn']),
+	'Post-transition metal': new Set(['Al', 'Ga', 'In', 'Sn', 'Tl', 'Pb', 'Bi', 'Po', 'Nh', 'Fl', 'Mc', 'Lv']),
+	Metalloid: new Set(['B', 'Si', 'Ge', 'As', 'Sb', 'Te']),
+	'Reactive nonmetal': new Set(['H', 'C', 'N', 'O', 'P', 'S', 'Se']),
+	Halogen: new Set(['F', 'Cl', 'Br', 'I', 'At', 'Ts']),
+	'Noble gas': new Set(['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn', 'Og']),
+	Lanthanide: new Set(['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu']),
+	Actinide: new Set(['Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr']),
+};
+
+const categoryColors: Record<ElementCategory, string> = {
+	'Alkali metal': 'rgba(151, 103, 35, .88)',
+	'Alkaline earth metal': 'rgba(132, 116, 38, .88)',
+	'Transition metal': 'rgba(36, 112, 72, .9)',
+	'Post-transition metal': 'rgba(48, 107, 91, .9)',
+	Metalloid: 'rgba(38, 118, 111, .9)',
+	'Reactive nonmetal': 'rgba(33, 109, 66, .9)',
+	Halogen: 'rgba(49, 123, 83, .9)',
+	'Noble gas': 'rgba(67, 102, 130, .9)',
+	Lanthanide: 'rgba(91, 105, 52, .9)',
+	Actinide: 'rgba(103, 87, 62, .9)',
+	Unknown: 'rgba(73, 103, 87, .9)',
+};
+
+const getCategory = (symbol: string): ElementCategory => {
+	const match = Object.entries(categorySymbols).find(([, symbols]) => symbols.has(symbol));
+	return (match?.[0] as ElementCategory | undefined) ?? 'Unknown';
+};
+
+const getPhase = (symbol: string, atomicNumber: number): ElementInfo['phase'] => {
+	if (new Set(['H', 'He', 'N', 'O', 'F', 'Ne', 'Cl', 'Ar', 'Kr', 'Xe', 'Rn']).has(symbol)) return 'Gas';
+	if (new Set(['Br', 'Hg']).has(symbol)) return 'Liquid';
+	if (atomicNumber >= 104) return 'Unknown';
+	return 'Solid';
+};
+
+const getBlock = (category: ElementCategory, tableColumn: number, symbol: string): ElementInfo['block'] => {
+	if (category === 'Lanthanide' || category === 'Actinide') return 'f';
+	if (symbol === 'He' || tableColumn <= 2) return 's';
+	if (tableColumn >= 13) return 'p';
+	return 'd';
+};
 
 const periodicTableData: Array<string | number> = [
 	'H', 'Hydrogen', '1.00794', 1, 1,
@@ -129,27 +205,35 @@ const periodicTableData: Array<string | number> = [
 	'Og', 'Oganesson', '(294)', 18, 7,
 ];
 
-const layoutModes: LayoutMode[] = ['table', 'sphere', 'helix', 'grid'];
-
 const periodicStyles = `
+	@keyframes periodicSpin {
+		to { transform: rotate(360deg); }
+	}
+
 	.periodic-table-element {
 		position: relative;
 		width: 120px;
 		height: 160px;
-		box-shadow: 0 0 12px rgba(0, 255, 255, 0.45);
-		border: 1px solid rgba(127, 255, 255, 0.2);
+		box-shadow: 0 10px 28px rgba(15, 104, 64, 0.18);
+		border: 1px solid rgba(22, 121, 74, 0.28);
 		font-family: Helvetica, Arial, sans-serif;
 		text-align: center;
 		line-height: normal;
-		cursor: default;
+		cursor: pointer;
+		user-select: none;
 		backdrop-filter: blur(10px);
-		transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+		transition: box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.28s ease;
 	}
 
 	.periodic-table-element:hover {
-		box-shadow: 0 0 16px rgba(0, 255, 255, 0.7);
-		border-color: rgba(127, 255, 255, 0.7);
+		box-shadow: 0 14px 32px rgba(15, 104, 64, 0.28);
+		border-color: rgba(22, 121, 74, 0.7);
 		transform: translateY(-2px);
+	}
+
+	.periodic-table-element:focus-visible {
+		outline: 3px solid rgba(22, 121, 74, 0.72);
+		outline-offset: 4px;
 	}
 
 	.periodic-table-number {
@@ -157,7 +241,7 @@ const periodicStyles = `
 		top: 18px;
 		right: 18px;
 		font-size: 12px;
-		color: rgba(200, 255, 255, 0.72);
+		color: rgba(234, 255, 241, 0.82);
 	}
 
 	.periodic-table-symbol {
@@ -168,7 +252,7 @@ const periodicStyles = `
 		font-size: 58px;
 		font-weight: 700;
 		color: rgba(255, 255, 255, 0.82);
-		text-shadow: 0 0 14px rgba(0, 255, 255, 0.95);
+		text-shadow: 0 0 14px rgba(22, 121, 74, 0.7);
 	}
 
 	.periodic-table-details {
@@ -177,30 +261,34 @@ const periodicStyles = `
 		left: 0;
 		right: 0;
 		font-size: 12px;
-		color: rgba(180, 255, 255, 0.75);
+		color: rgba(226, 255, 236, 0.82);
 		line-height: 1.45;
 		padding: 0 10px;
 	}
 `;
 
-const createElementCard = (index: number, symbolText: string, name: string, mass: string) => {
+const createElementCard = (info: ElementInfo) => {
 	const element = document.createElement('div');
 	element.className = 'periodic-table-element';
-	element.style.backgroundColor = `rgba(0, 127, 127, ${Math.random() * 0.5 + 0.25})`;
+	element.tabIndex = 0;
+	element.setAttribute('role', 'button');
+	element.setAttribute('aria-label', `View details for ${info.name}`);
+	element.dataset.category = info.category;
+	element.style.backgroundColor = categoryColors[info.category];
 
 	const number = document.createElement('div');
 	number.className = 'periodic-table-number';
-	number.textContent = String(index + 1);
+	number.textContent = String(info.atomicNumber);
 	element.appendChild(number);
 
 	const symbol = document.createElement('div');
 	symbol.className = 'periodic-table-symbol';
-	symbol.textContent = symbolText;
+	symbol.textContent = info.symbol;
 	element.appendChild(symbol);
 
 	const details = document.createElement('div');
 	details.className = 'periodic-table-details';
-	details.innerHTML = `${name}<br>${mass}`;
+	details.innerHTML = `${info.name}<br>${info.mass}`;
 	element.appendChild(details);
 
 	return element;
@@ -208,8 +296,11 @@ const createElementCard = (index: number, symbolText: string, name: string, mass
 
 export const TreeContentLayout: React.FC = () => {
 	const mountRef = React.useRef<HTMLDivElement | null>(null);
-	const transformRef = React.useRef<((layout: LayoutMode) => void) | null>(null);
-	const [activeLayout, setActiveLayout] = React.useState<LayoutMode>('table');
+	const focusRef = React.useRef<((index: number | null) => void) | null>(null);
+	const readyRef = React.useRef(false);
+	const [explorerState, setExplorerState] = React.useState<ExplorerState>({ status: 'loading' });
+	const selectedElement = explorerState.status === 'selected' ? explorerState.element : null;
+	const isReady = explorerState.status !== 'loading';
 
 	React.useEffect(() => {
 		const mountNode = mountRef.current;
@@ -218,34 +309,51 @@ export const TreeContentLayout: React.FC = () => {
 			return undefined;
 		}
 
+		readyRef.current = false;
+		setExplorerState({ status: 'loading' });
 		let animationFrameId = 0;
 		const objects: CSS3DObject[] = [];
-		const targets: Record<LayoutMode, THREE.Object3D[]> = {
-			table: [],
-			sphere: [],
-			helix: [],
-			grid: [],
-		};
+		const tableTargets: THREE.Object3D[] = [];
+		const elementInfos: ElementInfo[] = [];
 
 		const getViewportSize = () => ({
 			width: mountNode.clientWidth || window.innerWidth,
 			height: mountNode.clientHeight || window.innerHeight,
 		});
+		const getTableCameraDistance = (width: number, height: number) => {
+			const aspect = Math.max(width / height, 0.2);
+			const verticalFov = THREE.MathUtils.degToRad(40);
+			const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * aspect);
+			const distanceForWidth = 2520 / (2 * Math.tan(horizontalFov / 2));
+			const distanceForHeight = 1820 / (2 * Math.tan(verticalFov / 2));
+			return Math.max(distanceForWidth, distanceForHeight) * 1.08;
+		};
 
 		const initialSize = getViewportSize();
-		const camera = new THREE.PerspectiveCamera(40, initialSize.width / initialSize.height, 1, 10000);
-		camera.position.z = 3000;
+		const camera = new THREE.PerspectiveCamera(40, initialSize.width / initialSize.height, 1, 25000);
+		camera.position.z = getTableCameraDistance(initialSize.width, initialSize.height);
 
 		const scene = new THREE.Scene();
-		const vector = new THREE.Vector3();
 
 		for (let i = 0; i < periodicTableData.length; i += 5) {
-			const element = createElementCard(
-				i / 5,
-				String(periodicTableData[i]),
-				String(periodicTableData[i + 1]),
-				String(periodicTableData[i + 2]),
-			);
+			const symbol = String(periodicTableData[i]);
+			const atomicNumber = (i / 5) + 1;
+			const tableColumn = Number(periodicTableData[i + 3]);
+			const tableRow = Number(periodicTableData[i + 4]);
+			const category = getCategory(symbol);
+			const info: ElementInfo = {
+				atomicNumber,
+				symbol,
+				name: String(periodicTableData[i + 1]),
+				mass: String(periodicTableData[i + 2]),
+				tableColumn,
+				tableRow,
+				period: tableRow === 9 ? 6 : tableRow === 10 ? 7 : tableRow,
+				category,
+				phase: getPhase(symbol, atomicNumber),
+				block: getBlock(category, tableColumn, symbol),
+			};
+			const element = createElementCard(info);
 
 			const objectCss = new CSS3DObject(element);
 			objectCss.position.x = Math.random() * 4000 - 2000;
@@ -253,42 +361,12 @@ export const TreeContentLayout: React.FC = () => {
 			objectCss.position.z = Math.random() * 4000 - 2000;
 			scene.add(objectCss);
 			objects.push(objectCss);
+			elementInfos.push(info);
 
 			const tableObject = new THREE.Object3D();
 			tableObject.position.x = (Number(periodicTableData[i + 3]) * 140) - 1330;
 			tableObject.position.y = -(Number(periodicTableData[i + 4]) * 180) + 990;
-			targets.table.push(tableObject);
-		}
-
-		for (let i = 0; i < objects.length; i += 1) {
-			const phi = Math.acos(-1 + (2 * i) / objects.length);
-			const theta = Math.sqrt(objects.length * Math.PI) * phi;
-			const sphereObject = new THREE.Object3D();
-
-			sphereObject.position.setFromSphericalCoords(800, phi, theta);
-			vector.copy(sphereObject.position).multiplyScalar(2);
-			sphereObject.lookAt(vector);
-			targets.sphere.push(sphereObject);
-		}
-
-		for (let i = 0; i < objects.length; i += 1) {
-			const theta = i * 0.175 + Math.PI;
-			const y = -(i * 8) + 450;
-			const helixObject = new THREE.Object3D();
-
-			helixObject.position.setFromCylindricalCoords(900, theta, y);
-			vector.set(helixObject.position.x * 2, helixObject.position.y, helixObject.position.z * 2);
-			helixObject.lookAt(vector);
-			targets.helix.push(helixObject);
-		}
-
-		for (let i = 0; i < objects.length; i += 1) {
-			const gridObject = new THREE.Object3D();
-
-			gridObject.position.x = ((i % 5) * 400) - 800;
-			gridObject.position.y = (-(Math.floor(i / 5) % 5) * 400) + 800;
-			gridObject.position.z = Math.floor(i / 25) * 1000 - 2000;
-			targets.grid.push(gridObject);
+			tableTargets.push(tableObject);
 		}
 
 		const renderer = new CSS3DRenderer();
@@ -302,43 +380,101 @@ export const TreeContentLayout: React.FC = () => {
 		};
 
 		const controls = new TrackballControls(camera, renderer.domElement);
-		controls.minDistance = 500;
-		controls.maxDistance = 6000;
+		controls.minDistance = 700;
+		controls.maxDistance = 18000;
 		controls.rotateSpeed = 0.6;
 		controls.addEventListener('change', render);
+		let activeElementIndex: number | null = null;
 
-		const transform = (layout: LayoutMode, duration: number) => {
+		const resetCameraToFit = () => {
+			const { width, height } = getViewportSize();
+			camera.aspect = width / height;
+			camera.position.set(0, 0, getTableCameraDistance(width, height));
+			camera.up.set(0, 1, 0);
+			camera.lookAt(0, 0, 0);
+			camera.updateProjectionMatrix();
+			controls.target.set(0, 0, 0);
+			controls.update();
+		};
+
+		const focusElement = (selectedIndex: number | null, duration = 700, markReady = false) => {
 			removeAll();
+			activeElementIndex = selectedIndex;
+			controls.enabled = selectedIndex === null;
+			resetCameraToFit();
+			const viewport = getViewportSize();
+			const isPhone = viewport.width < 600;
+			const focusDistance = isPhone ? 850 : 950;
+			const focusPosition = {
+				x: isPhone ? 0 : -220,
+				y: isPhone ? 145 : 30,
+				z: camera.position.z - focusDistance,
+			};
 
 			for (let i = 0; i < objects.length; i += 1) {
 				const object = objects[i];
-				const target = targets[layout][i];
-				const tweenDuration = Math.random() * duration + duration;
+				const tableTarget = tableTargets[i];
+				const isSelected = selectedIndex === i;
+				const targetPosition = isSelected
+					? focusPosition
+					: { x: tableTarget.position.x, y: tableTarget.position.y, z: tableTarget.position.z };
+				const tweenDuration = isSelected ? duration : Math.min(1000, duration + Math.random() * 250);
+				object.element.style.opacity = selectedIndex === null || isSelected ? '1' : '.24';
 
-				new Tween(object.position)
-					.to({ x: target.position.x, y: target.position.y, z: target.position.z }, tweenDuration)
+				new Tween(object.position, true)
+					.to(targetPosition, tweenDuration)
 					.easing(Easing.Exponential.InOut)
 					.start();
 
-				new Tween(object.rotation)
-					.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, tweenDuration)
+				new Tween(object.rotation, true)
+					.to({ x: tableTarget.rotation.x, y: tableTarget.rotation.y, z: tableTarget.rotation.z }, tweenDuration)
+					.easing(Easing.Exponential.InOut)
+					.start();
+
+				new Tween(object.scale, true)
+					.to({ x: isSelected ? (isPhone ? 1.35 : 1.5) : 1, y: isSelected ? (isPhone ? 1.35 : 1.5) : 1, z: isSelected ? (isPhone ? 1.35 : 1.5) : 1 }, tweenDuration)
 					.easing(Easing.Exponential.InOut)
 					.start();
 			}
 
-			new Tween({ progress: 0 })
-				.to({ progress: 1 }, duration * 2)
+			new Tween({ progress: 0 }, true)
+				.to({ progress: 1 }, Math.max(duration, 1000))
 				.onUpdate(render)
+				.onComplete(() => {
+					if (markReady) {
+						readyRef.current = true;
+						setExplorerState({ status: 'ready' });
+					}
+				})
 				.start();
 		};
+
+		objects.forEach((object, index) => {
+			const select = () => {
+				if (!readyRef.current) return;
+				setExplorerState({ status: 'selected', element: elementInfos[index] });
+				focusElement(index);
+			};
+			object.element.addEventListener('pointerdown', (event) => {
+				// TrackballControls captures pointer events at the renderer level.
+				// Stop propagation here so selecting a card remains reliable on desktop.
+				event.stopPropagation();
+				select();
+			});
+			object.element.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault();
+					select();
+				}
+			});
+		});
 
 		const handleResize = () => {
 			const { width, height } = getViewportSize();
 
-			camera.aspect = width / height;
-			camera.updateProjectionMatrix();
 			renderer.setSize(width, height);
-			render();
+			if (activeElementIndex === null) resetCameraToFit();
+			else focusElement(activeElementIndex, 0);
 		};
 
 		const animate = (time?: number) => {
@@ -347,13 +483,14 @@ export const TreeContentLayout: React.FC = () => {
 			controls.update();
 		};
 
-		transformRef.current = (layout: LayoutMode) => transform(layout, 2000);
-		transform('table', 2000);
+		focusRef.current = (index: number | null) => focusElement(index);
+		focusElement(null, 1000, true);
 		animate();
 		window.addEventListener('resize', handleResize);
 
 		return () => {
-			transformRef.current = null;
+			focusRef.current = null;
+			readyRef.current = false;
 			window.removeEventListener('resize', handleResize);
 			window.cancelAnimationFrame(animationFrameId);
 			controls.removeEventListener('change', render);
@@ -368,16 +505,18 @@ export const TreeContentLayout: React.FC = () => {
 		};
 	}, []);
 
-	const handleLayoutChange = (layout: LayoutMode) => {
-		setActiveLayout(layout);
-		transformRef.current?.(layout);
+	const clearSelection = () => {
+		setExplorerState({ status: 'ready' });
+		focusRef.current?.(null);
 	};
 
 	return (
 		<Box
+			data-state={explorerState.status}
 			sx={{
 				position: 'relative',
-				minHeight: 'calc(100vh - 56px)',
+				height: 'calc(100dvh - 56px)',
+				minHeight: 560,
 				overflow: 'hidden',
 				background: `radial-gradient(circle at top, ${accentAlpha(0.12)}, transparent 40%), ${gradients.body}`,
 			}}
@@ -389,13 +528,33 @@ export const TreeContentLayout: React.FC = () => {
 					position: 'absolute',
 					inset: 0,
 					background:
-						'radial-gradient(circle at 20% 20%, rgba(0,255,255,0.08), transparent 26%), radial-gradient(circle at 80% 24%, rgba(196,160,255,0.12), transparent 28%), radial-gradient(circle at 50% 90%, rgba(123,224,200,0.1), transparent 34%)',
+						'radial-gradient(circle at 20% 20%, rgba(22,121,74,0.10), transparent 26%), radial-gradient(circle at 80% 24%, rgba(86,153,111,0.12), transparent 28%), radial-gradient(circle at 50% 90%, rgba(143,194,158,0.12), transparent 34%)',
 					pointerEvents: 'none',
 					zIndex: 0,
 				}}
 			/>
 
 			<Box ref={mountRef} sx={{ position: 'absolute', inset: 0, zIndex: 1 }} />
+			{!isReady && (
+				<Box
+					role='status'
+					aria-live='polite'
+					sx={{
+						position: 'absolute',
+						inset: 0,
+						zIndex: 3,
+						display: 'grid',
+						placeItems: 'center',
+						background: 'rgba(248, 252, 249, 0.78)',
+						backdropFilter: 'blur(5px)',
+					}}
+				>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, px: 2, py: 1.35, borderRadius: '12px', border: `1px solid ${accentAlpha(0.2)}`, background: 'rgba(255,255,255,.92)', boxShadow: '0 16px 32px -24px rgba(15,104,64,.65)' }}>
+						<Box sx={{ width: 17, height: 17, borderRadius: '50%', border: `2px solid ${accentAlpha(0.2)}`, borderTopColor: colors.accent, animation: 'periodicSpin .75s linear infinite' }} />
+						<Typography sx={{ fontFamily: fonts.mono, color: colors.textBody, fontSize: 12 }}>Preparing periodic table…</Typography>
+					</Box>
+				</Box>
+			)}
 
 			<Box
 				sx={{
@@ -404,71 +563,73 @@ export const TreeContentLayout: React.FC = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-between',
-					minHeight: 'calc(100vh - 56px)',
+					height: '100%',
 					pointerEvents: 'none',
 					p: { xs: 2, md: 3 },
 				}}
 			>
-				<Box
-					sx={{
-						alignSelf: 'flex-start',
-						maxWidth: 520,
-						px: 2,
-						py: 1.5,
-						border: `1px solid ${accentAlpha(0.18)}`,
-						background: 'rgba(8, 14, 24, 0.58)',
-						backdropFilter: 'blur(14px)',
-						pointerEvents: 'auto',
-					}}
-				>
-					<Typography sx={{ fontFamily: fonts.mono, fontSize: 12, color: colors.secondary, letterSpacing: '0.18em', mb: 0.8 }}>
-						THREE.JS CSS3D DEMO
+				{isReady && !selectedElement && (
+					<Typography sx={{ alignSelf: 'flex-start', px: 1, py: .5, borderRadius: '6px', background: 'rgba(255,255,255,.7)', color: colors.textMuted, fontFamily: fonts.mono, fontSize: 10.5, pointerEvents: 'none' }}>
+						Click an element to inspect · drag to rotate · scroll to zoom
 					</Typography>
-					<Typography sx={{ fontFamily: fonts.mono, fontSize: { xs: 20, md: 26 }, fontWeight: 700, color: colors.text, mb: 0.8 }}>
-						Periodic Table Explorer
-					</Typography>
-					<Typography sx={{ fontFamily: fonts.mono, fontSize: 12, lineHeight: 1.7, color: colors.textMuted }}>
-						ลากเพื่อหมุน, ซูมด้วยสกอลล์, แล้วสลับ layout ระหว่าง table, sphere, helix และ grid ได้จากปุ่มด้านล่าง
-					</Typography>
-				</Box>
+				)}
 
-				<Box
-					sx={{
-						display: 'flex',
-						justifyContent: 'center',
-						flexWrap: 'wrap',
-						gap: 1,
-						pointerEvents: 'auto',
-					}}
-				>
-					{layoutModes.map((layout) => {
-						const selected = activeLayout === layout;
-
-						return (
-							<Button
-								key={layout}
-								variant='plain'
-								onClick={() => handleLayoutChange(layout)}
-								sx={{
-									minWidth: 108,
-									borderRadius: 0,
-									border: `1px solid ${selected ? 'rgba(127,255,255,0.7)' : 'rgba(127,255,255,0.3)'}`,
-									background: selected ? 'rgba(0,255,255,0.18)' : 'rgba(8, 16, 24, 0.58)',
-									color: selected ? '#dfffff' : 'rgba(180,255,255,0.75)',
-									fontFamily: fonts.mono,
-									letterSpacing: '0.08em',
-									backdropFilter: 'blur(12px)',
-									'&:hover': {
-										background: 'rgba(0,255,255,0.28)',
-										color: '#f5ffff',
-									},
-								}}
-							>
-								{layout.toUpperCase()}
+				{selectedElement && (
+					<Box
+						sx={{
+							position: { md: 'absolute' },
+							top: { md: 92 },
+							right: { md: 24 },
+							alignSelf: { xs: 'flex-end', md: 'auto' },
+							width: { xs: '100%', sm: 310 },
+							mt: 'auto',
+							p: 2.25,
+							borderRadius: '14px',
+							border: `1px solid ${accentAlpha(0.25)}`,
+							background: 'rgba(255, 255, 255, 0.94)',
+							boxShadow: '0 20px 42px -28px rgba(15, 104, 64, 0.65)',
+							backdropFilter: 'blur(16px)',
+							pointerEvents: 'auto',
+						}}
+					>
+						<Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 1 }}>
+							<Box>
+								<Typography sx={{ fontFamily: fonts.mono, color: colors.accent, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em' }}>
+									ELEMENT #{selectedElement.atomicNumber}
+								</Typography>
+							<Typography sx={{ color: colors.text, fontSize: 24, fontWeight: 700, mt: .4 }}>
+								{selectedElement.name}
+							</Typography>
+							<Box sx={{ display: 'inline-flex', alignItems: 'center', gap: .65, mt: .7 }}>
+								<Box sx={{ width: 7, height: 7, borderRadius: '50%', background: categoryColors[selectedElement.category] }} />
+								<Typography sx={{ color: colors.textMuted, fontFamily: fonts.mono, fontSize: 10.5 }}>{selectedElement.category}</Typography>
+							</Box>
+							</Box>
+							<Button variant='plain' size='sm' aria-label='Close element details' onClick={clearSelection} sx={{ minWidth: 32, p: .5, color: colors.textMuted }}>
+								<CloseRoundedIcon sx={{ fontSize: 18 }} />
 							</Button>
-						);
-					})}
-				</Box>
+						</Box>
+						<Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1.25, mt: 1.5, pb: 1.75, borderBottom: `1px solid ${colors.borderLight}` }}>
+							<Typography sx={{ color: colors.accentDeep, fontFamily: fonts.mono, fontSize: 58, fontWeight: 700, lineHeight: 1 }}>{selectedElement.symbol}</Typography>
+							<Typography sx={{ color: colors.textMuted, fontFamily: fonts.mono, fontSize: 12 }}>Atomic mass\n{selectedElement.mass}</Typography>
+						</Box>
+						<Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1.25, mt: 1.75 }}>
+							{[
+								['Atomic number', selectedElement.atomicNumber],
+								['Atomic mass', selectedElement.mass],
+								['Period', selectedElement.period],
+								['Electron block', `${selectedElement.block}-block`],
+								['Phase at 20°C', selectedElement.phase],
+								['Table position', `${selectedElement.tableColumn} / ${selectedElement.tableRow}`],
+							].map(([label, value]) => (
+								<Box key={String(label)} sx={{ p: 1.1, borderRadius: '8px', background: accentAlpha(0.06) }}>
+									<Typography sx={{ color: colors.textDim, fontFamily: fonts.mono, fontSize: 9.5, textTransform: 'uppercase', letterSpacing: '.06em' }}>{label}</Typography>
+									<Typography sx={{ color: colors.textBody, fontFamily: fonts.mono, fontSize: 13, fontWeight: 700, mt: .25 }}>{value}</Typography>
+								</Box>
+							))}
+						</Box>
+					</Box>
+				)}
 			</Box>
 		</Box>
 	);

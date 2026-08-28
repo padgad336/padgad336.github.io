@@ -111,12 +111,12 @@ const sx = {
   root: {
     p: { xs: 2, md: 3 },
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: colors.text,
     minHeight: 'calc(100vh - 56px)',
   },
-  title: { color: colors.accent, mb: 0.5, fontSize: 22, fontWeight: 700, fontFamily: fonts.mono },
-  subtitle: { color: colors.textMuted, mb: 2, fontSize: 12, fontFamily: fonts.mono },
+  title: { color: colors.text, mb: 0.75, fontSize: { xs: 23, md: 28 }, fontWeight: 700, fontFamily: fonts.mono },
+  subtitle: { color: colors.textMuted, mb: 2.5, fontSize: 14, lineHeight: 1.65, fontFamily: fonts.body },
   fileInput: {
     mb: 2.5,
     '& input': {
@@ -126,7 +126,7 @@ const sx = {
       p: '12px 20px',
       borderRadius: '6px',
       cursor: 'pointer',
-      fontSize: 13,
+      fontSize: 14,
       fontFamily: fonts.mono,
       '&:hover': { borderColor: colors.accent },
     },
@@ -134,20 +134,20 @@ const sx = {
   tabs: { display: 'flex', gap: '2px', flexWrap: 'wrap', mb: 0 },
   tab: {
     px: 2,
-    py: 1,
+    py: 1.15,
     background: colors.surfaceSolid,
     border: `1px solid ${accentAlpha(0.12)}`,
     borderBottom: 'none',
     borderRadius: '6px 6px 0 0',
     cursor: 'pointer',
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: fonts.mono,
     transition: 'all 0.15s',
     '&:hover': { color: colors.text, background: colors.surface },
   },
   tabActive: {
-    background: colors.surface,
+    background: colors.surfaceSolid,
     color: colors.accent,
     borderColor: colors.accent,
     fontWeight: 'bold',
@@ -158,21 +158,21 @@ const sx = {
     px: '6px',
     py: '1px',
     borderRadius: '10px',
-    fontSize: 10,
+    fontSize: 11,
     ml: 0.5,
     display: 'inline-block',
   },
   badgeActive: { background: colors.accentDeep, color: '#fff' },
   tabContent: {
-    background: colors.surface,
-    border: `1px solid ${accentAlpha(0.12)}`,
-    borderRadius: '0 6px 6px 6px',
-    p: 2,
+    background: colors.surfaceSolid,
+    border: `1px solid ${colors.border}`,
+    borderRadius: '0 10px 10px 10px',
+    p: { xs: 1.5, md: 2.5 },
     mb: 2.5,
   },
   sectionTitle: {
     color: colors.accent,
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: 'bold',
     fontFamily: fonts.mono,
     mb: 1.5,
@@ -181,30 +181,30 @@ const sx = {
   },
   card: {
     background: colors.surfaceSolid,
-    border: `1px solid ${accentAlpha(0.12)}`,
-    borderRadius: '6px',
-    p: 1.5,
+    border: `1px solid ${colors.borderLight}`,
+    borderRadius: '10px',
+    p: 2,
     mb: 1,
     '&:hover': { borderColor: accentAlpha(0.25) },
   },
-  label: { color: colors.textMuted, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.5px' },
-  value: { color: colors.text, mt: 0.3, wordBreak: 'break-all' },
+  label: { color: colors.textMuted, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' },
+  value: { color: colors.text, mt: 0.4, fontSize: 13.5, lineHeight: 1.55, wordBreak: 'break-all' },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 1.2 },
   tag: {
     display: 'inline-block',
     px: 1,
     py: '2px',
     borderRadius: '12px',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 'bold',
     m: '2px',
     fontFamily: fonts.mono,
   },
-  empty: { color: colors.textDim, fontStyle: 'italic', p: 2.5, textAlign: 'center' },
+  empty: { color: colors.textDim, fontSize: 13, fontStyle: 'italic', p: 2.5, textAlign: 'center' },
   table: {
     width: '100%',
     borderCollapse: 'collapse',
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: fonts.mono,
     '& th': {
       textAlign: 'left',
@@ -214,7 +214,7 @@ const sx = {
       borderBottom: `1px solid ${accentAlpha(0.12)}`,
       fontWeight: 600,
       textTransform: 'uppercase',
-      fontSize: 11,
+      fontSize: 12,
       letterSpacing: '0.5px',
     },
     '& td': { p: '6px 10px', borderBottom: `1px solid ${accentAlpha(0.08)}`, verticalAlign: 'top' },
@@ -224,13 +224,13 @@ const sx = {
 
 /* tag colors matching theme */
 const tagColors = {
-  green: { bg: 'rgba(59,130,80,0.15)', color: '#3fb950', border: '1px solid rgba(59,130,80,0.4)' },
-  red: { bg: 'rgba(248,81,73,0.12)', color: '#f85149', border: '1px solid rgba(248,81,73,0.3)' },
-  yellow: { bg: 'rgba(210,153,34,0.12)', color: '#d29922', border: '1px solid rgba(210,153,34,0.3)' },
+  green: { bg: 'rgba(36,122,66,0.12)', color: '#247a42', border: '1px solid rgba(36,122,66,0.32)' },
+  red: { bg: 'rgba(180,35,24,0.08)', color: '#b42318', border: '1px solid rgba(180,35,24,0.25)' },
+  yellow: { bg: 'rgba(153,107,0,0.10)', color: '#805b00', border: '1px solid rgba(153,107,0,0.28)' },
   blue: { bg: accentAlpha(0.12), color: colors.accent, border: `1px solid ${accentAlpha(0.3)}` },
-  purple: { bg: 'rgba(154,123,255,0.12)', color: colors.accentDeep, border: `1px solid rgba(154,123,255,0.3)` },
-  cyan: { bg: 'rgba(123,224,200,0.12)', color: colors.secondary, border: `1px solid rgba(123,224,200,0.3)` },
-  orange: { bg: 'rgba(240,136,62,0.12)', color: '#f0883e', border: '1px solid rgba(240,136,62,0.3)' },
+  purple: { bg: accentAlpha(0.10), color: colors.accentDeep, border: `1px solid ${accentAlpha(0.28)}` },
+  cyan: { bg: 'rgba(63,127,91,0.10)', color: colors.secondary, border: '1px solid rgba(63,127,91,0.28)' },
+  orange: { bg: 'rgba(165,82,22,0.09)', color: '#a55216', border: '1px solid rgba(165,82,22,0.25)' },
 };
 
 const Tag: React.FC<{ color: keyof typeof tagColors; children: React.ReactNode }> = ({ color, children }) => (
@@ -757,7 +757,7 @@ function OverviewTab({
                 </Tag>
               ))}
               {c.byeReason && (
-                <Box sx={{ color: colors.textMuted, fontSize: 11, mt: 0.5 }}>BYE Reason: {c.byeReason}</Box>
+                <Box sx={{ color: colors.textMuted, fontSize: 12, mt: 0.5 }}>BYE Reason: {c.byeReason}</Box>
               )}
             </Box>
           );
@@ -788,7 +788,7 @@ function OverviewTab({
                   }}
                 >
                   {ip}
-                  <Box component='span' sx={{ fontSize: 10, color: colors.textMuted }}>
+                  <Box component='span' sx={{ fontSize: 11, color: colors.textMuted }}>
                     :{port}
                   </Box>
                 </Box>
@@ -886,7 +886,7 @@ function RegisterTab({ registers }: { registers: RegisterInfo[] }) {
             </Box>
             <Box>
               <Box sx={sx.label}>Call-ID</Box>
-              <Box sx={{ ...sx.value, fontSize: 11 }}>{r.callId}</Box>
+              <Box sx={{ ...sx.value, fontSize: 12 }}>{r.callId}</Box>
             </Box>
           </Box>
         </Box>
@@ -921,7 +921,7 @@ function CallsTab({ calls }: { calls: CallInfo[] }) {
               </Box>
               <Box>
                 <Box sx={sx.label}>To (โทรไป)</Box>
-                <Box sx={{ ...sx.value, fontSize: 18, color: '#f0883e', fontWeight: 'bold' }}>{c.calledNumber}</Box>
+                <Box sx={{ ...sx.value, fontSize: 18, color: '#934a12', fontWeight: 'bold' }}>{c.calledNumber}</Box>
               </Box>
               <Box>
                 <Box sx={sx.label}>Status</Box>
@@ -973,13 +973,13 @@ function CallsTab({ calls }: { calls: CallInfo[] }) {
                   </Box>
                   <Box>
                     <Box sx={sx.label}>DTLS Fingerprint</Box>
-                    <Box sx={{ ...sx.value, fontSize: 10 }}>{c.sdpInfo.fingerprint || 'N/A'}</Box>
+                    <Box sx={{ ...sx.value, fontSize: 11 }}>{c.sdpInfo.fingerprint || 'N/A'}</Box>
                   </Box>
                 </>
               )}
               <Box>
                 <Box sx={sx.label}>Call-ID</Box>
-                <Box sx={{ ...sx.value, fontSize: 11 }}>{c.callId}</Box>
+                <Box sx={{ ...sx.value, fontSize: 12 }}>{c.callId}</Box>
               </Box>
             </Box>
             <Box sx={{ mt: 1.5 }}>
@@ -1139,9 +1139,9 @@ function NatTab({ natInfo }: { natInfo: NatInfo }) {
                 <tr key={i}>
                   <td>{ice.from}</td>
                   <td>{ice.direction || 'N/A'}</td>
-                  <td style={{ fontSize: 11 }}>{ice.ufrag || ''}</td>
-                  <td style={{ fontSize: 11 }}>{ice.pwd || ''}</td>
-                  <td style={{ fontSize: 10, wordBreak: 'break-all' }}>{ice.fingerprint || 'N/A'}</td>
+                  <td style={{ fontSize: 12 }}>{ice.ufrag || ''}</td>
+                  <td style={{ fontSize: 12 }}>{ice.pwd || ''}</td>
+                  <td style={{ fontSize: 11, wordBreak: 'break-all' }}>{ice.fingerprint || 'N/A'}</td>
                 </tr>
               ))}
             </tbody>
@@ -1199,12 +1199,12 @@ function CodecTab({ codecInfo }: { codecInfo: CodecSession[] }) {
             </Box>
             <Box>
               <Box sx={sx.label}>DTLS Fingerprint</Box>
-              <Box sx={{ ...sx.value, fontSize: 10 }}>{s.fingerprint || 'N/A'}</Box>
+              <Box sx={{ ...sx.value, fontSize: 11 }}>{s.fingerprint || 'N/A'}</Box>
             </Box>
             {s.ssrc.length > 0 && (
               <Box>
                 <Box sx={sx.label}>SSRC</Box>
-                <Box sx={{ ...sx.value, fontSize: 11 }}>{s.ssrc.join(', ')}</Box>
+                <Box sx={{ ...sx.value, fontSize: 12 }}>{s.ssrc.join(', ')}</Box>
               </Box>
             )}
           </Box>

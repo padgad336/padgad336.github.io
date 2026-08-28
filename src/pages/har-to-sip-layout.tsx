@@ -15,31 +15,32 @@ const sx = {
   root: {
     p: { xs: 2, md: 3 },
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: colors.text,
     minHeight: 'calc(100vh - 56px)',
-    maxWidth: 900,
+    maxWidth: 960,
     mx: 'auto',
   },
-  title: { color: colors.accent, mb: 0.5, fontSize: 22, fontWeight: 700, fontFamily: fonts.mono },
-  subtitle: { color: colors.textMuted, mb: 3, fontSize: 12, fontFamily: fonts.mono },
+  title: { color: colors.text, mb: 0.75, fontSize: { xs: 23, md: 28 }, fontWeight: 700, fontFamily: fonts.mono },
+  subtitle: { color: colors.textMuted, mb: 3, fontSize: 14, lineHeight: 1.65, fontFamily: fonts.body },
   card: {
     background: colors.surfaceSolid,
-    border: `1px solid ${accentAlpha(0.12)}`,
-    borderRadius: '8px',
-    p: 2.5,
+    border: `1px solid ${colors.border}`,
+    borderRadius: '12px',
+    p: { xs: 2, md: 3 },
+    boxShadow: '0 10px 28px -26px rgba(20,65,42,.5)',
     mb: 2,
   },
   label: {
     color: colors.accent,
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: fonts.mono,
     fontWeight: 600,
     textTransform: 'uppercase',
     letterSpacing: '0.5px',
     mb: 1,
   },
-  hint: { color: colors.textMuted, fontSize: 11, mt: 0.5, fontFamily: fonts.mono },
+  hint: { color: colors.textMuted, fontSize: 12.5, lineHeight: 1.55, mt: 0.65, fontFamily: fonts.body },
   resultBox: {
     mt: 2,
     background: colors.surfaceDarkest,
@@ -49,7 +50,7 @@ const sx = {
     maxHeight: 400,
     overflow: 'auto',
     whiteSpace: 'pre-wrap',
-    fontSize: 11,
+    fontSize: 13,
     fontFamily: fonts.mono,
     color: colors.textBody,
   },
@@ -58,7 +59,7 @@ const sx = {
     px: 1,
     py: '2px',
     borderRadius: '12px',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 'bold',
     fontFamily: fonts.mono,
     m: '2px',
@@ -374,7 +375,7 @@ export const HarToSipLayout: React.FC = () => {
         </Box>
 
         {error && (
-          <Typography sx={{ color: '#f85149', fontSize: 12, mt: 1.5, fontFamily: fonts.mono }}>✗ {error}</Typography>
+          <Typography sx={{ color: '#b42318', fontSize: 13, mt: 1.5, fontFamily: fonts.mono }}>✗ {error}</Typography>
         )}
 
         {result && (
@@ -407,7 +408,7 @@ export const HarToSipLayout: React.FC = () => {
                 sx={{
                   ...sx.stat,
                   background: 'rgba(240,136,62,0.12)',
-                  color: '#f0883e',
+                  color: '#934a12',
                   border: '1px solid rgba(240,136,62,0.3)',
                 }}
               >

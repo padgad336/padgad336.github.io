@@ -1,5 +1,5 @@
 import { extendTheme } from '@mui/joy/styles';
-import { colors, gradients, fonts, accentAlpha } from './themeConfig';
+import { colors, gradients, fonts } from './themeConfig';
 
 export default extendTheme({
   cssVarPrefix: 'space',
@@ -8,34 +8,52 @@ export default extendTheme({
       palette: {
         primary: {
           solidBg: colors.accentDeep,
-          solidHoverBg: '#8a6bf5',
-          solidActiveBg: '#7a5be6',
+          solidHoverBg: '#0c5a37',
+          solidActiveBg: '#094c2f',
+          outlinedColor: colors.accentDeep,
+          outlinedBorder: colors.borderMedium,
+          plainColor: colors.accentDeep,
         },
         neutral: {
-          outlinedBorder: accentAlpha(0.2),
+          outlinedBorder: colors.borderMedium,
+          outlinedColor: colors.textBody,
         },
         background: {
           body: gradients.body,
-          surface: 'rgba(255,255,255,0.65)',
-          popup: 'rgba(255,255,255,0.75)',
+          surface: colors.surface,
+          popup: '#ffffff',
         },
+        text: {
+          primary: colors.text,
+          secondary: colors.textBody,
+          tertiary: colors.textMuted,
+        },
+        focusVisible: colors.accent,
       },
     },
     dark: {
       palette: {
         primary: {
           solidBg: colors.accentDeep,
-          solidHoverBg: '#8a6bf5',
-          solidActiveBg: '#7a5be6',
-          outlinedBorder: accentAlpha(0.25),
+          solidHoverBg: '#0c5a37',
+          solidActiveBg: '#094c2f',
+          outlinedColor: colors.accentDeep,
+          outlinedBorder: colors.borderMedium,
+          plainColor: colors.accentDeep,
         },
         neutral: {
-          outlinedBorder: accentAlpha(0.12),
+          outlinedBorder: colors.borderMedium,
+          outlinedColor: colors.textBody,
         },
         background: {
           body: gradients.body,
-          surface: gradients.surface,
-          popup: 'rgba(17,17,27,0.95)',
+          surface: colors.surface,
+          popup: colors.surfaceSolid,
+        },
+        text: {
+          primary: colors.text,
+          secondary: colors.textBody,
+          tertiary: colors.textMuted,
         },
         focusVisible: colors.accent,
       },
@@ -51,9 +69,10 @@ export default extendTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           background: theme.vars.palette.background.surface,
-          backdropFilter: 'blur(10px)',
-          border: `1px solid ${colors.borderLight}`,
-          boxShadow: '0 4px 18px -4px rgba(0,0,0,0.4)',
+          backdropFilter: 'none',
+          border: `1px solid ${colors.border}`,
+          boxShadow: '0 10px 28px -24px rgba(20, 65, 42, 0.38)',
+          borderRadius: '14px',
         }),
       },
     },
@@ -61,8 +80,44 @@ export default extendTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           background: theme.vars.palette.background.surface,
-          backdropFilter: 'blur(10px)',
+          backdropFilter: 'none',
         }),
+      },
+    },
+    JoyButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: '9px',
+          fontWeight: 700,
+          minHeight: '38px',
+        },
+      },
+    },
+    JoyInput: {
+      styleOverrides: {
+        root: {
+          background: '#ffffff',
+          borderColor: colors.borderMedium,
+          minHeight: '40px',
+          fontSize: '14px',
+        },
+      },
+    },
+    JoyTextarea: {
+      styleOverrides: {
+        root: {
+          background: '#ffffff',
+          borderColor: colors.borderMedium,
+          fontSize: '14px',
+          lineHeight: 1.6,
+        },
+      },
+    },
+    JoyTypography: {
+      styleOverrides: {
+        root: {
+          textRendering: 'optimizeLegibility',
+        },
       },
     },
   },

@@ -3,8 +3,7 @@ import { Box } from '@mui/joy';
 import { colors } from '../themeConfig';
 
 /**
- * Animated space background using layered CSS starfields + twinkling + slow parallax drift.
- * Lightweight (no canvas) and respects print (hidden when printing).
+ * Soft ambient texture that keeps the page feeling light without competing with content.
  */
 const SpaceBackground: React.FC = () => {
   return (
@@ -20,39 +19,37 @@ const SpaceBackground: React.FC = () => {
           position: 'absolute',
           inset: '-50%',
           backgroundRepeat: 'repeat',
-          animationTimingFunction: 'linear',
+          animationTimingFunction: 'ease-in-out',
           animationIterationCount: 'infinite',
-          mixBlendMode: 'screen',
-          opacity: 0.55,
+          opacity: 0.14,
         },
         '& .layer.tiny': {
           backgroundImage: `radial-gradient(${colors.starWhite} 0 1px, transparent 1px)`,
           backgroundSize: '4px 4px',
           animationName: 'starDrift1',
-          animationDuration: '200s',
+          animationDuration: '90s',
         },
         '& .layer.small': {
           backgroundImage: `radial-gradient(${colors.starPurple} 0 1px, transparent 1px)`,
           backgroundSize: '7px 7px',
           animationName: 'starDrift2',
-          animationDuration: '280s',
-          opacity: 0.3,
+          animationDuration: '120s',
+          opacity: 0.1,
         },
         '& .layer.medium': {
           backgroundImage: `radial-gradient(${colors.starDeepPurple} 0 1.2px, transparent 1.2px)`,
           backgroundSize: '11px 11px',
           animationName: 'starDrift3',
-          animationDuration: '360s',
-          opacity: 0.2,
+          animationDuration: '150s',
+          opacity: 0.07,
         },
         '& .twinkle': {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15), transparent 60%), radial-gradient(circle at 75% 60%, rgba(160,180,255,0.18), transparent 70%), radial-gradient(circle at 40% 80%, rgba(120,150,255,0.12), transparent 65%)',
+            'radial-gradient(circle at 20% 25%, rgba(117,181,139,0.16), transparent 36%), radial-gradient(circle at 82% 62%, rgba(22,121,74,0.10), transparent 42%)',
           animation: 'twinklePulse 12s ease-in-out infinite',
-          mixBlendMode: 'screen',
-          opacity: 0.5,
+          opacity: 0.28,
         },
         '@keyframes starDrift1': {
           '0%': { transform: 'translate3d(0,0,0)' },

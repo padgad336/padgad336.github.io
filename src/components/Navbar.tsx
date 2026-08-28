@@ -35,12 +35,12 @@ const Navbar: React.FC = () => {
           top: 0,
           zIndex: 999,
           px: { xs: 2, md: 5 },
-          py: 1.5,
+          py: 1.25,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: colors.surface,
-          backdropFilter: 'blur(16px)',
+          background: 'rgba(255, 255, 255, 0.97)',
+          backdropFilter: 'blur(18px)',
           borderBottom: `1px solid ${colors.borderLight}`,
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0)' : 'translateY(-20px)',
@@ -94,14 +94,17 @@ const Navbar: React.FC = () => {
                 sx={{
                   fontFamily: fonts.mono,
                   fontSize: 14,
-                  fontWeight: 500,
+                  fontWeight: active ? 700 : 600,
                   px: 1.5,
                   py: 0.5,
                   cursor: 'pointer',
-                  color: active ? colors.accent : colors.textMuted,
-                  transition: 'color .25s ease',
+                  color: active ? colors.accentDeep : colors.textMuted,
+                  background: active ? accentAlpha(0.1) : 'transparent',
+                  borderRadius: '8px',
+                  transition: 'color .25s ease, background .25s ease',
                   '&:hover': {
                     color: colors.accent,
+                    background: accentAlpha(0.06),
                   },
                 }}
               >
@@ -134,7 +137,7 @@ const Navbar: React.FC = () => {
         slotProps={{
           content: {
             sx: {
-              background: 'rgba(17, 17, 27, 0.98)',
+              background: 'rgba(255, 255, 255, 0.98)',
               backdropFilter: 'blur(20px)',
               borderLeft: `1px solid ${accentAlpha(0.1)}`,
             },
@@ -166,7 +169,7 @@ const Navbar: React.FC = () => {
                   setDrawerOpen(false);
                 }}
                 sx={{
-                  borderRadius: 6,
+                  borderRadius: 9,
                   mb: 0.5,
                   py: 1.2,
                   px: 2,
@@ -175,7 +178,7 @@ const Navbar: React.FC = () => {
                   color: active ? colors.accent : colors.textMuted,
                   fontWeight: active ? 700 : 400,
                   '&.Mui-selected': {
-                    background: accentDeepAlpha(0.08),
+                    background: accentDeepAlpha(0.1),
                   },
                   '&:hover': {
                     background: accentDeepAlpha(0.06),

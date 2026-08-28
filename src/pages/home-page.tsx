@@ -32,28 +32,28 @@ const tools = [
     description: 'Debug & analyze SIP logs — REGISTER, INVITE, Codec, NAT, ICE candidates.',
     path: '/sip',
     icon: <SettingsInputAntennaRoundedIcon sx={{ fontSize: 36 }} />,
-    accent: '#f0883e',
+    accent: '#4b8f61',
   },
   {
     title: 'HAR → SIP',
     description: 'แปลง WebSocket SIP messages จากไฟล์ HAR เป็นไฟล์ .sip',
     path: '/har-to-sip',
     icon: <SwapHorizRoundedIcon sx={{ fontSize: 36 }} />,
-    accent: '#d29922',
+    accent: '#2f7d50',
   },
   {
     title: 'Periodic Table 3D',
     description: 'สามมิติด้วย three.js CSS3D พร้อมสลับ layout เป็น table, sphere, helix และ grid.',
     path: '/tree',
     icon: <ViewInArRoundedIcon sx={{ fontSize: 36 }} />,
-    accent: '#6fe7ff',
+    accent: '#5c9270',
   },
   {
     title: 'Developer Toolbox',
     description: 'Base64, QR Code, JSON, URL encoder, SHA-256 และ UUID — ทำงานบนเบราว์เซอร์ของคุณ.',
     path: '/tools',
     icon: <HandymanRoundedIcon sx={{ fontSize: 36 }} />,
-    accent: '#ff7ab6',
+    accent: '#246b45',
   },
 ];
 
@@ -163,10 +163,10 @@ const HomePage: React.FC = () => {
 
           <Typography
             sx={{
-              fontFamily: fonts.mono,
-              fontSize: 14,
+              fontFamily: fonts.body,
+              fontSize: 15,
               color: colors.textMuted,
-              lineHeight: 1.6,
+              lineHeight: 1.75,
               mb: 3,
             }}
           >
@@ -181,10 +181,10 @@ const HomePage: React.FC = () => {
             sx={{
               fontFamily: fonts.mono,
               fontSize: 13,
-              fontWeight: 500,
+              fontWeight: 700,
               color: colors.textBody,
               borderColor: accentAlpha(0.35),
-              borderRadius: 0,
+              borderRadius: '10px',
               px: 3,
               py: 1,
               letterSpacing: '0.5px',
@@ -250,7 +250,7 @@ const HomePage: React.FC = () => {
             src='https://avatars.githubusercontent.com/u/67619755?v=4'
             sx={{
               '--Avatar-size': { xs: '200px', md: '260px' },
-              borderRadius: 0,
+              borderRadius: '10px',
               position: 'relative',
               zIndex: 1,
               filter: 'grayscale(0.15)',
@@ -275,7 +275,7 @@ const HomePage: React.FC = () => {
               gap: 1,
               px: 2,
               py: 0.6,
-              background: colors.surface,
+              background: colors.surfaceSolid,
               border: `1px solid ${colors.borderMedium}`,
               zIndex: 2,
               whiteSpace: 'nowrap',
@@ -347,7 +347,7 @@ const HomePage: React.FC = () => {
           <Typography
             sx={{
               fontFamily: fonts.mono,
-              fontSize: 13,
+              fontSize: 14,
               color: colors.textDim,
               textAlign: 'right',
               mt: 2,
@@ -411,14 +411,14 @@ const HomePage: React.FC = () => {
                 cursor: 'pointer',
                 p: 0,
                 borderRadius: '8px',
-                background: `linear-gradient(145deg, rgba(30, 28, 45, 0.65), ${colors.surfaceSolid})`,
-                border: `1px solid ${accentAlpha(0.15)}`,
+                background: colors.surfaceSolid,
+                border: `1px solid ${colors.border}`,
                 overflow: 'hidden',
                 ...fadeUp(0.65 + i * 0.12),
                 transition: 'border-color .3s ease, box-shadow .3s ease, transform .3s ease',
                 '&:hover': {
                   borderColor: `${tool.accent}66`,
-                  boxShadow: `0 4px 30px -8px ${tool.accent}33`,
+                  boxShadow: `0 16px 32px -24px ${tool.accent}80`,
                   transform: 'translateY(-3px)',
                 },
                 '&:hover .tool-accent-line': {
@@ -457,7 +457,7 @@ const HomePage: React.FC = () => {
                 </Box>
                 <Typography
                   sx={{
-                    fontFamily: fonts.mono,
+                    fontFamily: fonts.body,
                     color: colors.text,
                     fontWeight: 700,
                     fontSize: { xs: 18, md: 20 },
@@ -470,8 +470,8 @@ const HomePage: React.FC = () => {
                   sx={{
                     fontFamily: fonts.mono,
                     color: colors.textBody,
-                    fontSize: 13,
-                    lineHeight: 1.6,
+                    fontSize: 14,
+                    lineHeight: 1.7,
                     mb: 2,
                   }}
                 >

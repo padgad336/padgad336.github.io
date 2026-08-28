@@ -5,63 +5,63 @@
 
 // ── Colors ──────────────────────────────────────────────
 export const colors = {
-  /** Primary accent (purple) — buttons, links, active states */
-  accent: '#c4a0ff',
-  /** Deeper accent — icons, brand elements */
-  accentDeep: '#9a7bff',
-  /** Secondary accent (teal) — used for alternate card accents */
-  secondary: '#7be0c8',
+  /** Primary green — buttons, links, active states */
+  accent: '#0f6f42',
+  /** Deeper green — icons, brand elements */
+  accentDeep: '#0b5d37',
+  /** Softer green — alternate card accents */
+  secondary: '#356f50',
 
   /** Main text color */
-  text: '#e8e6f0',
+  text: '#14291f',
   /** Body / paragraph text */
-  textBody: '#d0cfe0',
+  textBody: '#2b4436',
   /** Muted text */
-  textMuted: 'rgba(200, 200, 220, 0.55)',
+  textMuted: '#465e51',
   /** Even more muted text */
-  textDim: 'rgba(200, 200, 220, 0.4)',
+  textDim: '#566b60',
 
   /** Dark surface / background base */
-  surface: 'rgba(17, 17, 27, 0.92)',
-  surfaceSolid: '#11111b',
-  surfaceDark: '#0d0d15',
-  surfaceDarkest: '#0a0a12',
+  surface: 'rgba(255, 255, 255, 0.985)',
+  surfaceSolid: '#ffffff',
+  surfaceDark: '#f5f8f6',
+  surfaceDarkest: '#edf3ef',
   /** Card / panel background */
-  surfaceCard: 'rgba(17, 17, 27, 0.6)',
+  surfaceCard: 'rgba(255, 255, 255, 0.97)',
 
   /** Borders */
-  border: `rgba(196, 160, 255, 0.12)`,
-  borderLight: `rgba(196, 160, 255, 0.08)`,
-  borderMedium: `rgba(196, 160, 255, 0.15)`,
-  borderHover: `rgba(196, 160, 255, 0.25)`,
-  borderSubtle: 'rgba(200, 200, 220, 0.06)',
+  border: '#c5d6ca',
+  borderLight: '#dce7df',
+  borderMedium: '#b8cec0',
+  borderHover: '#7ba88c',
+  borderSubtle: '#e7eee9',
 
   /** Star particle colors (for SpaceBackground) */
-  starWhite: 'rgba(255, 255, 255, 0.5)',
-  starPurple: 'rgba(196, 160, 255, 0.5)',
-  starDeepPurple: 'rgba(160, 140, 255, 0.6)',
+  starWhite: 'rgba(255, 255, 255, 0.7)',
+  starPurple: 'rgba(86, 153, 111, 0.22)',
+  starDeepPurple: 'rgba(22, 121, 74, 0.18)',
 };
 
 // ── Fonts ───────────────────────────────────────────────
 export const fonts = {
-  mono: '"Fira Code", "IBM Plex Mono", monospace',
-  display: '"Inter", var(--joy-fontFamily-fallback)',
-  body: '"Inter", var(--joy-fontFamily-fallback)',
+  mono: '"Fira Code", "Noto Sans Thai", "IBM Plex Mono", monospace',
+  display: '"Inter", "Noto Sans Thai", var(--joy-fontFamily-fallback)',
+  body: '"Inter", "Noto Sans Thai", var(--joy-fontFamily-fallback)',
 };
 
 // ── Derived helpers ─────────────────────────────────────
 /** Accent color with custom opacity — e.g. accentAlpha(0.3) */
-export const accentAlpha = (opacity: number) => `rgba(196, 160, 255, ${opacity})`;
+export const accentAlpha = (opacity: number) => `rgba(15, 111, 66, ${opacity})`;
 
 /** Deep accent with custom opacity */
-export const accentDeepAlpha = (opacity: number) => `rgba(154, 123, 255, ${opacity})`;
+export const accentDeepAlpha = (opacity: number) => `rgba(11, 93, 55, ${opacity})`;
 
 // ── Gradients ───────────────────────────────────────────
 export const gradients = {
   /** Full-page body background */
-  body: `linear-gradient(180deg, ${colors.surfaceSolid} 0%, ${colors.surfaceDark} 50%, ${colors.surfaceDarkest} 100%)`,
+  body: `linear-gradient(180deg, #ffffff 0%, ${colors.surfaceDark} 62%, ${colors.surfaceDarkest} 100%)`,
   /** Card surface */
-  surface: `linear-gradient(145deg, rgba(30, 28, 45, 0.3), rgba(17, 17, 27, 0.5))`,
+  surface: 'linear-gradient(145deg, #ffffff, #f7faf8)',
   /** Divider / decorative line */
   line: `linear-gradient(90deg, ${accentAlpha(0.2)}, transparent)`,
   /** Vertical decorative line */
