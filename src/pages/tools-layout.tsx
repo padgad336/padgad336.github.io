@@ -29,12 +29,14 @@ import RuleRoundedIcon from '@mui/icons-material/RuleRounded';
 import ScheduleRoundedIcon from '@mui/icons-material/ScheduleRounded';
 import VpnKeyRoundedIcon from '@mui/icons-material/VpnKeyRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import QRCode from 'qrcode';
+import { SvgStudio } from '../components/SvgStudio';
 import { accentAlpha, colors, fonts, gradients } from '../themeConfig';
 
 type ToolKey =
   | 'json' | 'base64' | 'jwt' | 'uuid' | 'hash' | 'timestamp' | 'url' | 'regex'
-  | 'diff' | 'cron' | 'yaml' | 'sql' | 'markdown' | 'qr' | 'color' | 'cidr';
+  | 'diff' | 'cron' | 'yaml' | 'sql' | 'markdown' | 'qr' | 'color' | 'cidr' | 'svg';
 
 type ToolCategory = 'Data' | 'Text & Code' | 'Security' | 'Network';
 
@@ -67,6 +69,7 @@ const toolList: Array<{
   { key: 'yaml', label: 'YAML ↔ JSON', short: 'Convert config formats', accent: '#0f6840', icon: <CodeRoundedIcon />, category: 'Data' },
   { key: 'sql', label: 'SQL Formatter', short: 'Format SQL queries', accent: '#317c50', icon: <DataObjectRoundedIcon />, category: 'Data' },
   { key: 'markdown', label: 'Markdown Preview', short: 'Write & preview docs', accent: '#4b8f61', icon: <CodeRoundedIcon />, category: 'Text & Code' },
+  { key: 'svg', label: 'SVG Studio', short: 'View, edit & export SVG', accent: '#0f6f40', icon: <ImageRoundedIcon />, category: 'Text & Code' },
   { key: 'qr', label: 'QR Generator', short: 'Text, links & Wi-Fi', accent: '#236d44', icon: <QrCode2RoundedIcon />, category: 'Data' },
   { key: 'color', label: 'Color Converter', short: 'HEX · RGB · HSL', accent: '#5b936d', icon: <PaletteOutlinedIcon />, category: 'Text & Code' },
   { key: 'cidr', label: 'CIDR / IP', short: 'Calculate IP ranges', accent: '#0f6840', icon: <PublicRoundedIcon />, category: 'Network' },
@@ -580,8 +583,8 @@ const CidrTool = ({ notify }: { notify: (message: string) => void }) => {
 };
 
 export const ToolsLayout = () => {
-  const [activeTool, setActiveTool] = React.useState<ToolKey>('json');
-  const [activeCategory, setActiveCategory] = React.useState<ToolCategory>('Data');
+  const [activeTool, setActiveTool] = React.useState<ToolKey>('svg');
+  const [activeCategory, setActiveCategory] = React.useState<ToolCategory>('Text & Code');
   const [search, setSearch] = React.useState('');
   const [notice, setNotice] = React.useState('');
   const visibleTools = toolList.filter((tool) => {
@@ -608,6 +611,7 @@ export const ToolsLayout = () => {
     if (activeTool === 'yaml') return <YamlTool notify={notify} />;
     if (activeTool === 'sql') return <SqlTool notify={notify} />;
     if (activeTool === 'markdown') return <MarkdownTool notify={notify} />;
+    if (activeTool === 'svg') return <SvgStudio notify={notify} />;
     if (activeTool === 'qr') return <QrTool notify={notify} />;
     if (activeTool === 'color') return <ColorTool notify={notify} />;
     return <CidrTool notify={notify} />;
